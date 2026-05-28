@@ -25,7 +25,7 @@ const highlights = [
   {
     title: "Global Vision",
     icon: Globe2,
-    image: "/images/mission.jpg",
+    image: "/images/missions.jpg",
   },
   {
     title: "Spirit-Filled Worship",

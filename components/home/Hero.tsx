@@ -1,25 +1,24 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
-  CalendarDays,
   ChevronLeft,
   ChevronRight,
   Clock3,
   Flame,
   Globe2,
-  HeartHandshake,
   MapPin,
   Play,
   ShieldCheck,
   Sparkles,
   Star,
-  Volume2,
   Waves,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -135,17 +134,8 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden">
-      <div
-        className="
-        relative
-        min-h-screen
-        w-full
-        overflow-hidden
-        border-b border-white/10
-        bg-black
-      "
-      >
+    <section className="relative overflow-hidden bg-white">
+      <div className="relative min-h-screen w-full overflow-hidden">
         {/* =========================
             BACKGROUND IMAGES
         ========================== */}
@@ -155,7 +145,7 @@ export const Hero = () => {
             key={slides[current].image}
             initial={{
               opacity: 0,
-              scale: 1.12,
+              scale: 1.08,
             }}
             animate={{
               opacity: 1,
@@ -163,7 +153,7 @@ export const Hero = () => {
             }}
             exit={{
               opacity: 0,
-              scale: 1.05,
+              scale: 1.04,
             }}
             transition={{
               duration: 1.4,
@@ -179,30 +169,30 @@ export const Hero = () => {
               className="object-cover"
             />
 
-            {/* cinematic overlays */}
-            <div className="absolute inset-0 bg-black/60" />
+            {/* LIGHT OVERLAYS */}
 
-            <div className="absolute inset-0 bg-gradient-to-r from-black via-black/55 to-black/25" />
+            <div className="absolute inset-0 bg-white/10" />
 
-            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#22007C]/60 via-[#22007C]/25 to-transparent" />
 
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_25%)]" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#22007C]/35 via-transparent to-transparent" />
 
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] [background-size:120px_120px]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.25),transparent_30%)]" />
 
-            {/* vignette */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_35%,rgba(0,0,0,0.65)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:120px_120px]" />
+
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(34,0,124,0.18)_100%)]" />
           </motion.div>
         </AnimatePresence>
 
         {/* =========================
-            FLOATING AURAS
+            LUXURY GLOWS
         ========================== */}
 
         <motion.div
           animate={{
             y: [0, -35, 0],
-            opacity: [0.2, 0.45, 0.2],
+            opacity: [0.18, 0.35, 0.18],
           }}
           transition={{
             duration: 10,
@@ -212,7 +202,7 @@ export const Hero = () => {
           absolute left-[5%] top-[10%]
           h-[26rem] w-[26rem]
           rounded-full
-          bg-primary/20
+          bg-[#22007C]/20
           blur-3xl
         "
         />
@@ -220,7 +210,7 @@ export const Hero = () => {
         <motion.div
           animate={{
             y: [0, 30, 0],
-            opacity: [0.18, 0.4, 0.18],
+            opacity: [0.15, 0.28, 0.15],
           }}
           transition={{
             duration: 12,
@@ -230,12 +220,24 @@ export const Hero = () => {
           absolute bottom-[0%] right-[5%]
           h-[30rem] w-[30rem]
           rounded-full
-          bg-accent/20
+          bg-[#AF3800]/20
           blur-3xl
         "
         />
 
-        {/* moving light */}
+        <div
+          className="
+          absolute left-1/2 top-[15%]
+          h-[28rem] w-[28rem]
+          -translate-x-1/2
+          rounded-full
+          bg-[#AF3800]/10
+          blur-3xl
+        "
+        />
+
+        {/* moving beam */}
+
         <motion.div
           animate={{
             x: ["-120%", "220%"],
@@ -250,14 +252,14 @@ export const Hero = () => {
           w-[20%]
           bg-gradient-to-r
           from-transparent
-          via-white/10
+          via-white/20
           to-transparent
           blur-2xl
         "
         />
 
         {/* =========================
-            TOP LIVE BAR
+            TOP BAR
         ========================== */}
 
         <motion.div
@@ -268,29 +270,30 @@ export const Hero = () => {
           absolute left-1/2 top-6 z-30
           hidden -translate-x-1/2 items-center gap-5
           rounded-full
-          border border-white/10
-          bg-white/10
+          border border-white/40
+          bg-white/60
           px-6 py-3
-          text-white
-          backdrop-blur-2xl
+          text-[#22007C]
+          shadow-[0_15px_60px_rgba(255,255,255,0.2)]
+          backdrop-blur-3xl
           xl:flex
         "
         >
           <div className="flex items-center gap-2">
             <div className="relative flex h-3 w-3">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#AF3800] opacity-75" />
 
-              <span className="relative inline-flex h-3 w-3 rounded-full bg-primary" />
+              <span className="relative inline-flex h-3 w-3 rounded-full bg-[#AF3800]" />
             </div>
 
-            <span className="text-sm font-bold">
+            <span className="text-sm font-black">
               LIVE WORSHIP EXPERIENCE
             </span>
           </div>
 
-          <div className="h-5 w-px bg-white/10" />
+          <div className="h-5 w-px bg-slate-300" />
 
-          <div className="flex items-center gap-2 text-white/75">
+          <div className="flex items-center gap-2 text-slate-600">
             <Clock3 className="h-4 w-4" />
 
             <span className="text-sm">
@@ -298,9 +301,9 @@ export const Hero = () => {
             </span>
           </div>
 
-          <div className="h-5 w-px bg-white/10" />
+          <div className="h-5 w-px bg-slate-300" />
 
-          <div className="flex items-center gap-2 text-white/75">
+          <div className="flex items-center gap-2 text-slate-600">
             <MapPin className="h-4 w-4" />
 
             <span className="text-sm">
@@ -310,7 +313,7 @@ export const Hero = () => {
         </motion.div>
 
         {/* =========================
-            MAIN GRID
+            MAIN CONTENT
         ========================== */}
 
         <div
@@ -326,12 +329,11 @@ export const Hero = () => {
         "
         >
           <div className="grid w-full items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
-            {/* =========================
-                LEFT CONTENT
-            ========================== */}
+            {/* LEFT */}
 
             <div className="max-w-3xl">
               {/* eyebrow */}
+
               <motion.div
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -339,22 +341,25 @@ export const Hero = () => {
                 className="
                 mb-7 inline-flex items-center gap-3
                 rounded-full
-                border border-white/10
-                bg-white/10
+                border border-white/40
+                bg-white/65
                 px-5 py-2.5
-                backdrop-blur-2xl
+                text-[#22007C]
+                shadow-[0_15px_50px_rgba(255,255,255,0.18)]
+                backdrop-blur-3xl
               "
               >
-                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/20">
-                  <Sparkles className="h-3.5 w-3.5 text-primary" />
+                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#22007C]/10">
+                  <Sparkles className="h-3.5 w-3.5 text-[#22007C]" />
                 </div>
 
-                <span className="text-[11px] font-black tracking-[0.32em] text-white uppercase">
+                <span className="text-[11px] font-black tracking-[0.32em] uppercase">
                   {slides[current].eyebrow}
                 </span>
               </motion.div>
 
-              {/* title */}
+              {/* TITLE */}
+
               <AnimatePresence mode="wait">
                 <motion.h1
                   key={slides[current].title}
@@ -380,7 +385,8 @@ export const Hero = () => {
                 </motion.h1>
               </AnimatePresence>
 
-              {/* description */}
+              {/* DESCRIPTION */}
+
               <AnimatePresence mode="wait">
                 <motion.p
                   key={slides[current].description}
@@ -396,14 +402,15 @@ export const Hero = () => {
                   max-w-2xl
                   text-lg
                   leading-8
-                  text-white/72
+                  text-slate-100
                 "
                 >
                   {slides[current].description}
                 </motion.p>
               </AnimatePresence>
 
-              {/* floating keywords */}
+              {/* TAGS */}
+
               <motion.div
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -418,13 +425,13 @@ export const Hero = () => {
                     key={word}
                     className="
                     rounded-full
-                    border border-white/10
-                    bg-white/10
+                    border border-white/40
+                    bg-white/70
                     px-4 py-2
                     text-xs
-                    font-bold
+                    font-black
                     tracking-[0.22em]
-                    text-white/80
+                    text-[#22007C]
                     uppercase
                     backdrop-blur-xl
                   "
@@ -434,7 +441,8 @@ export const Hero = () => {
                 ))}
               </motion.div>
 
-              {/* CTA */}
+              {/* BUTTONS */}
+
               <motion.div
                 initial={{ opacity: 0, y: 25 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -450,15 +458,15 @@ export const Hero = () => {
                   group
                   h-14
                   rounded-2xl
-                  bg-primary
+                  border border-white/20
+                  bg-[#AF3800]
                   px-8
                   text-sm font-bold
                   text-white
-                  shadow-[0_15px_60px_rgba(216,164,91,0.35)]
+                  shadow-[0_20px_80px_rgba(175,56,0,0.35)]
                   transition-all duration-500
                   hover:-translate-y-1
-                  hover:bg-primary/90
-                  hover:shadow-[0_30px_120px_rgba(216,164,91,0.45)]
+                  hover:bg-[#AF3800]/90
                 "
                 >
                   <Link href="/contact">
@@ -473,24 +481,25 @@ export const Hero = () => {
                   className="
                   h-14
                   rounded-2xl
-                  border-white/10
-                  bg-white/10
+                  border border-white/40
+                  bg-white/65
                   px-8
                   text-sm font-semibold
-                  text-white
-                  backdrop-blur-xl
+                  text-[#22007C]
+                  backdrop-blur-2xl
                   transition-all duration-500
                   hover:-translate-y-1
-                  hover:bg-white/20
+                  hover:bg-white/85
                 "
                 >
-                  <Play className="mr-2 h-4 w-4 fill-white" />
+                  <Play className="mr-2 h-4 w-4 fill-[#22007C]" />
 
                   Watch Online
                 </Button>
               </motion.div>
 
-              {/* service schedule cards */}
+              {/* SERVICE CARDS */}
+
               <motion.div
                 initial={{ opacity: 0, y: 35 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -498,77 +507,62 @@ export const Hero = () => {
                   duration: 1,
                   delay: 0.25,
                 }}
-                className="
-                mt-10
-                grid gap-4
-                sm:grid-cols-2
-              "
+                className="mt-10 grid gap-4 sm:grid-cols-2"
               >
-                <div
-                  className="
-                  rounded-[2rem]
-                  border border-white/10
-                  bg-white/10
-                  p-5
-                  backdrop-blur-2xl
-                "
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/15">
-                      <Flame className="h-5 w-5 text-primary" />
+                {[
+                  {
+                    title: "Sunday Service",
+                    time: "10:30AM – 12:30PM",
+                    desc: "Worship, Word & Encounters",
+                    icon: Flame,
+                  },
+                  {
+                    title: "Friday Prayer",
+                    time: "6PM – 7PM",
+                    desc: "Intercession & Revival",
+                    icon: ShieldCheck,
+                  },
+                ].map((item) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <div
+                      key={item.title}
+                      className="
+                      rounded-[2rem]
+                      border border-white/40
+                      bg-white/65
+                      p-5
+                      shadow-[0_10px_40px_rgba(255,255,255,0.12)]
+                      backdrop-blur-3xl
+                    "
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#22007C]/10">
+                          <Icon className="h-5 w-5 text-[#22007C]" />
+                        </div>
+
+                        <div>
+                          <p className="text-xs font-black tracking-[0.25em] text-[#AF3800] uppercase">
+                            {item.title}
+                          </p>
+
+                          <h4 className="mt-2 text-lg font-black text-[#22007C]">
+                            {item.time}
+                          </h4>
+
+                          <p className="mt-1 text-sm leading-6 text-slate-600">
+                            {item.desc}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-
-                    <div>
-                      <p className="text-xs font-black tracking-[0.25em] text-white/45 uppercase">
-                        Sunday Service
-                      </p>
-
-                      <h4 className="mt-2 text-lg font-bold text-white">
-                        10:30AM – 12:30PM
-                      </h4>
-
-                      <p className="mt-1 text-sm leading-6 text-white/65">
-                        Worship, Word, Prayer & Encounters
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <div
-                  className="
-                  rounded-[2rem]
-                  border border-white/10
-                  bg-white/10
-                  p-5
-                  backdrop-blur-2xl
-                "
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/15">
-                      <ShieldCheck className="h-5 w-5 text-primary" />
-                    </div>
-
-                    <div>
-                      <p className="text-xs font-black tracking-[0.25em] text-white/45 uppercase">
-                        Friday Prayer
-                      </p>
-
-                      <h4 className="mt-2 text-lg font-bold text-white">
-                        6PM – 7PM
-                      </h4>
-
-                      <p className="mt-1 text-sm leading-6 text-white/65">
-                        Intercession, Revival & Spiritual Growth
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                  );
+                })}
               </motion.div>
             </div>
 
-            {/* =========================
-                RIGHT FEATURE PANEL
-            ========================== */}
+            {/* RIGHT PANEL */}
 
             <div className="flex justify-center lg:justify-end">
               <AnimatePresence mode="wait">
@@ -598,21 +592,21 @@ export const Hero = () => {
                   max-w-xl
                   overflow-hidden
                   rounded-[2.8rem]
-                  border border-white/10
-                  bg-white/[0.10]
+                  border border-white/40
+                  bg-white/75
                   p-7
-                  shadow-[0_40px_120px_rgba(0,0,0,0.45)]
+                  shadow-[0_30px_100px_rgba(255,255,255,0.2)]
                   backdrop-blur-[35px]
                 "
                 >
-                  {/* decorative */}
-                  <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
+                  {/* glows */}
 
-                  <div className="absolute bottom-0 left-0 h-56 w-56 rounded-full bg-accent/15 blur-3xl" />
+                  <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#22007C]/10 blur-3xl" />
 
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-white/[0.03]" />
+                  <div className="absolute bottom-0 left-0 h-56 w-56 rounded-full bg-[#AF3800]/10 blur-3xl" />
 
-                  {/* moving beam */}
+                  {/* shine */}
+
                   <motion.div
                     animate={{
                       x: ["-120%", "220%"],
@@ -626,28 +620,29 @@ export const Hero = () => {
                     absolute inset-y-0 w-[30%]
                     bg-gradient-to-r
                     from-transparent
-                    via-white/10
+                    via-white/30
                     to-transparent
                     blur-2xl
                   "
                   />
 
                   <div className="relative z-10">
-                    {/* top row */}
+                    {/* top */}
+
                     <div className="flex items-start justify-between gap-4">
                       <div
                         className="
                         inline-flex items-center gap-2
                         rounded-full
-                        border border-white/10
-                        bg-white/10
+                        border border-[#22007C]/10
+                        bg-[#22007C]/5
                         px-4 py-2
                         text-[11px]
                         font-black uppercase tracking-[0.25em]
-                        text-white
+                        text-[#22007C]
                       "
                       >
-                        <Star className="h-3.5 w-3.5 text-primary" />
+                        <Star className="h-3.5 w-3.5 text-[#AF3800]" />
 
                         {slides[current].badge}
                       </div>
@@ -656,15 +651,15 @@ export const Hero = () => {
                         className="
                         flex h-14 w-14 items-center justify-center
                         rounded-2xl
-                        border border-white/10
-                        bg-white/10
+                        bg-[#22007C]/5
                       "
                       >
-                        <Waves className="h-6 w-6 text-primary" />
+                        <Waves className="h-6 w-6 text-[#22007C]" />
                       </div>
                     </div>
 
-                    {/* heading */}
+                    {/* content */}
+
                     <div className="mt-8">
                       <h3
                         className="
@@ -672,51 +667,52 @@ export const Hero = () => {
                         font-black
                         leading-[1]
                         tracking-[-0.05em]
-                        text-white
+                        text-[#22007C]
                       "
                       >
                         {slides[current].announcement.title}
                       </h3>
 
-                      <p className="mt-5 text-[15px] leading-8 text-white/70">
+                      <p className="mt-5 text-[15px] leading-8 text-slate-600">
                         {slides[current].announcement.description}
                       </p>
                     </div>
 
-                    {/* address card */}
+                    {/* location */}
+
                     <div
                       className="
                       mt-8
                       rounded-[2rem]
-                      border border-white/10
-                      bg-black/20
+                      border border-[#22007C]/10
+                      bg-white/80
                       p-5
                     "
                     >
                       <div className="flex items-start gap-4">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/15">
-                          <MapPin className="h-5 w-5 text-primary" />
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#22007C]/10">
+                          <MapPin className="h-5 w-5 text-[#22007C]" />
                         </div>
 
                         <div>
-                          <p className="text-xs font-black tracking-[0.25em] text-white/45 uppercase">
+                          <p className="text-xs font-black tracking-[0.25em] text-[#AF3800] uppercase">
                             Church Location
                           </p>
 
-                          <div className="mt-3 space-y-1 text-white">
-                            <p className="font-semibold">
+                          <div className="mt-3 space-y-1 text-[#22007C]">
+                            <p className="font-bold">
                               Global Crossfire Church
                             </p>
 
-                            <p className="text-sm text-white/72">
+                            <p className="text-sm text-slate-600">
                               Randolph House, Zion Place
                             </p>
 
-                            <p className="text-sm text-white/72">
+                            <p className="text-sm text-slate-600">
                               Margate, CT9 1RP
                             </p>
 
-                            <p className="text-sm text-white/72">
+                            <p className="text-sm text-slate-600">
                               United Kingdom
                             </p>
                           </div>
@@ -724,29 +720,30 @@ export const Hero = () => {
                       </div>
                     </div>
 
-                    {/* bottom actions */}
+                    {/* footer */}
+
                     <div
                       className="
                       mt-7
                       flex flex-col gap-4
                       rounded-[2rem]
-                      border border-white/10
-                      bg-white/[0.08]
+                      border border-[#22007C]/10
+                      bg-white/80
                       p-5
                       sm:flex-row sm:items-center sm:justify-between
                     "
                     >
                       <div className="flex items-center gap-3">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/15">
-                          <Globe2 className="h-5 w-5 text-primary" />
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#22007C]/10">
+                          <Globe2 className="h-5 w-5 text-[#22007C]" />
                         </div>
 
                         <div>
-                          <p className="text-xs font-black tracking-[0.25em] text-white/45 uppercase">
+                          <p className="text-xs font-black tracking-[0.25em] text-[#AF3800] uppercase">
                             Global Family
                           </p>
 
-                          <p className="mt-1 text-sm font-semibold text-white">
+                          <p className="mt-1 text-sm font-semibold text-[#22007C]">
                             One Church • Many Nations
                           </p>
                         </div>
@@ -757,11 +754,12 @@ export const Hero = () => {
                         className="
                         h-12
                         rounded-2xl
-                        bg-primary
+                        bg-[#AF3800]
                         px-6
                         font-bold
                         text-white
-                        hover:bg-primary/90
+                        shadow-[0_15px_50px_rgba(175,56,0,0.3)]
+                        hover:bg-[#AF3800]/90
                       "
                       >
                         <Link href={slides[current].announcement.href}>
@@ -777,7 +775,7 @@ export const Hero = () => {
         </div>
 
         {/* =========================
-            SLIDE INDICATORS
+            INDICATORS
         ========================== */}
 
         <div
@@ -793,14 +791,14 @@ export const Hero = () => {
               className={cn(
                 "relative overflow-hidden rounded-full transition-all duration-500",
                 current === index
-                  ? "h-2.5 w-16 bg-primary"
-                  : "h-2.5 w-2.5 bg-white/35 hover:bg-white/70",
+                  ? "h-2.5 w-16 bg-[#AF3800]"
+                  : "h-2.5 w-2.5 bg-white/60 hover:bg-white",
               )}
             >
               {current === index && (
                 <motion.div
                   layoutId="hero-progress"
-                  className="absolute inset-0 rounded-full bg-primary"
+                  className="absolute inset-0 rounded-full bg-[#AF3800]"
                 />
               )}
             </button>
@@ -818,13 +816,13 @@ export const Hero = () => {
             group
             flex h-14 w-14 items-center justify-center
             rounded-2xl
-            border border-white/10
-            bg-white/10
-            text-white
+            border border-white/40
+            bg-white/70
+            text-[#22007C]
             backdrop-blur-2xl
             transition-all duration-300
             hover:-translate-y-1
-            hover:bg-white/20
+            hover:bg-white
           "
           >
             <ChevronLeft className="h-5 w-5 transition-transform duration-300 group-hover:-translate-x-0.5" />
@@ -836,13 +834,13 @@ export const Hero = () => {
             group
             flex h-14 w-14 items-center justify-center
             rounded-2xl
-            border border-white/10
-            bg-white/10
-            text-white
+            border border-white/40
+            bg-white/70
+            text-[#22007C]
             backdrop-blur-2xl
             transition-all duration-300
             hover:-translate-y-1
-            hover:bg-white/20
+            hover:bg-white
           "
           >
             <ChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5" />
@@ -850,7 +848,8 @@ export const Hero = () => {
         </div>
 
         {/* bottom fade */}
-        <div className="absolute inset-x-0 bottom-0 z-[2] h-52 bg-gradient-to-t from-background to-transparent" />
+
+        <div className="absolute inset-x-0 bottom-0 z-[2] h-52 bg-gradient-to-t from-white to-transparent" />
       </div>
     </section>
   );
