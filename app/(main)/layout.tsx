@@ -1,5 +1,5 @@
 import { Header } from "@/components/navigation/Header";
-// import { Footer } from "@/components/navigation/Footer";
+import { Footer } from "@/components/navigation/Footer";
 
 export default function MainLayout({
   children,
@@ -10,7 +10,7 @@ export default function MainLayout({
     <>
       <Header />
       <main>{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }
