@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Header } from "@/components/navigation/Header";
+
 
 const lato = localFont({
   src: [
@@ -19,11 +21,13 @@ const lato = localFont({
   display: "swap",
 });
 
+
 export const metadata: Metadata = {
   title: "Global Crossfire Church",
   description:
     "The Global Crossfire Church is an equipping ministry called to train believers to walk in purpose.",
 };
+
 
 export default function RootLayout({
   children,
@@ -37,7 +41,8 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-screen font-sans bg-white text-black">
-        {children}
+        <Header />
+        <main>{children}</main>
       </body>
     </html>
   );
