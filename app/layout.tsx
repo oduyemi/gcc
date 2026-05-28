@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/navigation/Header";
+import { Footer } from "@/components/navigation/Footer";
 
 
 const lato = localFont({
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body className="min-h-screen font-sans bg-white text-black">
         <Header />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
