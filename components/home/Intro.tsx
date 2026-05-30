@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -20,7 +19,7 @@ const highlights = [
   {
     title: "Authentic Community",
     icon: Users2,
-    image: "/images/community.jpg",
+    image: "/images/comm.jpg",
   },
   {
     title: "Global Vision",
@@ -244,7 +243,7 @@ export const Intro = () => {
             >
               <div className="relative h-[340px]">
                 <Image
-                  src="/images/hero1.jpg"
+                  src="/images/family.jpg"
                   alt="Global Crossfire Church"
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
