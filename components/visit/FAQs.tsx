@@ -328,7 +328,7 @@ export const VisitFAQs = () => {
                       </p>
 
                       <p className="mt-1 break-all font-semibold">
-                        info@globalcrossfirechurch.co.uk
+                        info@globalcrossfirechurch.org
                       </p>
                     </div>
                   </div>

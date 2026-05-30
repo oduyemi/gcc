@@ -17,7 +17,7 @@ const pastor = {
   name: "Benjamin Ashong",
   role: "Resident Pastor",
   phone: "01843 265001",
-  email: "pastor@globalcrossfirechurch.co.uk",
+  email: "pastor@globalcrossfirechurch.org",
   image: "/images/staff/ashong.jpg",
   bio: "Called into ministry at fifteen and serving faithfully for many years, Apostle Benjamin Ashong leads the local church with passion, wisdom and a heart for people.",
 };
@@ -26,25 +26,25 @@ const ministers = [
   {
     name: "Mary Ashong",
     role: "Minister",
-    email: "support@globalcrossfirechurch.co.uk",
+    email: "support@globalcrossfirechurch.org",
     image: "/images/staff/mary.jpg",
   },
   {
     name: "Okechukwu Okonkwo",
     role: "Minister",
-    email: "info@globalcrossfirechurch.co.uk",
+    email: "info@globalcrossfirechurch.org",
     image: "/images/staff/okonkwo.jpg",
   },
   {
     name: "Melissa Sesay",
     role: "Minister",
-    email: "secretary@globalcrossfirechurch.co.uk",
+    email: "secretary@globalcrossfirechurch.org",
     image: "/images/staff/sesay.jpg",
   },
   {
     name: "Emmanual Okesola",
     role: "Minister",
-    email: "info@globalcrossfirechurch.co.uk",
+    email: "info@globalcrossfirechurch.org",
     image: "/images/staff/okesola.png",
   },
 ];
