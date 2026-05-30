@@ -13,7 +13,7 @@ const impactAreas = [
   },
   {
     title: "Educational Projects",
-    image: "/images/edu-outreach.jpg",
+    image: "/images/eduoutreach.jpg",
   },
 ];
 
