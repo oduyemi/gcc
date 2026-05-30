@@ -450,29 +450,31 @@ export const Header = () => {
         </NavigationMenu>
 
         {/* CTA */}
-        <Button
-            className="
-            group relative ml-2 h-11 overflow-hidden
-            rounded-2xl
-            border border-primary/20
-            bg-primary
-            px-6
-            font-semibold
-            text-white
-            shadow-[0_10px_50px_rgba(216,164,91,0.35)]
-            transition-all duration-700
-            ease-[cubic-bezier(0.22,1,0.36,1)]
-            hover:-translate-y-1
-            hover:bg-[#d6a05a]
-            hover:shadow-[0_20px_80px_rgba(216,164,91,0.45)]
-        "
-        >
-            <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/10 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+        <Link href="/visit">
+          <Button
+              className="
+              group relative ml-2 h-11 overflow-hidden
+              rounded-2xl
+              border border-primary/20
+              bg-primary
+              px-6
+              font-semibold
+              text-white
+              shadow-[0_10px_50px_rgba(216,164,91,0.35)]
+              transition-all duration-700
+              ease-[cubic-bezier(0.22,1,0.36,1)]
+              hover:-translate-y-1
+              hover:bg-[#d6a05a]
+              hover:shadow-[0_20px_80px_rgba(216,164,91,0.45)]
+          "
+          >
+              <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/10 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
-            <span className="relative z-10">
-            Join Us Sunday
-            </span>
-        </Button>
+              <span className="relative z-10">
+              Join Us Sunday
+              </span>
+          </Button>
+        </Link>
         </div>
 
         {/* MOBILE */}
