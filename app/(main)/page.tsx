@@ -1,4 +1,4 @@
-import { FeaturedEvents } from "@/components/home/FeaturedEvents";
+import { FeaturedMeetings } from "@/components/home/FeaturedEvents";
 import { Hero } from "@/components/home/Hero";
 import { Intro } from "@/components/home/Intro";
 import { LatestSermon } from "@/components/home/LatestSermon";
@@ -12,7 +12,7 @@ export default function Home() {
       <Intro />
       <Steps />
       <LatestSermon />
-      <FeaturedEvents />
+      <FeaturedMeetings />
       <JoinUsCTA />
     </main>
   );

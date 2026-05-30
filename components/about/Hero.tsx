@@ -12,12 +12,12 @@ import {
 export const AboutHero = () => {
   return (
     <section className="relative overflow-hidden bg-white">
-      {/* Background */}
+      {/* BACKGROUND */}
 
       <div className="absolute inset-0">
-        <div className="absolute left-0 top-0 h-[35rem] w-[35rem] rounded-full bg-primary/[0.04] blur-3xl" />
+        <div className="absolute left-[-10%] top-[-10%] h-[40rem] w-[40rem] rounded-full bg-primary/[0.05] blur-3xl" />
 
-        <div className="absolute bottom-0 right-0 h-[30rem] w-[30rem] rounded-full bg-accent/[0.05] blur-3xl" />
+        <div className="absolute right-[-10%] bottom-[-10%] h-[35rem] w-[35rem] rounded-full bg-[#AF3800]/[0.05] blur-3xl" />
 
         <div
           className="
@@ -28,56 +28,77 @@ export const AboutHero = () => {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 md:px-8 lg:px-12 lg:py-32">
-        <div className="grid items-center gap-14 lg:grid-cols-[1fr_0.95fr]">
-          {/* Left Content */}
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-24 md:px-8 lg:px-12 lg:py-36">
+        <div className="grid items-center gap-20 lg:grid-cols-[1fr_1.05fr]">
+          {/* LEFT */}
 
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.8 }}
           >
+            {/* Badge */}
+
             <div
               className="
                 inline-flex items-center gap-2
                 rounded-full
                 border border-primary/10
-                bg-primary/5
-                px-4 py-2
-                text-[11px]
-                font-black
-                uppercase
-                tracking-[0.25em]
-                text-primary
+                bg-white
+                px-5 py-3
+                shadow-sm
               "
             >
-              <Heart className="h-3.5 w-3.5" />
-              About Global Crossfire Church
+              <Heart className="h-4 w-4 text-primary" />
+
+              <span
+                className="
+                  text-[11px]
+                  font-black
+                  uppercase
+                  tracking-[0.28em]
+                  text-primary
+                "
+              >
+                About Global Crossfire Church
+              </span>
             </div>
+
+            {/* Heading */}
 
             <h1
               className="
-                mt-7
+                mt-4
                 text-5xl
                 font-black
-                leading-[0.95]
-                tracking-[-0.06em]
+                leading-[0.9]
+                tracking-[-0.07em]
                 text-foreground
                 sm:text-6xl
-                lg:text-7xl
+                lg:text-[5.5rem]
               "
             >
-              A Church Raising
-              <span className="block text-primary">
-                People Of Fire,
+              Raising
+              <span className="relative mx-2 inline-block text-primary">
+                Fire-Filled
               </span>
-              Faith & Purpose
+
+              People For
+              <br />
+
+              <span className="relative inline-block">
+                God's Purpose
+              </span>
+
+              <span className="text-[#AF3800]">.</span>
             </h1>
+
+            {/* Description */}
 
             <p
               className="
-                mt-7
-                max-w-2xl
+                mt-8
+                max-w-xl
                 text-lg
                 leading-8
                 text-muted-foreground
@@ -85,179 +106,239 @@ export const AboutHero = () => {
             >
               Global Crossfire Church exists to help people encounter
               Jesus, grow in faith, discover purpose, and impact their
-              world through the power of the Holy Spirit.
+              generation through the power of the Holy Spirit.
             </p>
 
-            {/* Stats */}
+            {/* Mission Highlights */}
 
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
+            <div className="mt-10 flex flex-wrap gap-4">
               <div
                 className="
-                  rounded-[1.75rem]
+                  inline-flex items-center gap-3
+                  rounded-2xl
                   border border-primary/10
                   bg-white
-                  p-5
+                  px-5 py-4
                   shadow-sm
                 "
               >
                 <Flame className="h-5 w-5 text-primary" />
 
-                <h3 className="mt-4 text-2xl font-black">
-                  Spirit-Filled
-                </h3>
-
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Worship, prayer and revival culture.
-                </p>
+                <span className="font-semibold">
+                  Spirit-Filled Worship
+                </span>
               </div>
 
               <div
                 className="
-                  rounded-[1.75rem]
+                  inline-flex items-center gap-3
+                  rounded-2xl
                   border border-primary/10
                   bg-white
-                  p-5
+                  px-5 py-4
                   shadow-sm
                 "
               >
                 <Heart className="h-5 w-5 text-primary" />
 
-                <h3 className="mt-4 text-2xl font-black">
-                  Family
-                </h3>
-
-                <p className="mt-2 text-sm text-muted-foreground">
-                  A welcoming community for everyone.
-                </p>
+                <span className="font-semibold">
+                  Authentic Community
+                </span>
               </div>
 
               <div
                 className="
-                  rounded-[1.75rem]
+                  inline-flex items-center gap-3
+                  rounded-2xl
                   border border-primary/10
                   bg-white
-                  p-5
+                  px-5 py-4
                   shadow-sm
                 "
               >
                 <Globe2 className="h-5 w-5 text-primary" />
 
-                <h3 className="mt-4 text-2xl font-black">
-                  Nations
-                </h3>
-
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Reaching communities locally and globally.
-                </p>
+                <span className="font-semibold">
+                  Reaching Nations
+                </span>
               </div>
             </div>
 
             {/* Scroll Indicator */}
 
-            <div className="mt-10 hidden items-center gap-3 lg:flex">
+            <div className="mt-12 hidden items-center gap-4 lg:flex">
               <div className="h-px w-16 bg-primary/20" />
 
               <ArrowDown className="h-4 w-4 text-primary" />
 
-              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-muted-foreground">
+              <span
+                className="
+                  text-xs
+                  font-black
+                  uppercase
+                  tracking-[0.25em]
+                  text-muted-foreground
+                "
+              >
                 Discover Our Story
               </span>
             </div>
           </motion.div>
 
-          {/* Right Images */}
+          {/* RIGHT */}
 
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.9 }}
             className="relative"
           >
-            <div className="grid grid-cols-2 gap-5">
-              {/* Large */}
+            {/* Main Image */}
 
-              <div className="relative col-span-2 h-[420px] overflow-hidden rounded-[2.5rem]">
-                <Image
-                  src="/images/about/about-1.jpg"
-                  alt="Church worship"
-                  fill
-                  className="object-cover"
-                />
+            <div
+              className="
+                relative
+                h-[620px]
+                overflow-hidden
+                rounded-[3rem]
+                shadow-[0_35px_80px_rgba(0,0,0,0.12)]
+              "
+            >
+              <Image
+                src="/images/abthero.jpg"
+                alt="Global Crossfire Church"
+                fill
+                className="object-cover"
+              />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-
-                <div className="absolute bottom-6 left-6">
-                  <div
-                    className="
-                      rounded-2xl
-                      bg-white/95
-                      px-5 py-4
-                      shadow-lg
-                      backdrop-blur-xl
-                    "
-                  >
-                    <p className="text-xs font-black tracking-[0.22em] uppercase text-primary">
-                      Our Mission
-                    </p>
-
-                    <p className="mt-1 font-semibold">
-                      Encounter God. Build People.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Small Image */}
-
-              <div className="relative h-60 overflow-hidden rounded-[2rem]">
-                <Image
-                  src="/images/about/about-2.jpg"
-                  alt="Church family"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Small Image */}
-
-              <div className="relative h-60 overflow-hidden rounded-[2rem]">
-                <Image
-                  src="/images/about/about-3.jpg"
-                  alt="Church community"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             </div>
 
-            {/* Floating Card */}
+            {/* Floating Mission Card */}
 
             <div
               className="
                 absolute
-                -bottom-6
+                bottom-8
                 left-8
-                hidden
+                max-w-sm
                 rounded-[2rem]
-                border border-primary/10
-                bg-white
-                p-5
-                shadow-xl
+                border border-white/20
+                bg-white/95
+                p-6
+                shadow-2xl
+                backdrop-blur-xl
+              "
+            >
+              <p
+                className="
+                  text-[11px]
+                  font-black
+                  uppercase
+                  tracking-[0.25em]
+                  text-primary
+                "
+              >
+                Our Mission
+              </p>
+
+              <h3
+                className="
+                  mt-3
+                  text-2xl
+                  font-black
+                  leading-tight
+                "
+              >
+                Encounter God.
+                <br />
+                Build People.
+                <br />
+                Transform Communities.
+              </h3>
+            </div>
+
+            {/* Floating Image 1 */}
+
+            <div
+              className="
+                absolute
+                -left-12
+                top-12
+                hidden
+                h-56
+                w-44
+                overflow-hidden
+                rounded-[2rem]
+                border-8 border-white
+                shadow-2xl
                 lg:block
               "
             >
-              <p className="text-xs font-black tracking-[0.22em] uppercase text-primary">
-                Since
-              </p>
-
-              <h4 className="mt-2 text-3xl font-black">
-                2004
-              </h4>
-
-              <p className="text-sm text-muted-foreground">
-                Serving people and nations.
-              </p>
+              <Image
+                src="/images/fam.jpg"
+                alt="Church Family"
+                fill
+                className="object-cover"
+              />
             </div>
+
+            {/* Floating Image 2 */}
+
+            <div
+              className="
+                absolute
+                -right-12
+                bottom-24
+                hidden
+                h-52
+                w-40
+                overflow-hidden
+                rounded-[2rem]
+                border-8 border-white
+                shadow-2xl
+                lg:block
+              "
+            >
+              <Image
+                src="/images/church-community.jpg"
+                alt="Church Community"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Decorative Ring */}
+
+            <div
+              className="
+                absolute
+                -right-20
+                top-20
+                hidden
+                h-64
+                w-64
+                rounded-full
+                border
+                border-primary/10
+                lg:block
+              "
+            />
+
+            <div
+              className="
+                absolute
+                -left-20
+                bottom-10
+                hidden
+                h-40
+                w-40
+                rounded-full
+                border
+                border-[#AF3800]/10
+                lg:block
+              "
+            />
           </motion.div>
         </div>
       </div>
