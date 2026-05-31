@@ -159,24 +159,26 @@ export const Intro = () => {
                 </Link>
               </Button>
 
-              <Button
-                variant="outline"
-                className="
-                h-14
-                rounded-2xl
-                border-white/30
-                bg-white/60
-                px-8
-                text-sm font-semibold
-                backdrop-blur-xl
-                transition-all duration-500
-                hover:-translate-y-1
-                hover:bg-white/80
-              "
-              >
-                <PlayCircle className="mr-2 h-4 w-4" />
-                Watch Sermons
-              </Button>
+              <Link href="/sermons">
+                <Button
+                  variant="outline"
+                  className="
+                  h-14
+                  rounded-2xl
+                  border-white/30
+                  bg-white/60
+                  px-8
+                  text-sm font-semibold
+                  backdrop-blur-xl
+                  transition-all duration-500
+                  hover:-translate-y-1
+                  hover:bg-white/80
+                "
+                >
+                  <PlayCircle className="mr-2 h-4 w-4" />
+                  Watch Sermons
+                </Button>
+              </Link>
             </motion.div>
 
             {/* LOCATION */}

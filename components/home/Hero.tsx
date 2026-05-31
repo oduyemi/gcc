@@ -49,7 +49,7 @@ const slides = [
         "Join us this Sunday for a powerful atmosphere of worship, revelation, prophetic ministry, miracles, and Kingdom encounters.",
 
       button: "Plan Your Visit",
-      href: "/contact",
+      href: "/visit",
     },
   },
 
@@ -469,33 +469,35 @@ export const Hero = () => {
                   hover:bg-[#AF3800]/90
                 "
                 >
-                  <Link href="/contact">
+                  <Link href="/visit">
                     Plan Your Visit
 
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                 </Button>
 
-                <Button
-                  variant="outline"
-                  className="
-                  h-14
-                  rounded-2xl
-                  border border-white/40
-                  bg-white/65
-                  px-8
-                  text-sm font-semibold
-                  text-[#22007C]
-                  backdrop-blur-2xl
-                  transition-all duration-500
-                  hover:-translate-y-1
-                  hover:bg-white/85
-                "
-                >
-                  <Play className="mr-2 h-4 w-4 fill-[#22007C]" />
+                <Link href="/sermons">
+                  <Button
+                    variant="outline"
+                    className="
+                    h-14
+                    rounded-2xl
+                    border border-white/40
+                    bg-white/65
+                    px-8
+                    text-sm font-semibold
+                    text-[#22007C]
+                    backdrop-blur-2xl
+                    transition-all duration-500
+                    hover:-translate-y-1
+                    hover:bg-white/85
+                  "
+                  >
+                    <Play className="mr-2 h-4 w-4 fill-[#22007C]" />
 
-                  Watch Online
-                </Button>
+                    Watch Online
+                  </Button>
+                </Link>
               </motion.div>
 
               {/* SERVICE CARDS */}
