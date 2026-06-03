@@ -9,9 +9,19 @@ import {
   Flame,
   Video,
   Church,
+  Book
 } from "lucide-react";
 
 const meetings = [
+  {
+    title: "Sunday School Meeting",
+    subtitle: "Weekly Bible Study",
+    day: "Sunday",
+    time: "10:00 AM – 10:30 AM",
+    icon: Book,
+    image: "/images/events/sundayschool.jpg",
+    featured: true,
+  },
   {
     title: "Sunday Celebration Gathering",
     subtitle: "Weekly Worship Service",
@@ -27,7 +37,7 @@ const meetings = [
     day: "Tuesday",
     time: "6:00 PM – 7:00 PM",
     icon: Home,
-    image: "/images/events/home-cell.jpg",
+    image: "/images/events/homecell.jpeg",
   },
   {
     title: "Hour of Encounter",
@@ -43,7 +53,7 @@ const meetings = [
     day: "Monthly",
     time: "6:00 PM – 7:30 PM",
     icon: Flame,
-    image: "/images/events/jabez.jpg",
+    image: "/images/events/jabez.jpeg",
   },
 ];
 

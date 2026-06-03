@@ -32,8 +32,8 @@ const categories = [
     icon: Globe2,
   },
   {
-    id: "youth-kids",
-    label: "Youth & Kids",
+    id: "youth",
+    label: "Youth",
     icon: Sparkles,
   },
 ] as const;
@@ -145,7 +145,7 @@ export const GalleryTabs = ({
             "international-missions" &&
             "Sharing the Gospel and serving communities across nations."}
 
-          {activeCategory === "youth-kids" &&
+          {activeCategory === "youth" &&
             "Building faith, friendships and fun experiences for young people."}
         </motion.p>
       </div>

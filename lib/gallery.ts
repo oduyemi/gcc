@@ -8,7 +8,7 @@ export const GALLERY_FOLDERS = {
     "international-missions":
       "gcc/gallery/internationalmissions",
   
-    "youth-kids":
+    "youth":
       "gcc/gallery/youthnkids",
   } as const;
   

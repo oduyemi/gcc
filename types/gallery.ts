@@ -3,7 +3,7 @@ export type GalleryCategory =
   | "church-life"
   | "local-missions"
   | "international-missions"
-  | "youth-kids";
+  | "youth";
 
 export type GalleryImage = {
   id: string;

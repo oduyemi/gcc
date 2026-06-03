@@ -18,7 +18,7 @@ const categoryLabels = {
   "local-missions": "Local Missions",
   "international-missions":
     "International Missions",
-  "youth-kids": "Youth & Kids",
+  "youth": "Youth",
 };
 
 export const GalleryLightbox = ({

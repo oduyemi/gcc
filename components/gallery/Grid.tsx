@@ -25,7 +25,7 @@ const categoryStyles = {
   "international-missions":
     "bg-blue-600 text-white",
 
-  "youth-kids":
+  "youth":
     "bg-violet-600 text-white",
 };
 
@@ -37,7 +37,7 @@ const categoryLabels = {
   "international-missions":
     "International Missions",
 
-  "youth-kids": "Youth & Kids",
+  "youth": "Youth",
 };
 
 export const GalleryGrid = ({

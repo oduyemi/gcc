@@ -2,7 +2,7 @@ export type GalleryCategory =
   | "church-life"
   | "local-missions"
   | "international-missions"
-  | "youth-kids";
+  | "youth";
 
 export type GalleryImage = {
   id: number;
@@ -33,7 +33,7 @@ export const galleryImages: GalleryImage[] = [
   {
     id: 4,
     title: "Children's Ministry",
-    category: "youth-kids",
+    category: "youth",
     image: "/images/gallery/youth-1.jpg",
   },
 ];

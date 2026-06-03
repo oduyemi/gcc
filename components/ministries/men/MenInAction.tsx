@@ -88,12 +88,12 @@ const activities = [
     description:
       "Sports and recreational activities create opportunities for connection, teamwork and authentic friendships outside the church walls.",
 
-    featuredImage: "/images/men/sports1.jpg",
+    featuredImage: "/images/men/sport1.jpg",
 
     gallery: [
-      "/images/men/sports2.jpg",
-      "/images/men/sports3.jpg",
-      "/images/men/sports4.jpg",
+      "/images/men/sport2.jpg",
+      "/images/men/sport3.jpg",
+      "/images/men/sport4.jpg",
     ],
 
     stats: [
