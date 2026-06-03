@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
@@ -277,9 +276,11 @@ export const Header = () => {
                     </div>
 
                     <div>
+                      <Link href="ministries">
                         <h3 className="font-heading text-xl font-black tracking-[-0.03em] text-slate-800">
-                        Church Ministries
+                          Church Ministries
                         </h3>
+                      </Link>
 
                         <p className="mt-1 text-sm text-slate-500">
                         Find your place to grow, serve, and belong.
