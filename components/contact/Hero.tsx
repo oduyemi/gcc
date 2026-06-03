@@ -123,7 +123,7 @@ export const ContactHero = () => {
                 <CalendarDays className="h-5 w-5 text-primary" />
 
                 <span className="text-sm text-muted-foreground">
-                  Sundays • 10:00 AM
+                  Sundays • 10:30 AM
                 </span>
               </div>
 

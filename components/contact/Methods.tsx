@@ -35,7 +35,7 @@ const methods = [
   },
   {
     title: "Service Times",
-    value: "Sunday • 10:00 AM",
+    value: "Sunday • 10:30 AM",
     description:
       "Join us every Sunday for worship and the Word.",
     icon: Clock3,
