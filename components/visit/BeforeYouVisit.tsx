@@ -225,7 +225,7 @@ export const BeforeYouVisit = () => {
             transition={{ delay: 0.08 }}
           >
             <Link
-              href="#expect"
+              href="#service-details"
               className="
               group
               flex h-full items-center gap-5
