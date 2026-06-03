@@ -11,11 +11,6 @@ export default function Men() {
         <MenMinistryOverview />
         <MenInAction />
         <JoinMenMinistryCTA />
-        {/* <div id="ministries">
-            <MinistriesGrid />
-        </div>
-        <GetInvolvedCTA />
-        <MinistryFAQ /> */}
     </main>
   );
 }
