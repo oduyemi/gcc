@@ -276,7 +276,7 @@ export const Header = () => {
                     </div>
 
                     <div>
-                      <Link href="ministries">
+                      <Link href="/ministries">
                         <h3 className="font-heading text-xl font-black tracking-[-0.03em] text-slate-800">
                           Church Ministries
                         </h3>
