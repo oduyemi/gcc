@@ -20,7 +20,7 @@ const lato = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Global Crossfire Church",
+  title: "Global Crossfire Church UK",
   description:
     "The Global Crossfire Church is an equipping ministry called to train believers to walk in purpose.",
 };
