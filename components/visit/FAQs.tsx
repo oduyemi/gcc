@@ -24,7 +24,7 @@ const faqs = [
   {
     question: "What should I wear?",
     answer:
-      "Come exactly as you are. Some people dress formally while others prefer casual attire. Our focus is on encountering God, not on what you're wearing.",
+      "Come as you are. Whether you prefer formal or casual attire, you are welcome here. We simply encourage everyone to dress in a way that is respectful and appropriate for a place of worship. Our focus is on encountering God, growing in faith, and building community—not on appearances.",
   },
   {
     question: "How long does the service last?",

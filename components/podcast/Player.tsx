@@ -54,7 +54,7 @@ export const PodcastPlayer = () => {
             /> */}
             <iframe 
               title="Global Crossfire Church UK Podcast" 
-              allowTransparency="true" 
+              allowTransparency
               height="315" 
               width="100%" 
               style={{ 
@@ -66,7 +66,7 @@ export const PodcastPlayer = () => {
               data-name="pb-iframe-player" 
               src="https://www.podbean.com/player-v2/?i=5wx48-1e6a7e-pbblog-playlist&share=1&download=1&rtl=0&fonts=Arial&skin=1&font-color=auto&logo_link=episode_page&order=episodic&limit=10&filter=all&ss=a713390a017602015775e868a2cf26b0&btn-skin=13&size=315" 
               loading="lazy" 
-              allowFullScreen=""
+              allowFullScreen
             />
           </div>
         </motion.div>
