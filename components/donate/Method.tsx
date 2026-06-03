@@ -361,7 +361,7 @@ export const DonationMethod = () => {
             and support. Your giving helps us continue
             sharing the Gospel, serving our community,
             and impacting lives through the ministry of
-            Global Crossfire Church.
+            Global Crossfire Church UK.
           </p>
         </motion.div>
       </div>

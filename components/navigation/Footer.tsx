@@ -102,7 +102,7 @@ export const Footer = () => {
               <div className="h-2.5 w-2.5 rounded-full bg-primary" />
 
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary">
-                Global Crossfire Church
+                Global Crossfire Church UK
               </span>
             </div>
 
@@ -304,7 +304,7 @@ export const Footer = () => {
         "
         >
           <p className="text-sm text-white/50">
-            © {new Date().getFullYear()} Global Crossfire Church.
+            © {new Date().getFullYear()} Global Crossfire Church UK.
           </p>
 
           <div className="flex items-center gap-5">

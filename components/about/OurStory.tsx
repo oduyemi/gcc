@@ -159,7 +159,7 @@ export const OurStory = () => {
             </h2>
 
             <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
-              Global Crossfire Church was founded with a passion to see
+              Global Crossfire Church UK was founded with a passion to see
               people encounter Jesus, grow in faith and become agents
               of transformation in their communities and beyond.
             </p>

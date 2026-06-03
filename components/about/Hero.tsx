@@ -60,7 +60,7 @@ export const AboutHero = () => {
                   text-primary
                 "
               >
-                About Global Crossfire Church
+                About Global Crossfire Church UK
               </span>
             </div>
 
@@ -104,7 +104,7 @@ export const AboutHero = () => {
                 text-muted-foreground
               "
             >
-              Global Crossfire Church exists to help people encounter
+              Global Crossfire Church UK exists to help people encounter
               Jesus, grow in faith, discover purpose, and impact their
               generation through the power of the Holy Spirit.
             </p>
@@ -206,7 +206,7 @@ export const AboutHero = () => {
             >
               <Image
                 src="/images/abthero.jpg"
-                alt="Global Crossfire Church"
+                alt="Global Crossfire Church UK"
                 fill
                 className="object-cover"
               />

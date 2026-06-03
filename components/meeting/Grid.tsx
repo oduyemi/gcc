@@ -21,7 +21,7 @@ const events = [
     month: "MAY",
     fullDate: "31 May 2026",
     time: "10:30 AM – 12:30 PM",
-    location: "Global Crossfire Church",
+    location: "Global Crossfire Church UK",
     featured: true,
     icon: Flame,
   },

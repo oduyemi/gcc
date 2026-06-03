@@ -44,7 +44,7 @@ export const ContactHero = () => {
                 uppercase
               "
             >
-              Contact Global Crossfire Church
+              Contact Global Crossfire Church UK
             </div>
 
             <h1
@@ -156,7 +156,7 @@ export const ContactHero = () => {
               <div className="relative h-[600px] overflow-hidden rounded-[2.4rem]">
                 <Image
                   src="/images/church/contact-hero.jpg"
-                  alt="Global Crossfire Church"
+                  alt="Global Crossfire Church UK"
                   fill
                   className="object-cover"
                 />

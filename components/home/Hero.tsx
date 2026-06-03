@@ -703,7 +703,7 @@ export const Hero = () => {
 
                           <div className="mt-3 space-y-1 text-[#22007C]">
                             <p className="font-bold">
-                              Global Crossfire Church
+                              Global Crossfire Church UK
                             </p>
 
                             <p className="text-sm text-slate-600">

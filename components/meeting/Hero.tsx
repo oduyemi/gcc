@@ -209,7 +209,7 @@ export const EventsHero = () => {
                 <div className="flex items-center gap-3 text-sm">
                   <MapPin className="h-4 w-4 text-primary" />
 
-                  Global Crossfire Church
+                  Global Crossfire Church UK
                 </div>
               </div>
             </div>

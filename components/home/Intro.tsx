@@ -120,7 +120,7 @@ export const Intro = () => {
               text-muted-foreground
             "
             >
-              Global Crossfire Church is a vibrant Spirit-filled church in
+              Global Crossfire Church UK is a vibrant Spirit-filled church in
               the United Kingdom where people encounter God, grow in faith,
               and build meaningful community.
             </motion.p>
@@ -267,7 +267,7 @@ export const Intro = () => {
                     <HeartHandshake className="h-4 w-4 text-white" />
 
                     <span className="text-[11px] font-black tracking-[0.22em] uppercase text-white">
-                      Global Crossfire Church
+                      Global Crossfire Church UK
                     </span>
                   </div>
 

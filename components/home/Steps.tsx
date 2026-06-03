@@ -107,7 +107,7 @@ export const Steps = () => {
           <p className="mt-7 text-lg leading-9 text-muted-foreground">
             Whether you are new to faith, searching for community, or
             ready to grow deeper spiritually, there is a place for you at
-            Global Crossfire Church.
+            Global Crossfire Church UK.
           </p>
         </motion.div>
 

@@ -76,7 +76,7 @@ export const LatestSermon = () => {
           </h2>
 
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
-            Watch the latest sermon from Global Crossfire Church and
+            Watch the latest sermon from Global Crossfire Church UK and
             encounter life-changing truth, encouragement, and spiritual
             growth.
           </p>

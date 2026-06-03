@@ -92,7 +92,7 @@ export const VisitHero = () => {
               Whether you're exploring faith, returning to church,
               or searching for a place to belong, you'll find
               a warm welcome, authentic community, and a place
-              to encounter God at Global Crossfire Church.
+              to encounter God at Global Crossfire Church UK.
             </motion.p>
 
             {/* info cards */}

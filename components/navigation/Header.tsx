@@ -68,23 +68,24 @@ const ministries = [
   },
 ];
 
-const missions = [
-  {
-    title: "Local Missions",
-    href: "/missions/local",
-    description: "Serving and impacting communities close to home.",
-  },
-  {
-    title: "International Missions",
-    href: "/missions/international",
-    description: "Taking the Gospel across nations and cultures.",
-  },
-];
+// const missions = [
+//   {
+//     title: "Local Missions",
+//     href: "/missions/local",
+//     description: "Serving and impacting communities close to home.",
+//   },
+//   {
+//     title: "International Missions",
+//     href: "/missions/international",
+//     description: "Taking the Gospel across nations and cultures.",
+//   },
+// ];
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Podcast", href: "/podcast", icon: Mic2 },
+  { label: "Missions", href: "/missions" },
   { label: "Gallery", href: "/gallery" },
   { label: "Donation", href: "/donation" },
   { label: "Contact Us", href: "/contact" },
@@ -101,7 +102,7 @@ export const Header = () => {
       <div
         className="
         relative mx-auto flex h-[88px] max-w-7xl items-center justify-between
-        overflow-hidden rounded-[2.2rem]
+        rounded-[2.2rem]
         border border-white/30
         bg-white/[0.42]
         px-5 md:px-8
@@ -158,7 +159,7 @@ export const Header = () => {
               leading-none
             "
             >
-              Global Crossfire Church
+              Global Crossfire Church UK
             </h1>
 
             <p
@@ -349,7 +350,7 @@ export const Header = () => {
             </NavigationMenuItem>
 
             {/* MISSIONS */}
-            <NavigationMenuItem>
+            {/* <NavigationMenuItem>
                 <NavigationMenuTrigger
                 className="
                 group h-10 rounded-2xl bg-transparent px-4
@@ -414,7 +415,7 @@ export const Header = () => {
                     </div>
                 </div>
                 </NavigationMenuContent>
-            </NavigationMenuItem>
+            </NavigationMenuItem> */}
 
             {/* LAST LINKS */}
             {navLinks.slice(3).map((item) => (
@@ -469,9 +470,8 @@ export const Header = () => {
           "
           >
               <div className="absolute inset-0 bg-gradient-to-r from-white/20 via-transparent to-white/10 opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-
               <span className="relative z-10">
-              Join Us Sunday
+                Join Us Sunday
               </span>
           </Button>
         </Link>
@@ -603,11 +603,11 @@ export const Header = () => {
                       onItemClick={() => setOpen(false)}
                     />
 
-                    <MobileDropdown
+                    {/* <MobileDropdown
                       title="Missions"
                       items={missions}
                       onItemClick={() => setOpen(false)}
-                    />
+                    /> */}
 
                     {navLinks.slice(3).map((item) => (
                       <Link

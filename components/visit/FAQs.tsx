@@ -122,7 +122,7 @@ export const VisitFAQs = () => {
           </h2>
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-            We want your first experience at Global Crossfire Church to be
+            We want your first experience at Global Crossfire Church UK to be
             simple, comfortable, and life-giving.
           </p>
         </motion.div>

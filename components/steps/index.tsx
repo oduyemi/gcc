@@ -22,7 +22,7 @@ const nextSteps = [
     title: "New to GCC?",
     href: "/new",
     description:
-      "We would love to help you feel at home, meet people, and discover life at Global Crossfire Church.",
+      "We would love to help you feel at home, meet people, and discover life at Global Crossfire Church UK.",
     image: "/images/new.jpg",
     icon: Sparkles,
     badge: "Start Here",
@@ -177,7 +177,7 @@ export const NextSteps = () => {
           <p className="mt-8 text-lg leading-9 text-muted-foreground">
             Whether you are exploring faith, looking for community,
             seeking prayer, or ready to serve — there is a next step for
-            you at Global Crossfire Church.
+            you at Global Crossfire Church UK.
           </p>
         </motion.div>
 

@@ -70,6 +70,32 @@ export async function getGalleryImages(): Promise<
   }
 }
 
+
+export async function getGallerySubfolders(
+  category: GalleryCategory
+) {
+  try {
+    const path =
+      GALLERY_FOLDERS[category];
+
+    const result =
+      await cloudinary.api.sub_folders(
+        path
+      );
+
+    return (
+      result.folders || []
+    ).map((folder: any) => ({
+      name: folder.name,
+      path: folder.path,
+    }));
+  } catch (error) {
+    console.error(error);
+
+    return [];
+  }
+}
+
 export async function uploadGalleryImage(
   fileBuffer: Buffer,
   category: GalleryCategory
