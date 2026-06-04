@@ -19,7 +19,7 @@ const meetings = [
     day: "Sunday",
     time: "10:00 AM – 10:30 AM",
     icon: Book,
-    image: "/images/events/sundayschool.jpg",
+    image: "/images/events/sundayschool.jpeg",
     featured: true,
   },
   {
@@ -28,7 +28,7 @@ const meetings = [
     day: "Sunday",
     time: "10:30 AM – 12:30 PM",
     icon: Church,
-    image: "/images/events/sunday-service.jpg",
+    image: "/images/events/sunday-service.jpeg",
     featured: true,
   },
   {
@@ -45,7 +45,15 @@ const meetings = [
     day: "Friday",
     time: "6:00 PM – 7:00 PM",
     icon: Video,
-    image: "/images/events/prayer-meeting.jpg",
+    image: "/images/events/prayer-meeting.jpeg",
+  },
+  {
+    title: "Youth Meeting",
+    subtitle: "Physical Youth Meeting",
+    day: "Saturday",
+    time: "12:15 PM",
+    icon: Video,
+    image: "/images/events/youthmeeting.jpeg",
   },
   {
     title: "Jabez Moment",
