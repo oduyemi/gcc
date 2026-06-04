@@ -1,7 +1,5 @@
 "use client";
-
 import { useEffect, useState } from "react";
-
 import { GalleryHero } from "@/components/gallery/Hero";
 import { GalleryTabs } from "@/components/gallery/Tabs";
 import { GalleryGrid } from "@/components/gallery/Grid";

@@ -5,7 +5,7 @@ import { WomenMinistryHero } from "@/components/ministries/women/Hero";
 import { WomenMinistryOverview } from "@/components/ministries/women/Overview";
 
 
-export default function Men() {
+export default function Women() {
   return (
     <main>
         <WomenMinistryHero />
