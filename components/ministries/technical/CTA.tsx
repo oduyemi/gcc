@@ -29,7 +29,7 @@ export const JoinMusicTechnicalCTA = () => {
         >
           <div className="absolute inset-0">
             <Image
-              src="/images/join-tea.jpg"
+              src="/images/musiccta.jpg"
               alt="Music and Technical Ministry"
               fill
               className="object-cover"
@@ -173,7 +173,7 @@ export const JoinMusicTechnicalCTA = () => {
                     hover:bg-white/90
                   "
                 >
-                  <Link href="/contact">
+                  <Link href="/next-steps/ministry">
                     Join The Team
 
                     <ArrowRight className="ml-2 h-4 w-4" />

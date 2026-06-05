@@ -1,4 +1,5 @@
 import { MinistryAreas } from "@/components/ministries/technical/Areas";
+import { JoinMusicTechnicalCTA } from "@/components/ministries/technical/CTA";
 import { MusicTechnicalGallery } from "@/components/ministries/technical/Gallery";
 import { MusicTechnicalHero } from "@/components/ministries/technical/Hero";
 import { MusicTechnicalOverview } from "@/components/ministries/technical/Overview";
@@ -16,6 +17,7 @@ export default function Tech() {
         <MinistryAreas />
         <MusicTechnicalGallery />
         <ServingOpportunities />
+        <JoinMusicTechnicalCTA />
     </>
   );
 }
