@@ -1,21 +1,18 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import {
-  Input,
-} from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 
 
-export const PrayerForm = () => {
+export const NewHereForm = () => {
   return (
     <form className="space-y-5">
       <div>
         <label className="mb-2 block text-sm font-semibold">
           Full Name
         </label>
-
         <Input placeholder="John Doe" />
       </div>
 
@@ -23,40 +20,29 @@ export const PrayerForm = () => {
         <label className="mb-2 block text-sm font-semibold">
           Email Address
         </label>
-
-        <Input type="email" placeholder="johndoe@example.com" />
+        <Input type="email" />
       </div>
 
       <div>
         <label className="mb-2 block text-sm font-semibold">
           Phone Number
         </label>
-
-        <Input placeholder="Your WhatsApp number" />
+        <Input />
       </div>
 
       <div>
         <label className="mb-2 block text-sm font-semibold">
-          Prayer Request
+          Tell Us About Yourself
         </label>
 
         <Textarea
-          rows={6}
-          placeholder="How can we pray for you?"
+          rows={5}
+          placeholder="How did you hear about GCC?"
         />
       </div>
 
-      <Button
-        className="
-        w-full
-        rounded-xl
-        bg-primary
-        text-white
-        hover:bg-primary/90
-      "
-      >
-        Submit Request
-
+      <Button className="w-full">
+        Connect With GCC
         <ArrowRight className="ml-2 h-4 w-4" />
       </Button>
     </form>

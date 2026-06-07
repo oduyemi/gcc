@@ -1,22 +1,29 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import {
-  Input,
-} from "@/components/ui/input";
 import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 
-
-export const PrayerForm = () => {
+export const CounsellingForm = () => {
   return (
     <form className="space-y-5">
+      <div>
+        <h3 className="mb-2 text-2xl font-black">
+          Request Counselling
+        </h3>
+
+        <p className="text-muted-foreground">
+          Everything you share will be handled with care and discretion.
+        </p>
+      </div>
+
       <div>
         <label className="mb-2 block text-sm font-semibold">
           Full Name
         </label>
 
-        <Input placeholder="John Doe" />
+        <Input />
       </div>
 
       <div>
@@ -24,7 +31,7 @@ export const PrayerForm = () => {
           Email Address
         </label>
 
-        <Input type="email" placeholder="johndoe@example.com" />
+        <Input type="email" />
       </div>
 
       <div>
@@ -32,30 +39,22 @@ export const PrayerForm = () => {
           Phone Number
         </label>
 
-        <Input placeholder="Your WhatsApp number" />
+        <Input />
       </div>
 
       <div>
         <label className="mb-2 block text-sm font-semibold">
-          Prayer Request
+          How Can We Help?
         </label>
 
         <Textarea
           rows={6}
-          placeholder="How can we pray for you?"
+          placeholder="Share as much or as little as you're comfortable sharing."
         />
       </div>
 
-      <Button
-        className="
-        w-full
-        rounded-xl
-        bg-primary
-        text-white
-        hover:bg-primary/90
-      "
-      >
-        Submit Request
+      <Button className="w-full">
+        Request Support
 
         <ArrowRight className="ml-2 h-4 w-4" />
       </Button>
