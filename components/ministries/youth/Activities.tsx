@@ -14,7 +14,7 @@ const activities = [
   {
     title: "Fellowship & Community",
     icon: Users,
-    image: "/images/youth/fellowship.jpg",
+    image: "/images/youthfellowship.jpeg",
     items: [
       "Youth Hangouts",
       "Game Nights",
@@ -25,7 +25,7 @@ const activities = [
   {
     title: "Worship & Prayer",
     icon: Music4,
-    image: "/images/youth/worship.jpg",
+    image: "/images/youthprayer.jpg",
     items: [
       "Worship Nights",
       "Prayer Meetings",
@@ -36,7 +36,7 @@ const activities = [
   {
     title: "Outreach & Service",
     icon: Megaphone,
-    image: "/images/youth/outreach.jpg",
+    image: "/images/youthservice.jpg",
     items: [
       "Community Outreach",
       "Evangelism Projects",
@@ -47,7 +47,7 @@ const activities = [
   {
     title: "Retreats & Conferences",
     icon: Tent,
-    image: "/images/youth/conference.jpg",
+    image: "/images/youthprograms.jpeg",
     items: [
       "Youth Conferences",
       "Retreat Weekends",

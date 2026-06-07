@@ -20,7 +20,7 @@ import {
 const nextSteps = [
   {
     title: "New to GCC?",
-    href: "/new",
+    href: "/next-steps/new",
     description:
       "We would love to help you feel at home, meet people, and discover life at Global Crossfire Church UK.",
     image: "/images/new.jpg",
@@ -29,7 +29,7 @@ const nextSteps = [
   },
   {
     title: "Ask for Prayer",
-    href: "/ask-for-prayer",
+    href: "/next-steps/ask-for-prayer",
     description:
       "Our prayer team is ready to stand with you in faith through every season of life.",
     image: "/images/praying.jpg",
@@ -38,16 +38,16 @@ const nextSteps = [
   },
   {
     title: "Get to Know People",
-    href: "/community",
+    href: "/next-steps/community",
     description:
       "Build meaningful relationships and grow together in a Christ-centered community.",
-    image: "/images/community.jpg",
+    image: "/images/knowpeople.jpg",
     icon: Users2,
     badge: "Community",
   },
   {
     title: "Start Serving",
-    href: "/serve",
+    href: "/next-steps/serve",
     description:
       "Use your gifts and make a difference by serving in one of our church teams.",
     image: "/images/serving.jpg",
@@ -56,7 +56,7 @@ const nextSteps = [
   },
   {
     title: "Join a Ministry",
-    href: "/ministry",
+    href: "/next-steps/ministry",
     description:
       "Find a ministry where you can belong, grow spiritually, and impact others.",
     image: "/images/fellowship.jpg",
@@ -74,7 +74,7 @@ const nextSteps = [
   },
   {
     title: "Get Baptized",
-    href: "/baptism",
+    href: "/next-steps/baptism",
     description:
       "Take the next public step in your faith journey through water baptism.",
     image: "/images/baptism.jpg",
@@ -83,7 +83,7 @@ const nextSteps = [
   },
   {
     title: "Commit to Christ",
-    href: "/commit-to-christ",
+    href: "/next-steps/commit-to-christ",
     description:
       "Begin a new life in Christ and discover the hope, grace, and salvation found in Him.",
     image: "/images/commit.jpg",
@@ -92,7 +92,7 @@ const nextSteps = [
   },
   {
     title: "Recommit to Christ",
-    href: "/recommit",
+    href: "/next-steps/recommit",
     description:
       "No matter how far you've wandered, God's grace is still calling you home.",
     image: "/images/recommit.jpg",

@@ -9,15 +9,15 @@ const categories = [
   "All",
   "Worship",
   "Graduations",
-  "Sports",
-  "Outreach",
+  // "Sports",
+  "Programs",
   "Hangouts",
 ];
 
 const gallery = [
   {
-    image: "/images/youth/gallery-1.jpg",
-    title: "Youth Worship Night",
+    image: "/images/youth/worship/one.jpg",
+    title: "Celebration Service",
     category: "Worship",
   },
   {
@@ -25,26 +25,31 @@ const gallery = [
     title: "Graduation, May 26th, 2024",
     category: "Graduations",
   },
+  // {
+  //   image: "/images/youth/gallery-3.jpg",
+  //   title: "Football Tournament",
+  //   category: "Sports",
+  // },
   {
-    image: "/images/youth/gallery-3.jpg",
-    title: "Football Tournament",
-    category: "Sports",
-  },
-  {
-    image: "/images/youth/gallery-4.jpg",
-    title: "Community Outreach",
-    category: "Outreach",
+    image: "/images/youth/programs/one.jpeg",
+    title: "Community Programs",
+    category: "Programs",
   },
   
   {
-    image: "/images/youth/gallery-5.jpg",
+    image: "/images/youth/hangout/one.jpeg",
     title: "Youth Hangout",
     category: "Hangouts",
   },
   {
-    image: "/images/youth/gallery-6.jpg",
+    image: "/images/youth/worship/youth.jpg",
     title: "Prayer Gathering",
     category: "Worship",
+  },
+  {
+    image: "/images/youth/programs/two.jpeg",
+    title: "Community Programs",
+    category: "Programs",
   },
   {
     image: "/images/youth/grad2.jpg",
@@ -52,15 +57,36 @@ const gallery = [
     category: "Graduations",
   },
   {
-    image: "/images/youth/gallery-8.jpg",
-    title: "Basketball Day",
-    category: "Sports",
+    image: "/images/youth/hangout/two.jpeg",
+    title: "Youth Hangout",
+    category: "Hangouts",
+  },
+  // {
+  //   image: "/images/youth/gallery-8.jpg",
+  //   title: "Basketball Day",
+  //   category: "Sports",
+  // },
+
+  {
+    image: "/images/youth/worship/two.jpg",
+    title: "Celebration Service",
+    category: "Worship",
+  },
+  {
+    image: "/images/youth/programs/three.jpeg",
+    title: "Community Programs",
+    category: "Programs",
   },
   {
     image: "/images/youth/grad3.jpg",
     title: "Graduation, May 26th, 2024",
     category: "Graduations",
   },
+  {
+    image: "/images/youth/hangout/three.jpeg",
+    title: "Youth Hangout",
+    category: "Hangouts",
+  }
 ];
 
 export const YouthMinistryGallery = () => {
@@ -117,7 +143,7 @@ export const YouthMinistryGallery = () => {
           </h2>
 
           <p className="mt-5 text-lg text-muted-foreground">
-            A glimpse into worship, friendships, outreach, Graduations,
+            A glimpse into worship, friendships, Programs, Graduations,
             sports and unforgettable moments together.
           </p>
         </motion.div>
