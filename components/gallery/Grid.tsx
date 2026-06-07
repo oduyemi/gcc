@@ -3,56 +3,21 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Eye } from "lucide-react";
 import {
-    GalleryCategory,
-    GalleryImage,
-  } from "@/types/gallery";
+  GalleryImage,
+} from "@/types/gallery";
 
 type Props = {
   images: GalleryImage[];
-  activeCategory: GalleryCategory;
+
   onImageClick: (
     image: GalleryImage
   ) => void;
 };
 
-const categoryStyles = {
-  "church-life":
-    "bg-primary text-white",
-
-  "local-missions":
-    "bg-emerald-600 text-white",
-
-  "international-missions":
-    "bg-blue-600 text-white",
-
-  "youth":
-    "bg-violet-600 text-white",
-};
-
-const categoryLabels = {
-  "church-life": "Church Life",
-
-  "local-missions": "Local Missions",
-
-  "international-missions":
-    "International Missions",
-
-  "youth": "Youth",
-};
-
-export const GalleryGrid = ({
+export function GalleryGrid({
   images,
-  activeCategory,
   onImageClick,
-}: Props) => {
-  const filteredImages =
-    activeCategory === "all"
-      ? images
-      : images.filter(
-          (image) =>
-            image.category === activeCategory
-        );
-
+}: Props) {
   return (
     <section className="px-4 pb-24 md:px-8 lg:px-12">
       <div className="mx-auto max-w-7xl">
@@ -65,7 +30,7 @@ export const GalleryGrid = ({
             xl:columns-3
           "
         >
-          {filteredImages.map(
+          {images.map(
             (image, index) => (
               <motion.div
                 key={image.id}
@@ -112,8 +77,8 @@ export const GalleryGrid = ({
                     "
                   >
                     <Image
-                      src={image.image}
-                      alt={image.title}
+                      src={image.url}
+                      alt={image.name}
                       width={800}
                       height={1200}
                       className="
@@ -156,37 +121,14 @@ export const GalleryGrid = ({
                         group-hover:opacity-100
                       "
                     >
-                      <div
-                        className={`
-                          inline-flex
-                          rounded-full
-                          px-3
-                          py-1
-                          text-xs
-                          font-bold
-                          ${
-                            categoryStyles[
-                              image.category
-                            ]
-                          }
-                        `}
-                      >
-                        {
-                          categoryLabels[
-                            image.category
-                          ]
-                        }
-                      </div>
-
                       <h3
                         className="
-                          mt-3
                           text-lg
                           font-black
                           text-white
                         "
                       >
-                        {image.title}
+                        {image.name}
                       </h3>
 
                       <div
@@ -210,7 +152,20 @@ export const GalleryGrid = ({
             )
           )}
         </motion.div>
+
+        {!images.length && (
+          <div className="py-20 text-center">
+            <h3 className="text-xl font-semibold">
+              No images found
+            </h3>
+
+            <p className="mt-2 text-muted-foreground">
+              This gallery folder is
+              currently empty.
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );
-};
+}

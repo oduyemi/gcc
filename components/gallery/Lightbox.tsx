@@ -2,9 +2,13 @@
 import Lightbox from "yet-another-react-lightbox";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
-import { GalleryImage } from "@/types/gallery";
+
+import {
+  GalleryImage,
+} from "@/types/gallery";
 
 type Props = {
   images: GalleryImage[];
@@ -13,33 +17,29 @@ type Props = {
   onClose: () => void;
 };
 
-const categoryLabels = {
-  "church-life": "Church Life",
-  "local-missions": "Local Missions",
-  "international-missions":
-    "International Missions",
-  "youth": "Youth",
-};
-
-export const GalleryLightbox = ({
+export function GalleryLightbox({
   images,
   open,
   selectedIndex,
   onClose,
-}: Props) => {
+}: Props) {
   return (
     <Lightbox
       open={open}
       close={onClose}
       index={selectedIndex}
-      plugins={[Zoom, Thumbnails]}
-      slides={images.map((image) => ({
-        src: image.image,
-        alt: image.title,
-        title: image.title,
-        description:
-          categoryLabels[image.category],
-      }))}
+      plugins={[
+        Zoom,
+        Thumbnails,
+      ]}
+      slides={images.map(
+        (image) => ({
+          src: image.url,
+          alt: image.name,
+          title:
+            image.name,
+        })
+      )}
     />
   );
-};
+}

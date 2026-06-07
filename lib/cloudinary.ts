@@ -1,65 +1,79 @@
 import { v2 as cloudinary } from "cloudinary";
 import streamifier from "streamifier";
+
 import {
-  GALLERY_FOLDERS,
-  GalleryCategory,
-} from "./gallery";
+  GallerySection,
+} from "@/types/gallery";
 
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+  cloud_name:
+    process.env
+      .CLOUDINARY_CLOUD_NAME,
+
+  api_key:
+    process.env
+      .CLOUDINARY_API_KEY,
+
+  api_secret:
+    process.env
+      .CLOUDINARY_API_SECRET,
 });
 
-export type GalleryImage = {
-  id: string;
-  title: string;
-  image: string;
-  publicId: string;
-  category: GalleryCategory;
-};
+export const GALLERY_FOLDER_PATHS =
+  {
+    churchlife:
+      "gcc/gallery/churchlife",
 
-export async function getGalleryImages(): Promise<
-  GalleryImage[]
-> {
+    youth:
+      "gcc/gallery/youth",
+
+    communityPrograms:
+      "gcc/gallery/community",
+
+    missions:
+      "gcc/gallery/missions",
+  } as const;
+
+export async function getGalleryImages(
+  path?: string
+) {
   try {
-    const results = await Promise.all(
-      (
-        Object.entries(
-          GALLERY_FOLDERS
-        ) as [GalleryCategory, string][]
-      ).map(async ([category, folder]) => {
-        const response =
-          await cloudinary.search
-            .expression(`folder:${folder}`)
-            .sort_by(
-              "created_at",
-              "desc"
-            )
-            .max_results(100)
-            .execute();
+    const expression = path
+      ? `folder:${path}`
+      : "folder:gcc/gallery/*";
 
-        return (
-          response.resources || []
-        ).map((image: any) => ({
-          id: image.asset_id,
-          title:
-            image.display_name ||
-            image.original_filename ||
-            image.public_id
-              .split("/")
-              .pop(),
+    const response =
+      await cloudinary.search
+        .expression(expression)
+        .sort_by(
+          "created_at",
+          "desc"
+        )
+        .max_results(500)
+        .execute();
 
-          image: image.secure_url,
+    return (
+      response.resources || []
+    ).map((image: any) => ({
+      id:
+        image.public_id,
 
-          publicId: image.public_id,
+      name:
+        image.display_name ||
+        image.original_filename ||
+        image.public_id
+          .split("/")
+          .pop(),
 
-          category,
-        }));
-      })
-    );
+      url:
+        image.secure_url,
 
-    return results.flat();
+      format:
+        image.format,
+
+      createdAt:
+        image.created_at,
+    }));
   } catch (error: any) {
     console.error(
       "Cloudinary gallery fetch error:",
@@ -70,27 +84,74 @@ export async function getGalleryImages(): Promise<
   }
 }
 
-
 export async function getGallerySubfolders(
-  category: GalleryCategory
+  section: GallerySection
 ) {
   try {
-    const path =
-      GALLERY_FOLDERS[category];
+    const rootPath =
+      GALLERY_FOLDER_PATHS[
+        section
+      ];
 
     const result =
       await cloudinary.api.sub_folders(
-        path
+        rootPath
       );
 
-    return (
-      result.folders || []
-    ).map((folder: any) => ({
-      name: folder.name,
-      path: folder.path,
-    }));
+    const folders =
+      result.folders || [];
+
+    const populatedFolders =
+      await Promise.all(
+        folders.map(
+          async (
+            folder: any
+          ) => {
+            try {
+              const search =
+                await cloudinary.search
+                  .expression(
+                    `folder:${folder.path}`
+                  )
+                  .max_results(
+                    1
+                  )
+                  .execute();
+
+              const count =
+                search.resources
+                  ?.length || 0;
+
+              if (
+                count === 0
+              ) {
+                return null;
+              }
+
+              return {
+                name:
+                  folder.name,
+
+                path:
+                  folder.path,
+
+                count,
+              };
+            } catch {
+              return null;
+            }
+          }
+        )
+      );
+
+    return populatedFolders.filter(
+      Boolean
+    );
   } catch (error) {
-    console.error(error);
+    console.error(
+      "Cloudinary subfolder fetch error:",
+      error
+    );
 
     return [];
   }
@@ -98,20 +159,21 @@ export async function getGallerySubfolders(
 
 export async function uploadGalleryImage(
   fileBuffer: Buffer,
-  category: GalleryCategory
+  section: GallerySection,
+  subfolder: string
 ): Promise<{
   url: string;
   public_id: string;
 }> {
+  const folder =
+    `${GALLERY_FOLDER_PATHS[section]}/${subfolder}`;
+
   return new Promise(
     (resolve, reject) => {
       const stream =
         cloudinary.uploader.upload_stream(
           {
-            folder:
-              GALLERY_FOLDERS[
-                category
-              ],
+            folder,
 
             resource_type:
               "image",
@@ -120,20 +182,26 @@ export async function uploadGalleryImage(
 
             invalidate: true,
 
-            transformation: [
-              {
-                width: 1500,
-                crop: "limit",
-              },
-              {
-                quality:
-                  "auto",
-              },
-              {
-                fetch_format:
-                  "auto",
-              },
-            ],
+            transformation:
+              [
+                {
+                  width:
+                    1500,
+
+                  crop:
+                    "limit",
+                },
+
+                {
+                  quality:
+                    "auto",
+                },
+
+                {
+                  fetch_format:
+                    "auto",
+                },
+              ],
           },
           (
             error,
@@ -153,7 +221,9 @@ export async function uploadGalleryImage(
             }
 
             resolve({
-              url: result.secure_url,
+              url:
+                result.secure_url,
+
               public_id:
                 result.public_id,
             });
@@ -173,84 +243,52 @@ export async function getFolderContents(
   path: string
 ) {
   try {
-    const [
-      subfoldersResult,
-      filesResult,
-    ] = await Promise.all([
-      cloudinary.api.sub_folders(
-        path
-      ),
-
-      cloudinary.search
+    const response =
+      await cloudinary.search
         .expression(
           `folder:${path}`
         )
-        .max_results(100)
-        .execute(),
-    ]);
+        .sort_by(
+          "created_at",
+          "desc"
+        )
+        .max_results(500)
+        .execute();
 
-    return {
-      path,
+    return (
+      response.resources || []
+    ).map((file: any) => ({
+      id:
+        file.public_id,
 
-      folders: (
-        subfoldersResult.folders ||
-        []
-      ).map(
-        (f: any) => f.name
-      ),
+      name:
+        file.display_name ||
+        file.original_filename ||
+        file.public_id
+          .split("/")
+          .pop(),
 
-      files: (
-        filesResult.resources ||
-        []
-      ).map((file: any) => {
-        const name =
-          file.display_name ||
-          file.original_filename ||
-          file.public_id
-            .split("/")
-            .pop();
+      url:
+        file.secure_url,
 
-        return {
-          id: file.public_id,
+      format:
+        file.format,
 
-          name,
-
-          format:
-            file.format,
-
-          url: file.secure_url,
-
-          resourceType:
-            file.resource_type,
-
-          width: file.width,
-
-          height:
-            file.height,
-
-          bytes:
-            file.bytes,
-
-          createdAt:
-            file.created_at,
-        };
-      }),
-    };
+      createdAt:
+        file.created_at,
+    }));
   } catch (error: any) {
     console.error(
       "Cloudinary folder fetch error:",
       {
         path,
+
         message:
           error?.message,
       }
     );
 
-    return {
-      path,
-      folders: [],
-      files: [],
-    };
+    return [];
   }
 }
 
@@ -278,6 +316,7 @@ export async function deleteGalleryImage(
       "Cloudinary delete error:",
       {
         publicId,
+
         message:
           error?.message,
       }
@@ -305,6 +344,7 @@ export async function deleteGalleryImages(
       "Cloudinary bulk delete error:",
       {
         publicIds,
+
         message:
           error?.message,
       }
@@ -339,20 +379,26 @@ export async function uploadHeroSlideImage(
             public_id:
               publicId,
 
-            transformation: [
-              {
-                width: 1600,
-                crop: "limit",
-              },
-              {
-                quality:
-                  "auto",
-              },
-              {
-                fetch_format:
-                  "auto",
-              },
-            ],
+            transformation:
+              [
+                {
+                  width:
+                    1600,
+
+                  crop:
+                    "limit",
+                },
+
+                {
+                  quality:
+                    "auto",
+                },
+
+                {
+                  fetch_format:
+                    "auto",
+                },
+              ],
           },
           (
             error,
@@ -372,7 +418,9 @@ export async function uploadHeroSlideImage(
             }
 
             resolve({
-              url: result.secure_url,
+              url:
+                result.secure_url,
+
               public_id:
                 result.public_id,
             });

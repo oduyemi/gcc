@@ -1,8 +1,5 @@
 import { NextResponse } from "next/server";
-
-import {
-  getFolderContents,
-} from "@/lib/cloudinary";
+import { getFolderContents } from "@/lib/cloudinary";
 
 export async function GET(
   request: Request
@@ -18,7 +15,7 @@ export async function GET(
       return NextResponse.json(
         {
           error:
-            "Folder path required",
+            "Path required",
         },
         {
           status: 400,
@@ -26,24 +23,21 @@ export async function GET(
       );
     }
 
-    const contents =
+    const images =
       await getFolderContents(
         path
       );
 
     return NextResponse.json(
-      contents.files
+      images
     );
   } catch (error) {
-    console.error(
-      "Gallery folder API error:",
-      error
-    );
+    console.error(error);
 
     return NextResponse.json(
       {
         error:
-          "Failed to fetch gallery images",
+          "Failed to fetch images",
       },
       {
         status: 500,

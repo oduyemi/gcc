@@ -2,27 +2,44 @@
 import { useEffect, useState } from "react";
 import { GalleryHero } from "@/components/gallery/Hero";
 import { GalleryTabs } from "@/components/gallery/Tabs";
+import { GallerySubTabs } from "@/components/gallery/SubTabs";
 import { GalleryGrid } from "@/components/gallery/Grid";
 import { GalleryLightbox } from "@/components/gallery/Lightbox";
 import { MemoryVerseCTA } from "@/components/gallery/MemoryVerse";
 
+
 import {
-  GalleryCategory,
   GalleryImage,
+  GallerySection,
+  GallerySubfolder,
 } from "@/types/gallery";
 
-export default function Gallery() {
+export default function GalleryPage() {
   const [images, setImages] =
-    useState<GalleryImage[]>([]);
+    useState<GalleryImage[]>(
+      []
+    );
+
+  const [folders, setFolders] =
+    useState<
+      GallerySubfolder[]
+    >([]);
+
+  const [
+    activeSection,
+    setActiveSection,
+  ] =
+    useState<GallerySection>(
+      "churchlife"
+    );
+
+  const [
+    activePath,
+    setActivePath,
+  ] = useState("");
 
   const [loading, setLoading] =
     useState(true);
-
-  const [
-    activeCategory,
-    setActiveCategory,
-  ] =
-    useState<GalleryCategory>("all");
 
   const [
     selectedImage,
@@ -33,16 +50,62 @@ export default function Gallery() {
     );
 
   useEffect(() => {
-    async function fetchGallery() {
+    async function loadFolders() {
       try {
         const res =
           await fetch(
-            "/api/gallery"
+            `/api/gallery/subfolders?section=${activeSection}`
           );
 
         if (!res.ok) {
           throw new Error(
-            "Failed to fetch gallery"
+            "Failed to load folders"
+          );
+        }
+
+        const data: GallerySubfolder[] =
+          await res.json();
+
+        setFolders(data);
+
+        if (data.length > 0) {
+          setActivePath(
+            data[0].path
+          );
+        } else {
+          setActivePath("");
+          setImages([]);
+        }
+      } catch (error) {
+        console.error(
+          error
+        );
+
+        setFolders([]);
+        setImages([]);
+      }
+    }
+
+    loadFolders();
+  }, [activeSection]);
+
+  useEffect(() => {
+    if (!activePath) return;
+
+    async function loadImages() {
+      try {
+        setLoading(true);
+
+        const res =
+          await fetch(
+            `/api/gallery/images?path=${encodeURIComponent(
+              activePath
+            )}`
+          );
+
+        if (!res.ok) {
+          throw new Error(
+            "Failed to load images"
           );
         }
 
@@ -52,49 +115,51 @@ export default function Gallery() {
         setImages(data);
       } catch (error) {
         console.error(
-          "Gallery fetch error:",
           error
         );
+
+        setImages([]);
       } finally {
         setLoading(false);
       }
     }
 
-    fetchGallery();
-  }, []);
-
-  const filteredImages =
-    activeCategory === "all"
-      ? images
-      : images.filter(
-          (image) =>
-            image.category ===
-            activeCategory
-        );
+    loadImages();
+  }, [activePath]);
 
   const selectedIndex =
     selectedImage
-      ? filteredImages.findIndex(
+      ? images.findIndex(
           (img) =>
             img.id ===
             selectedImage.id
         )
       : 0;
 
-  if (loading) {
-    return (
-      <>
-        <GalleryHero />
+  return (
+    <>
+      <GalleryHero />
 
-        <GalleryTabs
-          activeCategory={
-            activeCategory
-          }
-          onChange={
-            setActiveCategory
-          }
-        />
+      <GalleryTabs
+        activeSection={
+          activeSection
+        }
+        onChange={
+          setActiveSection
+        }
+      />
 
+      <GallerySubTabs
+        folders={folders}
+        activePath={
+          activePath
+        }
+        onChange={
+          setActivePath
+        }
+      />
+
+      {loading ? (
         <section className="px-4 pb-24 md:px-8 lg:px-12">
           <div className="mx-auto max-w-7xl">
             <div
@@ -122,41 +187,21 @@ export default function Gallery() {
             </div>
           </div>
         </section>
-
-        <MemoryVerseCTA />
-      </>
-    );
-  }
-
-  return (
-    <>
-      <GalleryHero />
-
-      <GalleryTabs
-        activeCategory={
-          activeCategory
-        }
-        onChange={
-          setActiveCategory
-        }
-      />
-
-      <GalleryGrid
-        images={images}
-        activeCategory={
-          activeCategory
-        }
-        onImageClick={(
-          image
-        ) =>
-          setSelectedImage(
+      ) : (
+        <GalleryGrid
+          images={images}
+          onImageClick={(
             image
-          )
-        }
-      />
+          ) =>
+            setSelectedImage(
+              image
+            )
+          }
+        />
+      )}
 
       <GalleryLightbox
-        images={filteredImages}
+        images={images}
         open={
           !!selectedImage
         }
