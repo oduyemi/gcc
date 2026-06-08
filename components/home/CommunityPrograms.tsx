@@ -204,7 +204,7 @@ export const CommunityPrograms = () => {
               "
             >
               <Image
-                src="/images/community1.jpg"
+                src="/images/community5.jpg"
                 alt="Community outreach"
                 width={900}
                 height={1100}
@@ -243,7 +243,7 @@ export const CommunityPrograms = () => {
               "
             >
               <Image
-                src="/images/community2.jpg"
+                src="/images/community8.jpg"
                 alt="Community support"
                 width={250}
                 height={300}

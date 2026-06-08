@@ -23,8 +23,8 @@ export const GALLERY_SECTIONS = {
     label: "Community Programs",
     subfolders: [
       "education",
-      "welfare",
-      "medical",
+      "newton community welfare,  2024",
+      "newton community welfare",
       "outreach",
     ],
   },
