@@ -11,7 +11,7 @@ const locations = [
   {
     title: "Juapong",
     country: "Ghana",
-    image: "/images/mission/juapong.jpg",
+    image: "/images/ghana.jpg",
     description:
       "Supporting vulnerable families through practical aid, children's programmes and community outreach initiatives.",
     featured: true,
@@ -19,28 +19,28 @@ const locations = [
   {
     title: "Kpoteme",
     country: "Ghana",
-    image: "/images/mission/kpoteme.jpg",
+    image: "/images/kpoteme.jpg",
     description:
       "Providing resources, wellbeing support and opportunities that strengthen local families and young people.",
   },
   {
     title: "Assin Fosu",
     country: "Ghana",
-    image: "/images/mission/assin-fosu.jpg",
+    image: "/images/fosu.jpg",
     description:
       "Serving communities through social intervention projects, outreach events and practical support.",
   },
   {
     title: "Sierra Leone",
     country: "West Africa",
-    image: "/images/mission/sierra-leone.jpg",
+    image: "/images/sierra-leone.jpg",
     description:
       "Supporting one-off mission initiatives that bring hope, encouragement and essential assistance.",
   },
   {
     title: "Togo",
     country: "West Africa",
-    image: "/images/mission/togo.jpg",
+    image: "/images/togo.jpg",
     description:
       "Partnering with local communities through outreach and humanitarian support projects.",
   },
@@ -96,7 +96,7 @@ export const MissionLocations = () => {
           >
             Impacting Communities
             <span className="block text-primary">
-              Across West Africa
+              Across Africa
             </span>
           </h2>
 

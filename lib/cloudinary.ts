@@ -137,7 +137,16 @@ export async function getGallerySubfolders(
 
                 count,
               };
-            } catch {
+            // } catch {
+            //   return null;
+            // }
+            } catch (error) {
+              console.error(
+                "Folder failed:",
+                folder.path,
+                error
+              );
+            
               return null;
             }
           }

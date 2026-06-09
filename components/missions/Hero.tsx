@@ -191,7 +191,7 @@ export const MissionHero = () => {
             <div className="relative overflow-hidden rounded-[3rem]">
               <div className="relative h-[650px]">
                 <Image
-                  src="/images/mission/mission-hero.jpg"
+                  src="/images/africa.jpg"
                   alt="Church Mission"
                   fill
                   priority
