@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -204,7 +203,7 @@ export const CommunityPrograms = () => {
               "
             >
               <Image
-                src="/images/community5.jpg"
+                src="/images/community5.jpeg"
                 alt="Community outreach"
                 width={900}
                 height={1100}
@@ -243,7 +242,7 @@ export const CommunityPrograms = () => {
               "
             >
               <Image
-                src="/images/community8.jpg"
+                src="/images/community8.jpeg"
                 alt="Community support"
                 width={250}
                 height={300}
