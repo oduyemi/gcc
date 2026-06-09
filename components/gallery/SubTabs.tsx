@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 import {
   GallerySubfolder,
@@ -19,12 +18,15 @@ const formatLabel = (
   name: string
 ) =>
   name
-    .replace(/-/g, " ")
-    .replace(
-      /\b\w/g,
-      (char) =>
-        char.toUpperCase()
-    );
+    .split(/[_-]/)
+    .filter(Boolean)
+    .map(
+      (word) =>
+        word.charAt(0).toUpperCase() +
+        word.slice(1).toLowerCase()
+    )
+    .join(" ");
+
 
 export function GallerySubTabs({
   folders,
