@@ -16,17 +16,17 @@ import { Button } from "@/components/ui/button";
 const featuredSteps = [
   {
     title: "Ask for Prayer",
-    href: "/ask-for-prayer",
+    href: "/next-steps/ask-for-prayer",
     description:
       "Whatever you're facing, you don't have to carry it alone. Our prayer team is here to stand with you in faith and love.",
     icon: HeartHandshake,
-    image: "/images/praying.jpg",
+    image: "/images/prayerz.jpg",
     badge: "Prayer Team",
     glow: "from-primary/30 via-primary/10 to-transparent",
   },
   {
     title: "Join a Ministry",
-    href: "/ministry",
+    href: "/next-steps/ministry",
     description:
       "Find your people, discover your purpose, and serve in a ministry where your gifts can truly flourish.",
     icon: Users2,

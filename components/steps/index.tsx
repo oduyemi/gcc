@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -17,13 +16,14 @@ import {
   UserPlus,
 } from "lucide-react";
 
+
 const nextSteps = [
   {
     title: "New to GCC?",
     href: "/next-steps/new",
     description:
       "We would love to help you feel at home, meet people, and discover life at Global Crossfire Church UK.",
-    image: "/images/new.jpg",
+    image: "/images/peoples.jpg",
     icon: Sparkles,
     badge: "Start Here",
   },
@@ -32,19 +32,19 @@ const nextSteps = [
     href: "/next-steps/ask-for-prayer",
     description:
       "Our prayer team is ready to stand with you in faith through every season of life.",
-    image: "/images/praying.jpg",
+    image: "/images/prayerz.jpg",
     icon: HeartHandshake,
     badge: "Prayer",
   },
-  {
-    title: "Get to Know People",
-    href: "/next-steps/community",
-    description:
-      "Build meaningful relationships and grow together in a Christ-centered community.",
-    image: "/images/knowpeople.jpg",
-    icon: Users2,
-    badge: "Community",
-  },
+  // {
+  //   title: "Get to Know People",
+  //   href: "/next-steps/community",
+  //   description:
+  //     "Build meaningful relationships and grow together in a Christ-centered community.",
+  //   image: "/images/knowpeople.jpg",
+  //   icon: Users2,
+  //   badge: "Community",
+  // },
   {
     title: "Start Serving",
     href: "/next-steps/serve",
@@ -54,15 +54,15 @@ const nextSteps = [
     icon: HandHelping,
     badge: "Serve",
   },
-  {
-    title: "Join a Ministry",
-    href: "/next-steps/ministry",
-    description:
-      "Find a ministry where you can belong, grow spiritually, and impact others.",
-    image: "/images/fellowship.jpg",
-    icon: Church,
-    badge: "Ministries",
-  },
+  // {
+  //   title: "Join a Ministry",
+  //   href: "/next-steps/ministry",
+  //   description:
+  //     "Find a ministry where you can belong, grow spiritually, and impact others.",
+  //   image: "/images/fellowship.jpg",
+  //   icon: Church,
+  //   badge: "Ministries",
+  // },
   {
     title: "Start Giving",
     href: "/donation",
@@ -101,7 +101,7 @@ const nextSteps = [
   },
   {
     title: "Connect with Counselling",
-    href: "/counselling",
+    href: "/next-steps/counselling",
     description:
       "Receive biblical guidance, encouragement, and support from our counselling team.",
     image: "/images/counselling.jpg",

@@ -176,7 +176,7 @@ export const Intro = () => {
                 "
                 >
                   <PlayCircle className="mr-2 h-4 w-4" />
-                  Watch Sermons
+                  View Church Calendar
                 </Button>
               </Link>
             </motion.div>

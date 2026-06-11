@@ -23,7 +23,7 @@ export const RecommitForm = () => {
           Full Name
         </label>
 
-        <Input />
+        <Input placeholder="Your full name" />
       </div>
 
       <div>
@@ -31,7 +31,7 @@ export const RecommitForm = () => {
           Email Address
         </label>
 
-        <Input type="email" />
+        <Input type="email" placeholder="Your email address" />
       </div>
 
       <div>
@@ -39,7 +39,7 @@ export const RecommitForm = () => {
           Phone Number
         </label>
 
-        <Input />
+        <Input placeholder="Your phone number" />
       </div>
 
       <div>

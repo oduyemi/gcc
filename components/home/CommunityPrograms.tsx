@@ -262,7 +262,7 @@ export const CommunityPrograms = () => {
               }}
               className="
                 absolute
-                bottom-10
+                bottom-24
                 right-8
                 rounded-[2rem]
                 border border-white/30
@@ -278,7 +278,7 @@ export const CommunityPrograms = () => {
               </p>
 
               <h3 className="mt-2 text-4xl font-black">
-                5,000+
+                2,000+
               </h3>
 
               <p className="mt-1 text-sm text-muted-foreground">

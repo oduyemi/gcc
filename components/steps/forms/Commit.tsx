@@ -31,7 +31,7 @@ export const CommitToChristForm = () => {
           Email Address
         </label>
 
-        <Input type="email" />
+        <Input type="email" placeholder="Your email address" />
       </div>
 
       <div>
@@ -39,7 +39,7 @@ export const CommitToChristForm = () => {
           Phone Number
         </label>
 
-        <Input />
+        <Input placeholder="Your phone number" />
       </div>
 
       <div>

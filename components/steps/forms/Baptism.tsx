@@ -60,6 +60,17 @@ export const BaptismForm = () => {
         />
       </div>
 
+      <div>
+        <label className="mb-2 block text-sm font-semibold">
+          Tell Us About Your Decision
+        </label>
+
+        <Textarea
+          rows={5}
+          placeholder="Tell us why you want to get baptized"
+        />
+      </div>
+
       <Button className="w-full">
         Register For Baptism
 

@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
@@ -11,16 +10,16 @@ import {
   Flame,
   Globe2,
   MapPin,
-  Play,
+  // Play,
   ShieldCheck,
   Sparkles,
   Star,
   Waves,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
 
 const slides = [
   {
@@ -476,7 +475,7 @@ export const Hero = () => {
                   </Link>
                 </Button>
 
-                <Link href="/sermons">
+                <Link href="/community">
                   <Button
                     variant="outline"
                     className="
@@ -493,16 +492,16 @@ export const Hero = () => {
                     hover:bg-white/85
                   "
                   >
-                    <Play className="mr-2 h-4 w-4 fill-[#22007C]" />
+                    <ShieldCheck className="mr-2 h-4 w-4 fill-[#22007C]" />
 
-                    Watch Online
+                    Explore Community
                   </Button>
                 </Link>
               </motion.div>
 
               {/* SERVICE CARDS */}
 
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 35 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
@@ -561,7 +560,7 @@ export const Hero = () => {
                     </div>
                   );
                 })}
-              </motion.div>
+              </motion.div> */}
             </div>
 
             {/* RIGHT PANEL */}
