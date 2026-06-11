@@ -28,7 +28,7 @@ const highlights = [
     title: "Global Impact",
     description:
       "Reaching communities and nations with the Gospel.",
-    image: "/images/impact.jpg",
+    image: "/images/community6.jpeg",
     icon: Globe2,
   },
 ];
