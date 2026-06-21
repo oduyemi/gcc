@@ -6,9 +6,11 @@ import { LatestSermon } from "@/components/home/LatestSermon";
 import { Steps } from "@/components/home/Steps";
 import { JoinUsCTA } from "@/components/JoinUsCTA";
 
+
+
 export default function Home() {
   return (
-    <main>
+    <>
       <Hero />
       <Intro />
       <Steps />
@@ -16,6 +18,6 @@ export default function Home() {
       <LatestSermon />
       <FeaturedMeetings />
       <JoinUsCTA />
-    </main>
+    </>
   );
 }
