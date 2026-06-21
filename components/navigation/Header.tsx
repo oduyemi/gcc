@@ -84,10 +84,11 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Podcast", href: "/podcast", icon: Mic2 },
+  { label: "Community", href:"/community"},
   { label: "Missions", href: "/missions" },
   { label: "Gallery", href: "/gallery" },
   { label: "Donation", href: "/donation" },
-  { label: "Contact Us", href: "/contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const Header = () => {
