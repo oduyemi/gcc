@@ -567,8 +567,7 @@ export default function NotFound() {
                   hover:gap-3
                 "
                 >
-                  Escape safely to homepage
-
+                  Navigate safely to heaven's gate to start over
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
