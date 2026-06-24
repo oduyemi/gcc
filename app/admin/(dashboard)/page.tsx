@@ -9,6 +9,7 @@ import {
   FileText,
   Images,
   MessageSquare,
+  Menu,
   HeartHandshake,
 } from "lucide-react";
 import { AdminCard } from "@/components/admin/Cards";
@@ -67,11 +68,11 @@ const quickActions = [
     icon: CalendarDays,
   },
   {
-    label: "Record Giving",
-    icon: CreditCard,
+    label: "Post an Article",
+    icon: Menu,
   },
   {
-    label: "Send Announcement",
+    label: "Upload Gallery",
     icon: MessageSquare,
   },
 ];
@@ -129,7 +130,7 @@ export default function DashboardPage() {
                 </p>
 
                 <h1 className="mt-2 text-4xl font-bold tracking-tight">
-                  Welcome back, Pastor 👋
+                  Welcome back, Pastor
                 </h1>
 
                 <p className="mt-3 max-w-2xl text-muted-foreground">
@@ -246,7 +247,7 @@ export default function DashboardPage() {
 
         <AdminCard>
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-bold">Recent Members</h2>
+            <h2 className="text-xl font-bold">Recent New Members</h2>
 
             <Users
               className="text-primary"

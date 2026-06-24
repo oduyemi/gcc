@@ -82,7 +82,7 @@ export const AdminTopbar = () => {
 
             <div className="hidden text-left md:block">
               <p className="text-sm font-semibold">
-                Pastor Opeyemi
+                Pastor Jane
               </p>
 
               <p className="text-xs text-muted-foreground">
