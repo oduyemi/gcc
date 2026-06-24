@@ -84,8 +84,8 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Podcast", href: "/podcast", icon: Mic2 },
-  { label: "Community", href:"/community"},
-  { label: "Missions", href: "/missions" },
+  { label: "Community Impact", href:"/community"},
+  { label: "Overseas Missions", href: "/missions" },
   { label: "Gallery", href: "/gallery" },
   { label: "Donation", href: "/donation" },
   { label: "Contact", href: "/contact" },
@@ -190,7 +190,7 @@ export const Header = () => {
                     href={item.href}
                     className={cn(
                         `
-                        group relative inline-flex h-10 items-center justify-center overflow-hidden rounded-2xl px-4
+                        group relative inline-flex h-10 items-center justify-center overflow-hidden rounded-2xl px-5
                         text-[14px] font-semibold tracking-[-0.01em]
                         text-slate-700/85
                         transition-all duration-500

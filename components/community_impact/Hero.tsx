@@ -89,11 +89,15 @@ export const CommunityImpactHero = () => {
                 text-muted-foreground
               "
             >
-              Global Crossfire Church exists to support children,
-              young people, families and vulnerable individuals through
-              practical programmes that promote education, wellbeing,
-              opportunity and community inclusion across Thanet and
-              surrounding areas.
+              Global Crossfire Church exists to support and empower 
+              individuals and families, particularly young people and 
+              those living in deprived and under-resourced communities
+              across Thanet and surrounding areas. We respond to social, 
+              educational, and well-being needs by delivering inclusive, 
+              community-centred programmes that promote confidence, 
+              opportunity, and positive life outcomes.
+
+
             </p>
 
             {/* Stats */}

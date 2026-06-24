@@ -94,10 +94,23 @@ export const CommunityMission = () => {
               text-muted-foreground
             "
           >
-            Global Crossfire Church supports children, young people,
-            families and vulnerable individuals through inclusive
-            community programmes that promote education, wellbeing,
-            confidence and opportunity.
+            Our work provides access to educational support, mentoring, 
+            counselling, skills development, and community engagement 
+            activities for people facing challenges such as unemployment, 
+            social isolation, and limited access to opportunity. All 
+            community outreach programmes are delivered on a 
+            non-faith-based basis and are open to all, regardless of 
+            background, belief, or circumstance.
+            <br /><br />
+            We actively promote social inclusion, diversity, and 
+            community cohesion by creating safe, supportive spaces where 
+            people from different backgrounds can connect, learn, and grow. 
+            Working in partnership with local organisations and professionals, 
+            we aim to reduce barriers, strengthen resilience, and support 
+            individuals to reach their full potential. At the heart of our mission 
+            is a commitment to equality, participation, and meaningful community impact.
+
+
           </p>
 
           <p

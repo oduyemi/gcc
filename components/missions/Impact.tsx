@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   Users,
@@ -223,7 +224,7 @@ export const MissionImpact = () => {
                   backdrop-blur-sm
                 "
               >
-                <ArrowUpRight className="h-10 w-10" />
+                <Link href="/donation"><ArrowUpRight className="h-10 w-10" /></Link>
               </div>
             </div>
           </div>

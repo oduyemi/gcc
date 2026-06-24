@@ -192,29 +192,6 @@ export const CommunityImpactAreas = () => {
                   <p className="mt-4 leading-8 text-muted-foreground">
                     {area.description}
                   </p>
-
-                  <div
-                    className="
-                      mt-6
-                      inline-flex
-                      items-center
-                      gap-2
-                      font-bold
-                      text-primary
-                    "
-                  >
-                    Community Impact
-
-                    <ArrowUpRight
-                      className="
-                        h-4 w-4
-                        transition-transform
-                        duration-300
-                        group-hover:translate-x-1
-                        group-hover:-translate-y-1
-                      "
-                    />
-                  </div>
                 </div>
               </motion.div>
             );

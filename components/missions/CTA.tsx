@@ -119,7 +119,7 @@ export const JoinMissionCTA = () => {
 
               <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:justify-center">
                 <Link
-                  href="/give"
+                  href="/donation"
                   className="
                     inline-flex items-center justify-center gap-2
                     rounded-2xl
@@ -137,7 +137,7 @@ export const JoinMissionCTA = () => {
                 </Link>
 
                 <Link
-                  href="/contact"
+                  href="/become-a-partner"
                   className="
                     inline-flex items-center justify-center
                     rounded-2xl

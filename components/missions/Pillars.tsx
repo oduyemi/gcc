@@ -173,7 +173,7 @@ export const MissionPillars = () => {
                   {pillar.description}
                 </p>
 
-                <div
+                {/* <div
                   className="
                     mt-6
                     inline-flex items-center gap-2
@@ -190,7 +190,7 @@ export const MissionPillars = () => {
                       group-hover:-translate-y-1
                     "
                   />
-                </div>
+                </div> */}
               </motion.div>
             );
           })}

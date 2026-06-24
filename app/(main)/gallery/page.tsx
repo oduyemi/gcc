@@ -7,6 +7,8 @@ import { GalleryGrid } from "@/components/gallery/Grid";
 import { GalleryLightbox } from "@/components/gallery/Lightbox";
 import { MemoryVerseCTA } from "@/components/gallery/MemoryVerse";
 import { GalleryImage, GallerySection, GallerySubfolder } from "@/types/gallery";
+import { useSearchParams } from "next/navigation";
+
 
 const IMAGES_PER_PAGE = 12;
 const FOLDERS_PER_PAGE = 6;
@@ -14,12 +16,15 @@ const FOLDERS_PER_PAGE = 6;
 export default function GalleryPage() {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [folders, setFolders] = useState<GallerySubfolder[]>([]);
-  const [activeSection, setActiveSection] = useState<GallerySection>("churchlife");
+  // const [activeSection, setActiveSection] = useState<GallerySection>("churchlife");
   const [activePath, setActivePath] = useState("");
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [imagePage, setImagePage] = useState(0);
   const [folderPage, setFolderPage] =  useState(0);
+  const searchParams = useSearchParams();
+  const initialSection = (searchParams.get("section") as GallerySection) || "churchlife";
+  const [activeSection, setActiveSection] = useState<GallerySection>(initialSection);
 
   useEffect(() => {
     setImagePage(0);
@@ -168,6 +173,24 @@ const totalImagePages =
     useEffect(() => {
       setSelectedImage(null);
     }, [imagePage, activePath]);
+
+    useEffect(() => {
+      const section = searchParams.get("section");
+    
+      if (
+        section &&
+        [
+          "churchlife",
+          "youth",
+          "communityPrograms",
+          "missions",
+        ].includes(section)
+      ) {
+        setActiveSection(
+          section as GallerySection
+        );
+      }
+    }, [searchParams]);
     
   return (
     <>

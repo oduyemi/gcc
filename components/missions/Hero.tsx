@@ -86,10 +86,17 @@ export const MissionHero = () => {
                 text-muted-foreground
               "
             >
-              Our mission is to lead people into a growing relationship
-              with Jesus Christ, build strong disciples, and share God's
-              love through worship, service and outreach both locally and
-              globally.
+              Our Overseas Mission Project supports vulnerable families, 
+              particularly children, young people, and women in deprived 
+              communities in Ghana. Through local service centres and 
+              community outreach, we provide essential items such as 
+              clothing, toiletries, baby supplies, stationery, toys, 
+              and hot meals to improve well-being and living conditions. 
+              Working with local schools, welfare services, health clinics, 
+              hospitals, and police, we ensure support is coordinated and 
+              targeted effectively. We also deliver one-off community 
+              support projects in other African countries, including Ghana, 
+              Sierra Leone, and Togo.
             </p>
 
             {/* CTA */}

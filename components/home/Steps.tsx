@@ -26,7 +26,7 @@ const featuredSteps = [
   },
   {
     title: "Join a Ministry",
-    href: "/next-steps/ministry",
+    href: "/next-steps/serve",
     description:
       "Find your people, discover your purpose, and serve in a ministry where your gifts can truly flourish.",
     icon: Users2,

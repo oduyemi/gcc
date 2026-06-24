@@ -229,7 +229,7 @@ export const MissionLocations = () => {
                       {location.description}
                     </p>
 
-                    <div className="mt-4 inline-flex items-center gap-2 font-bold text-primary">
+                    {/* <div className="mt-4 inline-flex items-center gap-2 font-bold text-primary">
                       Community Impact
 
                       <ArrowUpRight
@@ -240,7 +240,7 @@ export const MissionLocations = () => {
                           group-hover:-translate-y-1
                         "
                       />
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </motion.div>

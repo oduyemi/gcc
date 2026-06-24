@@ -6,7 +6,8 @@ import {
   CreditCard,
   UserPlus,
   Bell,
-  Church,
+  FileText,
+  Images,
   MessageSquare,
   HeartHandshake,
 } from "lucide-react";
@@ -16,28 +17,28 @@ import { StatCard } from "@/components/admin/StatsCard";
 
 const dashboardStats = [
   {
-    title: "Total Members",
-    value: "2,541",
-    icon: Users,
-    change: "+27 this month",
-  },
-  {
-    title: "Weekly Attendance",
-    value: "1,846",
-    icon: Church,
-    change: "+8.4%",
-  },
-  {
-    title: "Offerings",
-    value: "£18,250",
-    icon: CreditCard,
-    change: "+12.2%",
-  },
-  {
-    title: "First-Time Guests",
+    title: "Blog Posts",
     value: "43",
-    icon: UserPlus,
-    change: "+11 this week",
+    icon: FileText,
+    tone: "blue",
+  },
+  {
+    title: "Events",
+    value: "12",
+    icon: CalendarDays,
+    tone: "purple",
+  },
+  {
+    title: "Gallery Images",
+    value: "385",
+    icon: Images,
+    tone: "amber",
+  },
+  {
+    title: "Pending Requests",
+    value: "27",
+    icon: Bell,
+    tone: "rose",
   },
 ];
 
@@ -58,7 +59,7 @@ const upcomingEvents = [
 
 const quickActions = [
   {
-    label: "Add Member",
+    label: "Add Admin",
     icon: UserPlus,
   },
   {

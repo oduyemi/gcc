@@ -22,15 +22,20 @@ export const AdminCard = ({ children, className }: AdminCardProps) => {
         bg-white/[0.03]
         backdrop-blur-xl
         shadow-[0_10px_50px_rgba(0,0,0,0.35)]
-        overflow-hidden
+        overflow-visible
         `,
         className
       )}
     >
-      {/* subtle glow overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 opacity-70" />
+      {/* Background effects clipped to radius */}
+      <div className="absolute inset-0 overflow-hidden rounded-[inherit]">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-purple-500/10 opacity-70" />
+      </div>
 
-      <div className="relative z-10">{children}</div>
+      {/* Content */}
+      <div className="relative z-10 p-6">
+        {children}
+      </div>
     </motion.div>
   );
 };

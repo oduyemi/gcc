@@ -25,8 +25,8 @@ const programs = [
     icon: Music4,
     title: "Musical Instrument Training Programme",
     description:
-      "Providing children and young people aged 9–20 with structured musical instrument training, helping them build confidence, creativity, discipline and practical skills through weekly lessons and instrument loans.",
-
+      // "Providing children and young people aged 9–20 with structured musical instrument training, helping them build confidence, creativity, discipline and practical skills through weekly lessons and instrument loans.",
+      "The Musical Instrument Training Programme, part of the Thanet Community Inclusion Programme, provides young people aged 9–20 with structured lessons in instruments such as guitar, keyboard, drums, and saxophone. Instruments are loaned for home practice, helping remove financial barriers. The programme builds confidence, creativity, discipline, and positive engagement, with additional funding enabling more young people to take part.",
     image: "/images/musictraining.jpg",
 
     stats: [
@@ -49,8 +49,8 @@ const programs = [
     icon: Users,
     title: "Youth & Young Adults Engagement Programme",
     description:
-      "Creating safe, inclusive spaces where young people and young adults can develop confidence, practical skills and positive connections through mentoring, employability support and personal development activities.",
-
+      // "Creating safe, inclusive spaces where young people and young adults can develop confidence, practical skills and positive connections through mentoring, employability support and personal development activities.",
+      "The Youth and Young Adults Engagement Programme, part of the Thanet Initiative Community Programme, supports young people aged 14–25 from diverse and under-represented backgrounds. It provides safe, inclusive spaces to build confidence, develop practical and employability skills, access creative training and counselling, and connect with others. Through regular community engagement, we identify those needing additional support and work with partner organisations to provide appropriate guidance and early intervention.",
     image: "/images/youthengagement.jpeg",
 
     stats: [
@@ -73,9 +73,9 @@ const programs = [
     icon: PartyPopper,
     title: "Community Fun Day Project",
     description:
-      "An annual summer event bringing together families, children and young people through free activities that strengthen relationships, encourage wellbeing and build community cohesion.",
-
-    image: "/images/fun.jpeg",
+      // "An annual summer event bringing together families, children and young people through free activities that strengthen relationships, encourage wellbeing and build community cohesion.",
+        "The Community Fun Day Project is an annual summer event that brings together local families, children, and young people through free, inclusive activities that promote social interaction, community cohesion, and well-being. Activities include bouncy castles, arts and crafts, stationery and books, face and nail painting, hair braiding, and a free barbecue meal for all attendees. The event provides a safe, welcoming environment where people of all backgrounds can connect, enjoy shared experiences, and build stronger community relationships, supporting positive outcomes for children and families.",
+    image: "/images/funn.jpeg",
 
     stats: [
       { label: "Event", value: "Annual" },
@@ -97,8 +97,8 @@ const programs = [
     icon: BookOpen,
     title: "Maths & English Learning Support",
     description:
-      "Helping primary and secondary school pupils improve literacy, numeracy and learning confidence through after-school support, homework clubs and intensive summer programmes.",
-
+      // "Helping primary and secondary school pupils improve literacy, numeracy and learning confidence through after-school support, homework clubs and intensive summer programmes.",
+      "The Maths & English Learning Support Programme, part of the Thanet Community Inclusion Programme, supports primary and secondary school pupils who may be struggling academically, including those from disadvantaged backgrounds and young people with English as an additional language. Through after-school homework clubs, targeted learning sessions, and an intensive summer programme, trained volunteers help develop literacy, numeracy, confidence, and positive learning habits. The programme improves engagement in education and supports better outcomes for children and young people. All donations and contributions directly support the delivery and development of this programme.",
     image: "/images/support.jpg",
 
     stats: [
@@ -121,8 +121,8 @@ const programs = [
     icon: HeartHandshake,
     title: "Show Your Love Project",
     description:
-      "Providing practical assistance to individuals and families facing financial hardship through vouchers, gift cards and personalised community support.",
-
+      // "Providing practical assistance to individuals and families facing financial hardship through vouchers, gift cards and personalised community support.",
+      "The Show Your Love Project, part of the Thanet Community Inclusion Programme, supports individuals and families facing financial hardship through food vouchers and gift cards. Delivered by trained volunteers, including outreach support, the project works with community partners to ensure help reaches those most in need and is tailored to individual circumstances. All donations and contributions directly support the delivery and growth of this project.",
     image: "/images/care.jpg",
 
     stats: [
@@ -145,9 +145,9 @@ const programs = [
     icon: PackageOpen,
     title: "Food Bank Support",
     description:
-      "Working alongside local food banks and community organisations to provide food, toiletries and seasonal essentials to individuals experiencing hardship or food insecurity.",
-
-    image: "/images/foodbank.jpg",
+      // "Working alongside local food banks and community organisations to provide food, toiletries and seasonal essentials to individuals experiencing hardship or food insecurity.",
+      "Our charity partners with local food banks and community organisations to support people experiencing food insecurity, homelessness, or financial hardship. Through food donations and seasonal essentials such as toiletries and warm clothing, we help ensure vital support reaches those most in need.",
+    image: "/images/eat.jpeg",
 
     stats: [
       { label: "Partners", value: "Local" },
@@ -236,6 +236,7 @@ export const CommunityProgrammes = () => {
                     data-[state=active]:bg-primary
                     data-[state=active]:text-white
                   "
+                  style={{ fontWeight:"700" }}
                 >
                   <Icon className="mr-2 h-4 w-4" />
                   {program.label}
