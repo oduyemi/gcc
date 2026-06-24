@@ -8,12 +8,21 @@ import { GalleryLightbox } from "@/components/gallery/Lightbox";
 import { MemoryVerseCTA } from "@/components/gallery/MemoryVerse";
 import { GalleryImage, GallerySection, GallerySubfolder } from "@/types/gallery";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 
 const IMAGES_PER_PAGE = 12;
 const FOLDERS_PER_PAGE = 6;
 
 export default function GalleryPage() {
+  return (
+    <Suspense fallback={null}>
+      <GalleryContent />
+    </Suspense>
+  );
+}
+
+function GalleryContent() {
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [folders, setFolders] = useState<GallerySubfolder[]>([]);
   // const [activeSection, setActiveSection] = useState<GallerySection>("churchlife");
@@ -193,7 +202,7 @@ const totalImagePages =
     }, [searchParams]);
     
   return (
-    <>
+    <Suspense fallback={null}>
       <GalleryHero />
 
       <GalleryTabs
@@ -397,6 +406,6 @@ const totalImagePages =
       />
 
       <MemoryVerseCTA />
-    </>
+    </Suspense>
   );
 }
