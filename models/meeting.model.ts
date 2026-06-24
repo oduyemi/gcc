@@ -14,6 +14,7 @@ export type WeekOfMonth =
 export interface IMeeting extends Document {
   title: string;
   description?: string;
+  category: "service" | "prayer" | "fellowship" | "special"
   type: MeetingType;
   frequency?: MeetingFrequency;
   // 0 = Sunday, 6 = Saturday
@@ -21,6 +22,7 @@ export interface IMeeting extends Document {
   weekOfMonth?: WeekOfMonth;
   startDate?: Date;
   endDate?: Date;
+  image?: string;
   time?: string;
   isOnline: boolean;
   location?: string;
@@ -44,6 +46,17 @@ const meetingSchema = new Schema<IMeeting>(
       type: String,
       trim: true,
     },
+
+    category: {
+        type: String,
+        enum: [
+            "service",
+            "prayer",
+            "fellowship",
+            "special"
+        ]
+    },
+    
 
     type: {
       type: String,
@@ -70,6 +83,11 @@ const meetingSchema = new Schema<IMeeting>(
     startDate: Date,
 
     endDate: Date,
+
+    image: {
+        type: String,
+        trim: true,
+    },
 
     time: String,
 
@@ -102,3 +120,5 @@ const Meeting =
   mongoose.model<IMeeting>("Meeting", meetingSchema);
 
 export default Meeting;
+
+
