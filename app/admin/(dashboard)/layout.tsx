@@ -2,13 +2,11 @@
 import { motion } from "framer-motion";
 import { AdminSidebar } from "@/components/admin/Sidebar";
 import { AdminTopbar } from "@/components/admin/Topbar";
+import { useState } from "react";
 
 
-export default function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AdminLayout({children}: {children: React.ReactNode;}) {
+  const [collapsed, setCollapsed] = useState(false);
   return (
     <div className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
       <motion.div
@@ -31,8 +29,10 @@ export default function AdminLayout({
       </motion.div>
 
       <div className="flex">
-        <AdminSidebar />
-
+        <AdminSidebar
+          collapsed={collapsed}
+          onCollapse={() => setCollapsed(!collapsed)}
+        />
         <main
           className="
             flex-1
@@ -50,3 +50,5 @@ export default function AdminLayout({
     </div>
   );
 }
+
+

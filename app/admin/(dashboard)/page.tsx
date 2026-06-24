@@ -161,7 +161,7 @@ export default function DashboardPage() {
             title={stat.title}
             value={stat.value}
             icon={stat.icon}
-            change={stat.change}
+            // change={stat.change}
           />
         ))}
       </section>
