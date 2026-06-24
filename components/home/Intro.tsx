@@ -8,6 +8,7 @@ import {
   Globe2,
   HeartHandshake,
   PlayCircle,
+  Calendar,
   Sparkles,
   Users2,
   MapPin,
@@ -159,7 +160,7 @@ export const Intro = () => {
                 </Link>
               </Button>
 
-              <Link href="/sermons">
+              <Link href="/events">
                 <Button
                   variant="outline"
                   className="
@@ -175,7 +176,7 @@ export const Intro = () => {
                   hover:bg-white/80
                 "
                 >
-                  <PlayCircle className="mr-2 h-4 w-4" />
+                  <Calendar className="mr-2 h-4 w-4" />
                   View Church Calendar
                 </Button>
               </Link>
