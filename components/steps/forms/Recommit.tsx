@@ -1,20 +1,98 @@
 "use client";
+
+import { useState } from "react";
 import { ArrowRight } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
-
 export const RecommitForm = () => {
+  const [loading, setLoading] = useState(false);
+
+  const [success, setSuccess] = useState("");
+
+  const [error, setError] = useState("");
+
+  const [formData, setFormData] = useState({
+    fullname: "",
+    email: "",
+    phone: "",
+    support: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement
+    >
+  ) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+
+    setLoading(true);
+    setError("");
+    setSuccess("");
+
+    try {
+      const response = await fetch("/api/recommit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          result.message ||
+            "Failed to submit recommitment request"
+        );
+      }
+
+      setSuccess(
+        "Thank you for reaching out. We are praying for you and someone from our team will connect with you soon."
+      );
+
+      setFormData({
+        fullname: "",
+        email: "",
+        phone: "",
+        support: "",
+      });
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <form className="space-y-5">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-5"
+    >
       <div>
         <h3 className="mb-2 text-2xl font-black">
           I'm Returning To God
         </h3>
 
         <p className="text-muted-foreground">
-          We'd be honored to pray with you and support your journey.
+          We'd be honored to pray with you and support
+          your journey.
         </p>
       </div>
 
@@ -23,7 +101,13 @@ export const RecommitForm = () => {
           Full Name
         </label>
 
-        <Input placeholder="Your full name" />
+        <Input
+          name="fullname"
+          value={formData.fullname}
+          onChange={handleChange}
+          placeholder="Your full name"
+          required
+        />
       </div>
 
       <div>
@@ -31,7 +115,14 @@ export const RecommitForm = () => {
           Email Address
         </label>
 
-        <Input type="email" placeholder="Your email address" />
+        <Input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Your email address"
+          required
+        />
       </div>
 
       <div>
@@ -39,7 +130,13 @@ export const RecommitForm = () => {
           Phone Number
         </label>
 
-        <Input placeholder="Your phone number" />
+        <Input
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          placeholder="Your phone number"
+          required
+        />
       </div>
 
       <div>
@@ -48,16 +145,38 @@ export const RecommitForm = () => {
         </label>
 
         <Textarea
+          name="support"
+          value={formData.support}
+          onChange={handleChange}
           rows={5}
           placeholder="Share as much or as little as you're comfortable with..."
+          required
         />
       </div>
 
-      <Button className="w-full">
-        Recommit My Life
+      {success && (
+        <div className="rounded-xl border border-green-500/20 bg-green-500/10 p-4 text-sm text-green-700">
+          {success}
+        </div>
+      )}
+
+      {error && (
+        <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-700">
+          {error}
+        </div>
+      )}
+
+      <Button
+        type="submit"
+        disabled={loading}
+        className="w-full"
+      >
+        {loading
+          ? "Submitting..."
+          : "Recommit My Life"}
 
         <ArrowRight className="ml-2 h-4 w-4" />
       </Button>
     </form>
   );
-}
+};

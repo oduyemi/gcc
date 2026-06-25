@@ -7,7 +7,7 @@ export interface IServe extends Document {
   email: string;
   phone: string;
   about: string;
-  interest: "welcometeam" | "children" | "gatekeepers" | "hospitality" | "media" | "outreach" | "protocol" | "sanctuary" | "socialmedia" | "technical" | "ushers" | " worship";
+  interest: "welcometeam" | "children" | "gatekeepers" | "hospitality" | "media" | "outreach" | "protocol" | "sanctuary" | "socialmedia" | "technical" | "ushers" | "worship";
   reason: string;
   status: "pending" | "treated";
   createdAt: Date;
@@ -29,7 +29,7 @@ const serveSchema = new Schema<IServe>(
     about: { type: String, required: true },
     interest: { 
         type: String, 
-        enum: ["welcometeam", "children", "gatekeepers", "hospitality", "media","outreach", "protocol", "sanctuary", "socialmedia", "technical","ushers"," worship"],
+        enum: ["welcometeam", "children", "gatekeepers", "hospitality", "media","outreach", "protocol", "sanctuary", "socialmedia", "technical","ushers","worship"],
     },
     reason: { type: String, required: true },
     status: { 
