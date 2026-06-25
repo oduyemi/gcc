@@ -29,6 +29,18 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
+const resources =[
+  {
+    title: "Blog",
+    href: "/blog",
+  },
+  {
+    title: "Podcast",
+    href: "/podcast",
+    icon: Mic2
+  },
+]
+
 const ministries = [
   {
     title: "Men's Ministry",
@@ -83,9 +95,10 @@ const ministries = [
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Podcast", href: "/podcast", icon: Mic2 },
+  // { label: "Podcast", href: "/podcast", icon: Mic2 },
   { label: "Community Impact", href:"/community"},
   { label: "Overseas Missions", href: "/missions" },
+  // {label:"Blog", href: "/blog" },
   { label: "Gallery", href: "/gallery" },
   { label: "Donation", href: "/donation" },
   { label: "Contact", href: "/contact" },
@@ -144,7 +157,7 @@ export const Header = () => {
               src="/images/logo.png"
               alt="Site logo"
               fill
-              className="object-contain p-2 transition-transform duration-700 group-hover:scale-110"
+              className="object-cover p-2 transition-transform duration-700 group-hover:scale-110"
             />
           </div>
 
@@ -162,7 +175,7 @@ export const Header = () => {
               Global Crossfire Church UK
             </h1>
 
-            <p
+            {/* <p
               className="
               mt-1.5
               text-[10px]
@@ -173,7 +186,7 @@ export const Header = () => {
             "
             >
               Love • Faith • Purpose
-            </p>
+            </p> */}
           </div>
         </Link>
 
@@ -214,10 +227,6 @@ export const Header = () => {
                     />
 
                     <span className="relative z-10 flex items-center gap-2">
-                        {item.icon && (
-                        <item.icon className="h-4 w-4 transition-transform duration-500 group-hover:scale-110" />
-                        )}
-
                         {item.label}
                     </span>
 
@@ -237,6 +246,81 @@ export const Header = () => {
                 </NavigationMenuItem>
             ))}
 
+            {/* PODCAST */}
+
+              <NavigationMenuItem>
+                <NavigationMenuTrigger
+                className="
+                group h-10 rounded-2xl bg-transparent px-4
+                text-[14px] font-semibold tracking-[-0.01em]
+                text-slate-700/85
+                transition-all duration-500
+                hover:bg-white/55
+                hover:text-primary
+                hover:shadow-[0_10px_40px_rgba(216,164,91,0.10)]
+                data-[state=open]:bg-white/55
+                "
+                >
+                  Resources
+                </NavigationMenuTrigger>
+
+                <NavigationMenuContent>
+                <div
+                    className="
+                    relative w-[470px]
+                    overflow-hidden
+                    rounded-[2rem]
+                    border border-white/30
+                    bg-white/[0.55]
+                    p-6
+                    shadow-[0_20px_80px_rgba(216,164,91,0.12)]
+                    backdrop-blur-[30px]
+                "
+                >
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.72),transparent_30%)]" />
+
+                    <div className="relative z-10 space-y-4">
+                    {resources.map((item) => (
+                        <Link
+                        key={item.title}
+                        href={item.href}
+                        className="
+                        group relative block overflow-hidden
+                        rounded-[1.6rem]
+                        border border-white/20
+                        bg-white/[0.58]
+                        p-5
+                        transition-all duration-700
+                        ease-[cubic-bezier(0.22,1,0.36,1)]
+                        hover:-translate-y-1
+                        hover:bg-white/[0.72]
+                        hover:shadow-[0_20px_60px_rgba(216,164,91,0.12)]
+                        "
+                        >
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-transparent to-primary/[0.06] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+
+                        <div className="relative z-10">
+                        <span className="relative z-10 flex items-center gap-2">
+                        {item.icon && (
+                        <item.icon className="h-4 w-4 transition-transform duration-500 group-hover:scale-110" />
+                        )}
+
+                        {item.label}
+                            <h4 className="mb-2 text-[15px] font-bold tracking-[-0.02em] text-slate-800 transition-colors duration-500 group-hover:text-primary">
+                            {item.title}
+                            </h4>
+                        </span>
+
+                            {/* <p className="text-sm leading-relaxed text-slate-500">
+                            {item.description}
+                            </p> */}
+                        </div>
+                        </Link>
+                    ))}
+                    </div>
+                </div>
+                </NavigationMenuContent>
+            </NavigationMenuItem>
             {/* MINISTRIES */}
             <NavigationMenuItem>
                 <NavigationMenuTrigger
@@ -524,7 +608,7 @@ export const Header = () => {
                         src="/images/logo.png"
                         alt="Site logo"
                         fill
-                        className="object-contain p-2"
+                        className="object-cover p-2"
                       />
                     </div>
 

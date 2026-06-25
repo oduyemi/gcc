@@ -2,18 +2,42 @@ import { NextResponse } from "next/server";
 import { dbConnect } from "@/utils/db";
 import Blog from "@/models/blog.model";
 
+export async function GET(
+  req: Request,
+  context: { params: Promise<{ id: string }> }
+) {
+  await dbConnect();
+
+  const { id } = await context.params;
+
+  const blog = await Blog.findById(id);
+
+  if (!blog) {
+    return NextResponse.json(
+      { error: "Blog not found" },
+      { status: 404 }
+    );
+  }
+
+  return NextResponse.json(blog);
+}
+
 export async function PUT(
   req: Request,
   context: { params: Promise<{ id: string }> }
 ) {
   await dbConnect();
 
-  const { id } = await context.params; 
+  const { id } = await context.params;
   const body = await req.json();
 
-  const updated = await Blog.findByIdAndUpdate(id, body, {
-    new: true,
-  });
+  const updated = await Blog.findByIdAndUpdate(
+    id,
+    body,
+    {
+      new: true,
+    }
+  );
 
   return NextResponse.json(updated);
 }
@@ -24,9 +48,11 @@ export async function DELETE(
 ) {
   await dbConnect();
 
-  const { id } = await context.params; 
+  const { id } = await context.params;
 
   await Blog.findByIdAndDelete(id);
 
-  return NextResponse.json({ success: true });
+  return NextResponse.json({
+    success: true,
+  });
 }
