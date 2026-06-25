@@ -11,59 +11,147 @@ import {
   Users,
   Video,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 
-const events = [
-  {
-    title: "Sunday Celebration Gathering",
-    category: "Worship Service",
-    image: "/images/events/sunday-service.jpg",
-    date: "31",
-    month: "MAY",
-    fullDate: "31 May 2026",
-    time: "10:30 AM – 12:30 PM",
-    location: "Global Crossfire Church UK",
-    featured: true,
-    icon: Flame,
-  },
-  {
-    title: "Hour of Encounter",
-    category: "Prayer Meeting",
-    image: "/images/events/prayer.jpg",
-    date: "05",
-    month: "JUN",
-    fullDate: "5 June 2026",
-    time: "6:00 PM – 7:00 PM",
-    location: "Online via Zoom",
-    featured: false,
-    icon: Video,
-  },
-  {
-    title: "Home Cell Meeting",
-    category: "Fellowship",
-    image: "/images/events/home-cell.jpg",
-    date: "02",
-    month: "JUN",
-    fullDate: "2 June 2026",
-    time: "6:00 PM – 7:00 PM",
-    location: "Various Locations",
-    featured: false,
-    icon: Users,
-  },
-  {
-    title: "Jabez Moment",
-    category: "Interchurch Prayer",
-    image: "/images/events/jabez.jpg",
-    date: "30",
-    month: "MAY",
-    fullDate: "30 May 2026",
-    time: "6:00 PM – 7:30 PM",
-    location: "Church Auditorium",
-    featured: false,
-    icon: Flame,
-  },
-];
+type Meeting = {
+  _id: string;
+  title: string;
+  description?: string;
+  category: string;
+  type: string;
+  image?: string;
+  time?: string;
+  location?: string;
+  isOnline?: boolean;
+  nextOccurrence?: string;
+  featured?: string;
+};
+
+const getIcon = (event: Meeting) => {
+  if (event.category === "prayer")
+    return Flame;
+
+  if (event.isOnline)
+    return Video;
+
+  return Users;
+};
+
+const getCategory = (
+  event: Meeting
+) => {
+  switch (event.category) {
+    case "prayer":
+      return "Prayer Meeting";
+
+    case "service":
+      return "Worship Service";
+
+    case "fellowship":
+      return "Fellowship";
+
+    default:
+      return event.category;
+  }
+};
+
+const getDateParts = (
+  date?: string
+) => {
+  if (!date)
+    return {
+      day: "--",
+      month: "---",
+    };
+
+  const d = new Date(date);
+
+  return {
+    day: d
+      .getDate()
+      .toString()
+      .padStart(2, "0"),
+    month: d
+      .toLocaleDateString(
+        "en-GB",
+        {
+          month: "short",
+        }
+      )
+      .toUpperCase(),
+  };
+};
+
+const formatDate = (
+  date?: string
+) => {
+  if (!date) return "TBA";
+
+  return new Date(date).toLocaleDateString(
+    "en-GB",
+    {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }
+  );
+};
+
 
 export const UpcomingEventsGrid = () => {
+  const [events, setEvents] = useState<Meeting[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await fetch(
+          "/api/meetings/upcoming"
+        );
+  
+        const result = await response.json();
+  
+        if (!result.success) {
+          throw new Error(
+            result.message ||
+              "Failed to fetch events"
+          );
+        }
+  
+        setEvents(result.data);
+      } catch (err) {
+        console.error(err);
+  
+        setError(
+          err instanceof Error
+            ? err.message
+            : "Failed to fetch events"
+        );
+      } finally {
+        setLoading(false);
+      }
+    };
+  
+    fetchEvents();
+  }, []);
+
+  if (loading) {
+    return (
+      <section className="py-24 text-center">
+        Loading upcoming events...
+      </section>
+    );
+  }
+  
+  if (error) {
+    return (
+      <section className="py-24 text-center text-red-500">
+        {error}
+      </section>
+    );
+  }
+  
   return (
     <section className="relative overflow-hidden px-4 py-24 md:px-8 lg:px-12">
       {/* Background */}
@@ -124,7 +212,12 @@ export const UpcomingEventsGrid = () => {
 
         <div className="mt-16 grid gap-8 lg:grid-cols-2">
           {events.map((event, index) => {
-            const Icon = event.icon;
+            const Icon = getIcon(event);
+            const { day, month } =
+              getDateParts(
+                event.nextOccurrence
+              );
+            const featured = index === 0;
 
             return (
               <motion.div
@@ -162,7 +255,10 @@ export const UpcomingEventsGrid = () => {
 
                   <div className="relative h-72 overflow-hidden">
                     <Image
-                      src={event.image}
+                      src={
+                        event.image ||
+                        "/images/events/default.jpeg"
+                      }
                       alt={event.title}
                       fill
                       className="
@@ -188,7 +284,7 @@ export const UpcomingEventsGrid = () => {
                       "
                     >
                       <span className="text-3xl font-black text-primary">
-                        {event.date}
+                        {day}
                       </span>
 
                       <span
@@ -199,7 +295,7 @@ export const UpcomingEventsGrid = () => {
                           text-primary
                         "
                       >
-                        {event.month}
+                        {month}
                       </span>
                     </div>
 
@@ -218,7 +314,7 @@ export const UpcomingEventsGrid = () => {
                         text-white
                       "
                     >
-                      {event.category}
+                      {getCategory(event)}
                     </div>
 
                     {/* Title */}
@@ -266,7 +362,10 @@ export const UpcomingEventsGrid = () => {
                       >
                         <MapPin className="h-4 w-4 text-primary" />
 
-                        {event.location}
+                        {event.location ||
+                          (event.isOnline
+                            ? "Online"
+                            : "Church Auditorium")}
                       </div>
                     </div>
 
@@ -280,7 +379,9 @@ export const UpcomingEventsGrid = () => {
                         "
                       >
                         <Icon className="h-4 w-4 text-primary" />
-                        {event.fullDate}
+                        {formatDate(
+                          event.nextOccurrence
+                        )}
                       </div>
 
                       <Link

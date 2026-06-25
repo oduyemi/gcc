@@ -43,7 +43,7 @@ const meetings = [
       isOnline: true,
       location: "Zoom",
       sortOrder: 3,
-      image: "https://asset.cloudinary.com/dymd1jkbl/adcf987ce149b372a5e62b577c3f12d7"
+      image: "https://res.cloudinary.com/dymd1jkbl/image/upload/v1782300975/gcc/events/homecell_zpkarf.jpg"
     },
   
     {
@@ -83,7 +83,7 @@ const meetings = [
         time: "12:15 PM",
         isOnline: false,
         sortOrder: 6,
-        image: "https://asset.cloudinary.com/dymd1jkbl/66b00678c91b5e6b748310dd0a0bc7ad"
+        image: "https://res.cloudinary.com/dymd1jkbl/image/upload/v1782300975/gcc/events/youthmeeting_erbcqh.jpg"
     },
 
     {
@@ -97,7 +97,7 @@ const meetings = [
         time: "12:15 PM",
         isOnline: false,
         sortOrder: 7,
-        image: "https://asset.cloudinary.com/dymd1jkbl/66b00678c91b5e6b748310dd0a0bc7ad"
+        image: "https://res.cloudinary.com/dymd1jkbl/image/upload/v1782300975/gcc/events/youthmeeting_erbcqh.jpg"
     },
   
     {
@@ -124,7 +124,7 @@ const meetings = [
       time: "6:00 PM - 7:30 PM",
       isOnline: false,
       sortOrder: 9,
-      image: "https://asset.cloudinary.com/dymd1jkbl/adcf987ce149b372a5e62b577c3f12d7"
+      image: "https://res.cloudinary.com/dymd1jkbl/image/upload/v1782300975/gcc/events/jabez_fgcv6x.jpg"
     },
 
     {
