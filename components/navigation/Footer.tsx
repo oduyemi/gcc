@@ -41,15 +41,15 @@ const quickLinks = [
 const socials = [
   {
     icon: FaFacebookF,
-    href: "#",
+    href: "https://facebook.com/GlobalCrossfireChurchUk",
   },
   {
     icon: FaInstagram,
-    href: "#",
+    href: "https://www.instagram.com/globalcrossfirechurchuk",
   },
   {
     icon: FaYoutube,
-    href: "#",
+    href: "https://www.youtube.com/@globalcrossfirechurchuk7257",
   },
 ];
 
