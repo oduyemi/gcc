@@ -7,6 +7,7 @@ export interface ICommit extends Document {
   email: string;
   phone: string;
   reason: string;
+  status: "pending" | "treated";
   createdAt: Date;
 }
 
@@ -24,6 +25,10 @@ const commitSchema = new Schema<ICommit>(
     },
     phone: { type: String, required: true },
     reason: { type: String, required: true },
+    status: { 
+      type: String, 
+      enum: ["pending", "treated"],
+  }
   },
   { timestamps: true }
 );

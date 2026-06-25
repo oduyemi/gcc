@@ -9,6 +9,7 @@ export interface IServe extends Document {
   about: string;
   interest: "welcometeam" | "children" | "gatekeepers" | "hospitality" | "media" | "outreach" | "protocol" | "sanctuary" | "socialmedia" | "technical" | "ushers" | " worship";
   reason: string;
+  status: "pending" | "treated";
   createdAt: Date;
 }
 
@@ -31,6 +32,10 @@ const serveSchema = new Schema<IServe>(
         enum: ["welcometeam", "children", "gatekeepers", "hospitality", "media","outreach", "protocol", "sanctuary", "socialmedia", "technical","ushers"," worship"],
     },
     reason: { type: String, required: true },
+    status: { 
+      type: String, 
+      enum: ["pending", "treated"],
+  }
   },
   { timestamps: true }
 );

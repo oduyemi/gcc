@@ -8,6 +8,7 @@ export interface IContact extends Document {
   topic: "general"| "prayer" | "first time" | "counselling" | "minisitry information";
   subject: string;
   message: string;
+  status: "pending" | "treated";
   createdAt: Date;
 }
 
@@ -29,6 +30,10 @@ const contactSchema = new Schema<IContact>(
     },
     subject: { type: String, required: true },
     message: { type: String, required: true },
+    status: { 
+      type: String, 
+      enum: ["pending", "treated"],
+  },
   },
   { timestamps: true }
 );

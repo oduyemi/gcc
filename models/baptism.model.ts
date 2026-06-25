@@ -9,6 +9,7 @@ export interface IBaptism extends Document {
   hasAcceptedJesus: boolean;
   testimony?: string;
   reason: string;
+  status: "pending" | "treated";
   createdAt: Date;
 }
 
@@ -28,6 +29,10 @@ const baptismSchema = new Schema<IBaptism>(
     hasAcceptedJesus: { type: Boolean, default: false },
     testimony: { type: String, required: true },
     reason: { type: String, required: true },
+    status: { 
+      type: String, 
+      enum: ["pending", "treated"],
+  },
   },
   { timestamps: true }
 );

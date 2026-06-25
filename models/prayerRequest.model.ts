@@ -7,6 +7,7 @@ export interface IPrayerRequest extends Document {
   email: string;
   phone: string;
   request: string;
+  status: "pending" | "treated";
   createdAt: Date;
 }
 
@@ -24,6 +25,10 @@ const prayerSchema = new Schema<IPrayerRequest>(
     },
     phone: { type: String, required: true },
     request: { type: String, required: true },
+    status: { 
+      type: String, 
+      enum: ["pending", "treated"],
+  }
   },
   { timestamps: true }
 );

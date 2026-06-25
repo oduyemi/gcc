@@ -8,8 +8,7 @@ export interface INewToChurch extends Document {
   phone: string;
   about: string;
   interest: "smallgroups"| "youngadults" | "families" | "men" | "women";
-  subject: string;
-  message: string;
+  status: "pending" | "treated";
   createdAt: Date;
 }
 
@@ -29,7 +28,11 @@ const newSchema = new Schema<INewToChurch>(
     interest: { 
         type: String, 
         enum: ["smallgroups", "youngadults", "families", "men", "women"],
-    }
+    },
+    status: { 
+      type: String, 
+      enum: ["pending", "treated"],
+  },
   },
   { timestamps: true }
 );

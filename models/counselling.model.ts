@@ -7,6 +7,7 @@ export interface ICounselling extends Document {
   email: string;
   phone: string;
   support: string;
+  status: "pending" | "treated";
   createdAt: Date;
 }
 
@@ -24,6 +25,10 @@ const counsellingSchema = new Schema<ICounselling>(
     },
     phone: { type: String, required: true },
     support: { type: String, required: true },
+    status: { 
+      type: String, 
+      enum: ["pending", "treated"],
+  }
   },
   { timestamps: true }
 );
