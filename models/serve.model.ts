@@ -35,6 +35,7 @@ const serveSchema = new Schema<IServe>(
     status: { 
       type: String, 
       enum: ["pending", "treated"],
+      default:"pending"
   }
   },
   { timestamps: true }

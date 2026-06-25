@@ -32,6 +32,7 @@ const newSchema = new Schema<INewToChurch>(
     status: { 
       type: String, 
       enum: ["pending", "treated"],
+      default:"pending"
   },
   },
   { timestamps: true }

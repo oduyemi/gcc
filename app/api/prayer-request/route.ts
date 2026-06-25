@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { dbConnect } from "@/utils/db";
-import PrayerRequest from "@/models/prayer-request.model";
+import PrayerRequest from "@/models/prayerRequest.model";
+import { sendEmailWithRetry } from "@/helper/emailLogic";
 
 /**
  * GET PRAYER REQUESTS
@@ -47,35 +48,50 @@ export async function GET(req: NextRequest) {
 
 /**
  * CREATE PRAYER REQUEST
- */
-export async function POST(req: NextRequest) {
-  try {
-    await dbConnect();
-
-    const body = await req.json();
-
-    const request = await PrayerRequest.create({
-      ...body,
-      status: "pending",
-    });
-
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Prayer request submitted successfully",
-        data: request,
-      },
-      { status: 201 }
-    );
-  } catch (error) {
-    console.error(error);
-
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Failed to submit prayer request",
-      },
-      { status: 500 }
-    );
-  }
-}
+ */ 
+ export async function POST(req: NextRequest) {
+   try {
+     await dbConnect();
+     const body = await req.json();
+     const request = await PrayerRequest.create({
+       ...body,
+       status: "pending",
+     });
+ 
+     await sendEmailWithRetry(
+       "info@globalcrossfirechurch.co.uk",
+       `New Prayer Request From ${body.fullname}`,
+       `
+         <h2>New Prayer Request</h2>
+ 
+         <p><strong>Name:</strong> ${body.fullname}</p>
+         <p><strong>Email:</strong> ${body.email}</p>
+         <p><strong>Phone:</strong> ${body.phone}</p>
+ 
+         <hr />
+ 
+         <p><strong>Prayer Request:</strong></p>
+         <p>${body.request}</p>
+       `
+     );
+ 
+     return NextResponse.json(
+       {
+         success: true,
+         message: "Prayer request submitted successfully",
+         data: request,
+       },
+       { status: 201 }
+     );
+   } catch (error) {
+     console.error(error);
+ 
+     return NextResponse.json(
+       {
+         success: false,
+         message: "Failed to submit prayer request",
+       },
+       { status: 500 }
+     );
+   }
+ }

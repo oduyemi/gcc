@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { dbConnect } from "@/utils/db";
-import PrayerRequest from "@/models/prayer-request.model";
+import PrayerRequest from "@/models/prayerRequest.model";
 
 /**
  * GET SINGLE REQUEST

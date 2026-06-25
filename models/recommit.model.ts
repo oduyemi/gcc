@@ -28,6 +28,7 @@ const recommitSchema = new Schema<IRecommit>(
     status: { 
       type: String, 
       enum: ["pending", "treated"],
+      default:"pending"
   }
   },
   { timestamps: true }

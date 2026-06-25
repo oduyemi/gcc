@@ -10,8 +10,80 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
 
 export const PrayerRequest = () => {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
+    fullname: "",
+    email: "",
+    phone: "",
+    request: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement
+    >
+  ) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+  
+    setLoading(true);
+    setSuccess("");
+    setError("");
+  
+    try {
+      const response = await fetch(
+        "/api/prayer-request",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+  
+      const result = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(
+          result.message ||
+            "Failed to submit prayer request"
+        );
+      }
+  
+      setSuccess(
+        "Your prayer request has been received. Our prayer team will be praying with you."
+      );
+  
+      setFormData({
+        fullname: "",
+        email: "",
+        phone: "",
+        request: "",
+      });
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <section className="relative overflow-hidden px-4 py-24 md:px-8 lg:px-12">
       {/* Decorative Background */}
@@ -172,13 +244,16 @@ export const PrayerRequest = () => {
                 </p>
               </div>
 
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="mb-2 block text-sm font-semibold">
-                    Name (Optional)
+                    Name
                   </label>
 
                   <Input
+                    name="fullname"
+                    value={formData.fullname}
+                    onChange={handleChange}
                     placeholder="Your name"
                     className="
                       h-14
@@ -191,12 +266,34 @@ export const PrayerRequest = () => {
 
                 <div>
                   <label className="mb-2 block text-sm font-semibold">
-                    Email (Optional)
+                    Email
                   </label>
 
                   <Input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="you@example.com"
+                    className="
+                      h-14
+                      rounded-2xl
+                      border-primary/10
+                      bg-white/60
+                    "
+                  />
+                </div>
+
+                <div>
+                  <label className="mb-2 block text-sm font-semibold">
+                    Phone Number
+                  </label>
+
+                  <Input
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Your Phone/WhatsApp number"
                     className="
                       h-14
                       rounded-2xl
@@ -212,6 +309,9 @@ export const PrayerRequest = () => {
                   </label>
 
                   <Textarea
+                    name="request"
+                    value={formData.request}
+                    onChange={handleChange}
                     rows={8}
                     placeholder="How can we pray for you?"
                     className="
@@ -223,7 +323,20 @@ export const PrayerRequest = () => {
                   />
                 </div>
 
+                {success && (
+                  <div className="rounded-xl border border-green-500/20 bg-green-500/10 p-4 text-sm text-green-700">
+                    {success}
+                  </div>
+                )}
+
+                {error && (
+                  <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-700">
+                    {error}
+                  </div>
+                )}
                 <Button
+                  type="submit"
+                  disabled={loading}
                   size="lg"
                   className="
                     h-14
@@ -235,7 +348,9 @@ export const PrayerRequest = () => {
                   "
                 >
                   <Send className="mr-2 h-4 w-4" />
-                  Submit Prayer Request
+                    {loading
+                      ? "Submitting..."
+                      : "Submit Prayer Request"}
                 </Button>
 
                 <p className="text-center text-xs text-muted-foreground">

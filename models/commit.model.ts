@@ -28,6 +28,7 @@ const commitSchema = new Schema<ICommit>(
     status: { 
       type: String, 
       enum: ["pending", "treated"],
+      default:"pending"
   }
   },
   { timestamps: true }

@@ -28,6 +28,7 @@ const prayerSchema = new Schema<IPrayerRequest>(
     status: { 
       type: String, 
       enum: ["pending", "treated"],
+      default:"pending"
   }
   },
   { timestamps: true }

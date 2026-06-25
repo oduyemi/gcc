@@ -10,31 +10,105 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useState } from "react";
 
 
 export const NewHereForm = () => {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
+    fullname: "",
+    email: "",
+    phone: "",
+    about: "",
+    interest: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement
+    >
+  ) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+  
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+  
+    setLoading(true);
+    setSuccess("");
+    setError("");
+  
+    try {
+      const response = await fetch(
+        "/api/new-to-church",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
+  
+      const result = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(
+          result.message ||
+            "Failed to submit information"
+        );
+      }
+  
+      setSuccess(
+        "Thank you for connecting with GCC. We will be in touch soon."
+      );
+  
+      setFormData({
+        fullname: "",
+        email: "",
+        phone: "",
+        about: "",
+        interest: "",
+      });
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
   
   return (
-    <form className="space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-5">
       <div>
         <label className="mb-2 block text-sm font-semibold">
           Full Name
         </label>
-        <Input required placeholder="John Doe" />
+        <Input name="fullname" value={formData.fullname} onChange={handleChange} required placeholder="John Doe" />
       </div>
 
       <div>
         <label className="mb-2 block text-sm font-semibold">
           Email Address
         </label>
-        <Input type="email" required placeholder="johndoe@example.com" />
+        <Input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="johndoe@example.com" />
       </div>
 
       <div>
         <label className="mb-2 block text-sm font-semibold">
           Phone Number
         </label>
-        <Input placeholder="Your phone number" />
+        <Input name="phone" value={formData.phone} onChange={handleChange} placeholder="Your phone number" />
       </div>
 
       <div>
@@ -43,6 +117,9 @@ export const NewHereForm = () => {
         </label>
 
         <Textarea
+          name="about"
+          value={formData.about}
+          onChange={handleChange}
           required
           rows={5}
           placeholder="How did you hear about GCC?"
@@ -54,17 +131,25 @@ export const NewHereForm = () => {
           Interested In
         </label>
 
-        <Select>
+        <Select
+          value={formData.interest}
+          onValueChange={value =>
+            setFormData(prev => ({
+              ...prev,
+              interest: value,
+            }))
+          }        
+        >
           <SelectTrigger>
             <SelectValue placeholder="Select an option" />
           </SelectTrigger>
 
           <SelectContent className="px-5">
-            <SelectItem value="small-groups">
+            <SelectItem value="smallgroups">
               Small Groups
             </SelectItem>
 
-            <SelectItem value="young-adults">
+            <SelectItem value="youngadults">
               Young Adults
             </SelectItem>
 
@@ -72,20 +157,37 @@ export const NewHereForm = () => {
               Families
             </SelectItem>
 
-            <SelectItem value="mens">
+            <SelectItem value="men">
               Men's Fellowship
             </SelectItem>
 
-            <SelectItem value="womens">
+            <SelectItem value="women">
               Women's Fellowship
             </SelectItem>
           </SelectContent>
         </Select>
       </div>
 
-      <Button className="w-full mt-32">
-        Connect With GCC
-        <ArrowRight className="ml-2 h-4 w-4" />
+      {success && (
+        <div className="rounded-xl border border-green-500/20 bg-green-500/10 p-4 text-sm text-green-700">
+          {success}
+        </div>
+      )}
+
+      {error && (
+        <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-700">
+          {error}
+        </div>
+      )}
+      <Button 
+        type="submit" 
+        disabled={loading}
+        className="w-full mt-32"
+      >
+        {loading
+          ? "Submitting..."
+          : "Connect With GCC"}
+          <ArrowRight className="ml-2 h-4 w-4" />
       </Button>
     </form>
   );

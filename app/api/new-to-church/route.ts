@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { dbConnect } from "@/utils/db";
 import NewToChurch from "@/models/newToChurch.model";
+import { sendEmailWithRetry } from "@/helper/emailLogic";
 
 /**
  * GET NEW TO CHURCH ENTRIES
@@ -53,35 +54,53 @@ export async function GET(req: NextRequest) {
 
 /**
  * CREATE NEW TO CHURCH ENTRY
- */
-export async function POST(req: NextRequest) {
-  try {
-    await dbConnect();
-
-    const body = await req.json();
-
-    const entry = await NewToChurch.create({
-      ...body,
-      status: "pending",
-    });
-
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Information submitted successfully",
-        data: entry,
-      },
-      { status: 201 }
-    );
-  } catch (error) {
-    console.error(error);
-
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Failed to submit information",
-      },
-      { status: 500 }
-    );
-  }
-}
+ */ 
+ export async function POST(req: NextRequest) {
+   try {
+     await dbConnect();
+ 
+     const body = await req.json();
+ 
+     const entry = await NewToChurch.create({
+       ...body,
+       status: "pending",
+     });
+ 
+     await sendEmailWithRetry(
+       "info@globalcrossfirechurch.co.uk",
+       `New Visitor Connection Form: ${body.fullname}`,
+       `
+         <h2>New To Church Submission</h2>
+ 
+         <p><strong>Name:</strong> ${body.fullname}</p>
+         <p><strong>Email:</strong> ${body.email}</p>
+         <p><strong>Phone:</strong> ${body.phone}</p>
+         <p><strong>Interest:</strong> ${body.interest}</p>
+ 
+         <hr />
+ 
+         <p><strong>About:</strong></p>
+         <p>${body.about}</p>
+       `
+     );
+ 
+     return NextResponse.json(
+       {
+         success: true,
+         message: "Information submitted successfully",
+         data: entry,
+       },
+       { status: 201 }
+     );
+   } catch (error) {
+     console.error(error);
+ 
+     return NextResponse.json(
+       {
+         success: false,
+         message: "Failed to submit information",
+       },
+       { status: 500 }
+     );
+   }
+ }

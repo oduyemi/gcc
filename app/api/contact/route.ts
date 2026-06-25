@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { dbConnect } from "@/utils/db";
 import Contact from "@/models/contact.model";
+import { sendEmailWithRetry } from "@/helper/emailLogic";
 
 /**
  * GET CONTACT ENTRIES
@@ -55,35 +56,51 @@ export async function GET(req: NextRequest) {
 
 /**
  * CREATE CONTACT ENTRY
- */
-export async function POST(req: NextRequest) {
-  try {
-    await dbConnect();
-
-    const body = await req.json();
-
-    const contact = await Contact.create({
-      ...body,
-      status: "pending",
-    });
-
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Contact form submitted successfully",
-        data: contact,
-      },
-      { status: 201 }
-    );
-  } catch (error) {
-    console.error(error);
-
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Failed to submit contact form",
-      },
-      { status: 500 }
-    );
-  }
-}
+ */ 
+ export async function POST(req: NextRequest) {
+   try {
+     await dbConnect();
+     const body = await req.json();
+     const contact = await Contact.create({
+       ...body,
+       status: "pending",
+     });
+ 
+     await sendEmailWithRetry(
+       "info@globalcrossfirechurch.couk",
+       `New Contact Form Submission: ${body.subject}`,
+       `
+         <h2>New Contact Form Submission</h2>
+ 
+         <p><strong>Name:</strong> ${body.fullname}</p>
+         <p><strong>Email:</strong> ${body.email}</p>
+         <p><strong>Topic:</strong> ${body.topic}</p>
+         <p><strong>Subject:</strong> ${body.subject}</p>
+ 
+         <hr />
+ 
+         <p><strong>Message:</strong></p>
+         <p>${body.message}</p>
+       `
+     );
+ 
+     return NextResponse.json(
+       {
+         success: true,
+         message: "Contact form submitted successfully",
+         data: contact,
+       },
+       { status: 201 }
+     );
+   } catch (error) {
+     console.error(error);
+ 
+     return NextResponse.json(
+       {
+         success: false,
+         message: "Failed to submit contact form",
+       },
+       { status: 500 }
+     );
+   }
+ }

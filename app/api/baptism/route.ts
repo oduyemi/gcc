@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { dbConnect } from "@/utils/db";
 import Baptism from "@/models/baptism.model";
+import { sendEmailWithRetry } from "@/helper/emailLogic";
 
 /**
  * GET BAPTISM ENTRIES
@@ -47,35 +48,62 @@ export async function GET(req: NextRequest) {
 
 /**
  * CREATE BAPTISM REQUEST
- */
-export async function POST(req: NextRequest) {
-  try {
-    await dbConnect();
-
-    const body = await req.json();
-
-    const baptism = await Baptism.create({
-      ...body,
-      status: "pending",
-    });
-
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Baptism request submitted successfully",
-        data: baptism,
-      },
-      { status: 201 }
-    );
-  } catch (error) {
-    console.error(error);
-
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Failed to submit baptism request",
-      },
-      { status: 500 }
-    );
-  }
-}
+ */ 
+ export async function POST(req: NextRequest) {
+   try {
+     await dbConnect();
+ 
+     const body = await req.json();
+ 
+     const baptism = await Baptism.create({
+       ...body,
+       status: "pending",
+     });
+ 
+     await sendEmailWithRetry(
+       "info@globalcrossfirechurch.co.uk",
+       `New Baptism Registration: ${body.fullname}`,
+       `
+         <h2>New Baptism Registration</h2>
+ 
+         <p><strong>Full Name:</strong> ${body.fullname}</p>
+         <p><strong>Email:</strong> ${body.email}</p>
+         <p><strong>Phone:</strong> ${body.phone}</p>
+ 
+         <p>
+           <strong>Accepted Jesus:</strong>
+           ${body.hasAcceptedJesus ? "Yes" : "No"}
+         </p>
+ 
+         <hr />
+ 
+         <p><strong>Testimony:</strong></p>
+         <p>${body.testimony || "Not provided"}</p>
+ 
+         <hr />
+ 
+         <p><strong>Reason For Baptism:</strong></p>
+         <p>${body.reason}</p>
+       `
+     );
+ 
+     return NextResponse.json(
+       {
+         success: true,
+         message: "Baptism request submitted successfully",
+         data: baptism,
+       },
+       { status: 201 }
+     );
+   } catch (error) {
+     console.error(error);
+ 
+     return NextResponse.json(
+       {
+         success: false,
+         message: "Failed to submit baptism request",
+       },
+       { status: 500 }
+     );
+   }
+ }

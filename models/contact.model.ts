@@ -5,7 +5,7 @@ export interface IContact extends Document {
   _id: Types.ObjectId;
   fullname: string;
   email: string;
-  topic: "general"| "prayer" | "first time" | "counselling" | "minisitry information";
+  topic: "general"| "prayer" | "first time" | "counselling" | "ministry information";
   subject: string;
   message: string;
   status: "pending" | "treated";
@@ -26,13 +26,14 @@ const contactSchema = new Schema<IContact>(
     },
     topic: { 
         type: String, 
-        enum: ["general", "prayer", "first time", "counselling", "minisitry information"],
+        enum: ["general", "prayer", "first time", "counselling", "ministry information"],
     },
     subject: { type: String, required: true },
     message: { type: String, required: true },
     status: { 
       type: String, 
       enum: ["pending", "treated"],
+      default:"pending"
   },
   },
   { timestamps: true }

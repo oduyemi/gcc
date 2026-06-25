@@ -1,17 +1,81 @@
 "use client";
+import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  HeartHandshake,
-  Mail,
-  MessageSquare,
-  Send,
-} from "lucide-react";
-
+import { HeartHandshake, Mail, MessageSquare, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export const ContactForm = () => {
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
+  const [formData, setFormData] = useState({
+    fullname: "",
+    email: "",
+    topic: "general",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+  
+    setLoading(true);
+    setError("");
+    setSuccess("");
+  
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      const result = await response.json();
+  
+      if (!response.ok) {
+        throw new Error(
+          result.message || "Failed to submit form"
+        );
+      }
+  
+      setSuccess(
+        "Your message has been sent successfully. We will get back to you soon."
+      );
+  
+      setFormData({
+        fullname: "",
+        email: "",
+        topic: "general",
+        subject: "",
+        message: "",
+      });
+    } catch (err) {
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Something went wrong"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <section
       id="contact-form"
@@ -138,7 +202,7 @@ export const ContactForm = () => {
               viewport={{ once: true }}
               className="p-8 md:p-12"
             >
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name */}
 
                 <div>
@@ -147,6 +211,9 @@ export const ContactForm = () => {
                   </label>
 
                   <Input
+                    name="fullname"
+                    value={formData.fullname}
+                    onChange={handleChange}
                     placeholder="Your full name"
                     className="
                       h-14
@@ -156,6 +223,7 @@ export const ContactForm = () => {
                       backdrop-blur-md
                       focus-visible:ring-primary
                     "
+                    required
                   />
                 </div>
 
@@ -168,6 +236,9 @@ export const ContactForm = () => {
 
                   <Input
                     type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="you@example.com"
                     className="
                       h-14
@@ -177,6 +248,7 @@ export const ContactForm = () => {
                       backdrop-blur-md
                       focus-visible:ring-primary
                     "
+                    required
                   />
                 </div>
 
@@ -188,6 +260,9 @@ export const ContactForm = () => {
                   </label>
 
                   <select
+                    name="topic"
+                    value={formData.topic}
+                    onChange={handleChange}
                     className="
                       h-14
                       w-full
@@ -202,11 +277,11 @@ export const ContactForm = () => {
                       focus:ring-primary
                     "
                   >
-                    <option>General Enquiry</option>
-                    <option>Prayer Request</option>
-                    <option>First Time Visitor</option>
-                    <option>Counselling</option>
-                    <option>Ministry Information</option>
+                    <option value="general">General Enquiry</option>
+                    <option value="prayer">Prayer Request</option>
+                    <option value="first time">First Time Visitor</option>
+                    <option value="counselling">Counselling</option>
+                    <option value="information">Ministry Information</option>
                   </select>
                 </div>
 
@@ -218,6 +293,9 @@ export const ContactForm = () => {
                   </label>
 
                   <Input
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
                     placeholder="What is your message about?"
                     className="
                       h-14
@@ -225,6 +303,7 @@ export const ContactForm = () => {
                       border-primary/10
                       bg-white/60
                     "
+                    required
                   />
                 </div>
 
@@ -236,6 +315,9 @@ export const ContactForm = () => {
                   </label>
 
                   <Textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     rows={7}
                     placeholder="Write your message here..."
                     className="
@@ -245,10 +327,24 @@ export const ContactForm = () => {
                       backdrop-blur-md
                       resize-none
                     "
+                    required
                   />
                 </div>
 
+                {success && (
+                  <div className="rounded-xl border border-green-500/20 bg-green-500/10 p-4 text-sm text-green-700">
+                    {success}
+                  </div>
+                )}
+
+                {error && (
+                  <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-700">
+                    {error}
+                  </div>
+                )}
                 <Button
+                  type="submit"
+                  disabled={loading}
                   size="lg"
                   className="
                     h-14
@@ -261,7 +357,7 @@ export const ContactForm = () => {
                   "
                 >
                   <Send className="mr-2 h-4 w-4" />
-                  Send Message
+                    {loading ? "Sending..." : "Send Message"}
                 </Button>
 
                 <p className="text-center text-xs text-muted-foreground">

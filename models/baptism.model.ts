@@ -27,11 +27,12 @@ const baptismSchema = new Schema<IBaptism>(
     },
     phone: { type: String, required: true },
     hasAcceptedJesus: { type: Boolean, default: false },
-    testimony: { type: String, required: true },
+    testimony: { type: String, default: "" },
     reason: { type: String, required: true },
     status: { 
       type: String, 
       enum: ["pending", "treated"],
+      default:"pending"
   },
   },
   { timestamps: true }

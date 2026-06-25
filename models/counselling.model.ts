@@ -28,6 +28,7 @@ const counsellingSchema = new Schema<ICounselling>(
     status: { 
       type: String, 
       enum: ["pending", "treated"],
+      default:"pending"
   }
   },
   { timestamps: true }
