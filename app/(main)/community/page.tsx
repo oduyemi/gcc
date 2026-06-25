@@ -1,5 +1,6 @@
 
 import { SupportCommunityCTA } from "@/components/community_impact/CTA";
+import ImpactMicroGallery from "@/components/community_impact/Gallery";
 import { CommunityImpactHero } from "@/components/community_impact/Hero";
 import { CommunityImpactAreas } from "@/components/community_impact/ImpactAreas";
 import { CommunityMission } from "@/components/community_impact/Mission";
@@ -15,6 +16,7 @@ export default function Impacto() {
       <CommunityMission />
       <CommunityProgrammes />
       <CommunityImpactAreas />
+      <ImpactMicroGallery/>
       <CommunityPartnerships />
       <SupportCommunityCTA />
     </>

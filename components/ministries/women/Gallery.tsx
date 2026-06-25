@@ -6,47 +6,28 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const galleries = {
   conferences: [
-    "/images/women/conference-1.jpg",
-    "/images/women/conference-2.jpg",
-    "/images/women/conference-3.jpg",
-    "/images/women/conference-4.jpg",
+    "/images/women/conf1.jpeg",
+    "/images/women/conf2.jpeg",
+    "/images/women/conf3.jpeg",
   ],
 
   fellowship: [
-    "/images/women/fellowship-1.jpg",
-    "/images/women/fellowship-2.jpg",
-    "/images/women/fellowship-3.jpg",
-    "/images/women/fellowship-4.jpg",
+    "/images/women/fel1.jpeg",
+    "/images/women/fel2.jpeg",
   ],
 
   prayer: [
-    "/images/women/prayer-1.jpg",
-    "/images/women/prayer-2.jpg",
-    "/images/women/prayer-3.jpg",
-    "/images/women/prayer-4.jpg",
+    "/images/women/pr1.jpeg",
+    "/images/women/pr2.jpeg",
   ],
 
-  outreach: [
-    "/images/women/outreach-1.jpg",
-    "/images/women/outreach-2.jpg",
-    "/images/women/outreach-3.jpg",
-    "/images/women/outreach-4.jpg",
-  ],
-
-  events: [
-    "/images/women/event-1.jpg",
-    "/images/women/event-2.jpg",
-    "/images/women/event-3.jpg",
-    "/images/women/event-4.jpg",
-  ],
+  
 };
 
 const tabs = [
   { id: "conferences", label: "Conferences" },
   { id: "fellowship", label: "Fellowship" },
   { id: "prayer", label: "Prayer Gatherings" },
-  { id: "outreach", label: "Outreach" },
-  { id: "events", label: "Special Events" },
 ];
 
 export const WomenGallery = () => {

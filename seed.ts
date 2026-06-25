@@ -1,4 +1,8 @@
-import { dbConnect } from "@/utils/db";
+import dotenv from "dotenv";
+
+dotenv.config({ path: ".env.local" });
+
+import { dbConnect } from "./utils/db";
 import Meeting from "./models/meeting.model";
 
 
@@ -75,7 +79,7 @@ const meetings = [
         type: "recurring",
         frequency: "monthly",
         dayOfWeek: 6,
-        weekOfMonth: "second",
+        weekOfMonth: "first",
         time: "12:15 PM",
         isOnline: false,
         sortOrder: 6,
