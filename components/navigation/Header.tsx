@@ -305,7 +305,7 @@ export const Header = () => {
                         <item.icon className="h-4 w-4 transition-transform duration-500 group-hover:scale-110" />
                         )}
 
-                        {item.label}
+                        {item.title}
                             <h4 className="mb-2 text-[15px] font-bold tracking-[-0.02em] text-slate-800 transition-colors duration-500 group-hover:text-primary">
                             {item.title}
                             </h4>
@@ -677,7 +677,7 @@ export const Header = () => {
                         <div className="absolute inset-0 bg-gradient-to-r from-white/30 to-primary/[0.05] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
                         <span className="relative z-10 flex items-center gap-3 font-semibold text-slate-700">
-                          {item.icon && <item.icon className="h-4 w-4" />}
+                          {/* {item.icon && <item.icon className="h-4 w-4" />} */}
                           {item.label}
                         </span>
                       </Link>
