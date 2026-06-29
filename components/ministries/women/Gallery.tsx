@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -9,25 +8,17 @@ const galleries = {
     "/images/women/conf1.jpeg",
     "/images/women/conf2.jpeg",
     "/images/women/conf3.jpeg",
-  ],
-
-  fellowship: [
     "/images/women/fel1.jpeg",
     "/images/women/fel2.jpeg",
-  ],
-
-  prayer: [
     "/images/women/pr1.jpeg",
     "/images/women/pr2.jpeg",
-  ],
-
-  
+  ]  
 };
 
 const tabs = [
   { id: "conferences", label: "Conferences" },
-  { id: "fellowship", label: "Fellowship" },
-  { id: "prayer", label: "Prayer Gatherings" },
+  // { id: "fellowship", label: "Fellowship" },
+  // { id: "prayer", label: "Prayer Gatherings" },
 ];
 
 export const WomenGallery = () => {

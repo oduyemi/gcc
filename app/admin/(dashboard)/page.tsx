@@ -62,18 +62,22 @@ const quickActions = [
   {
     label: "Add Admin",
     icon: UserPlus,
+    link: "/admin/administrators"
   },
   {
     label: "Create Event",
     icon: CalendarDays,
+    link: "/admin/events"
   },
   {
     label: "Post an Article",
     icon: Menu,
+    link:"/admin/blog"
   },
   {
     label: "Upload Gallery",
     icon: MessageSquare,
+    link: "/admin/gallery"
   },
 ];
 
@@ -133,7 +137,7 @@ export default function DashboardPage() {
                   Welcome back, Pastor
                 </h1>
 
-                <p className="mt-3 max-w-2xl text-muted-foreground">
+                <p className="mt-3 max-w-2xl text-gray-200">
                   Here's a snapshot of ministry activities, membership growth,
                   events, and church engagement.
                 </p>

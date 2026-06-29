@@ -106,6 +106,7 @@ const navLinks = [
 
 export const Header = () => {
   const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState("");
 
   return (
     <header className="sticky top-0 z-[100] w-full px-3 pt-4 md:px-6">
@@ -192,7 +193,7 @@ export const Header = () => {
 
         {/* DESKTOP NAV */}
         <div className="relative z-10 hidden items-center gap-3 xl:flex">
-        <NavigationMenu>
+        <NavigationMenu value={openMenu} onValueChange={setOpenMenu}>
             <NavigationMenuList className="gap-1">
 
             {/* FIRST LINKS */}
@@ -232,7 +233,7 @@ export const Header = () => {
 
                     <div
                         className="
-                        absolute bottom-[7px] left-1/2
+                        absolute bottom-[0px] left-1/2
                         h-[2px] w-0
                         -translate-x-1/2
                         rounded-full
@@ -248,7 +249,7 @@ export const Header = () => {
 
             {/* PODCAST */}
 
-              <NavigationMenuItem>
+              <NavigationMenuItem vlaue="resources">
                 <NavigationMenuTrigger
                 className="
                 group h-10 rounded-2xl bg-transparent px-4
@@ -282,20 +283,20 @@ export const Header = () => {
                     <div className="relative z-10 space-y-4">
                     {resources.map((item) => (
                         <Link
-                        key={item.title}
-                        href={item.href}
-                        className="
-                        group relative block overflow-hidden
-                        rounded-[1.6rem]
-                        border border-white/20
-                        bg-white/[0.58]
-                        p-5
-                        transition-all duration-700
-                        ease-[cubic-bezier(0.22,1,0.36,1)]
-                        hover:-translate-y-1
-                        hover:bg-white/[0.72]
-                        hover:shadow-[0_20px_60px_rgba(216,164,91,0.12)]
-                        "
+                          key={item.title}
+                          href={item.href}
+                          onClick={() => setOpenMenu("")}
+                          className="
+                          group relative block overflow-hidden
+                          rounded-[1.6rem]
+                          border border-white/20
+                          bg-white/[0.58]
+                          p-5
+                          transition-all duration-700
+                          ease-[cubic-bezier(0.22,1,0.36,1)]
+                          hover:-translate-y-1
+                          hover:bg-white/[0.72]
+                          hover:shadow-[0_20px_60px_rgba(216,164,91,0.12)]"
                         >
                         <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-transparent to-primary/[0.06] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
 
@@ -305,7 +306,7 @@ export const Header = () => {
                         <item.icon className="h-4 w-4 transition-transform duration-500 group-hover:scale-110" />
                         )}
 
-                        {item.title}
+                        {/* {item.title} */}
                             <h4 className="mb-2 text-[15px] font-bold tracking-[-0.02em] text-slate-800 transition-colors duration-500 group-hover:text-primary">
                             {item.title}
                             </h4>
@@ -322,7 +323,7 @@ export const Header = () => {
                 </NavigationMenuContent>
             </NavigationMenuItem>
             {/* MINISTRIES */}
-            <NavigationMenuItem>
+            <NavigationMenuItem value="ministries">
                 <NavigationMenuTrigger
                 className="
                 group h-10 rounded-2xl bg-transparent px-4
@@ -361,7 +362,7 @@ export const Header = () => {
                     </div>
 
                     <div>
-                      <Link href="/ministries">
+                      <Link href="/ministries" onClick={() => setOpenMenu("")}>
                         <h3 className="font-heading text-xl font-black tracking-[-0.03em] text-slate-800">
                           Church Ministries
                         </h3>
@@ -378,6 +379,7 @@ export const Header = () => {
                         <Link
                         key={item.title}
                         href={item.href}
+                        onClick={() => setOpenMenu("")}
                         className="
                         group relative overflow-hidden
                         rounded-[1.7rem]
@@ -435,74 +437,6 @@ export const Header = () => {
                 </NavigationMenuContent>
             </NavigationMenuItem>
 
-            {/* MISSIONS */}
-            {/* <NavigationMenuItem>
-                <NavigationMenuTrigger
-                className="
-                group h-10 rounded-2xl bg-transparent px-4
-                text-[14px] font-semibold tracking-[-0.01em]
-                text-slate-700/85
-                transition-all duration-500
-                hover:bg-white/55
-                hover:text-primary
-                hover:shadow-[0_10px_40px_rgba(216,164,91,0.10)]
-                data-[state=open]:bg-white/55
-                "
-                >
-                Missions
-                </NavigationMenuTrigger>
-
-                <NavigationMenuContent>
-                <div
-                    className="
-                    relative w-[470px]
-                    overflow-hidden
-                    rounded-[2rem]
-                    border border-white/30
-                    bg-white/[0.55]
-                    p-6
-                    shadow-[0_20px_80px_rgba(216,164,91,0.12)]
-                    backdrop-blur-[30px]
-                "
-                >
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.72),transparent_30%)]" />
-
-                    <div className="relative z-10 space-y-4">
-                    {missions.map((item) => (
-                        <Link
-                        key={item.title}
-                        href={item.href}
-                        className="
-                        group relative block overflow-hidden
-                        rounded-[1.6rem]
-                        border border-white/20
-                        bg-white/[0.58]
-                        p-5
-                        transition-all duration-700
-                        ease-[cubic-bezier(0.22,1,0.36,1)]
-                        hover:-translate-y-1
-                        hover:bg-white/[0.72]
-                        hover:shadow-[0_20px_60px_rgba(216,164,91,0.12)]
-                        "
-                        >
-                        <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-transparent to-primary/[0.06] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-
-                        <div className="relative z-10">
-                            <h4 className="mb-2 text-[15px] font-bold tracking-[-0.02em] text-slate-800 transition-colors duration-500 group-hover:text-primary">
-                            {item.title}
-                            </h4>
-
-                            <p className="text-sm leading-relaxed text-slate-500">
-                            {item.description}
-                            </p>
-                        </div>
-                        </Link>
-                    ))}
-                    </div>
-                </div>
-                </NavigationMenuContent>
-            </NavigationMenuItem> */}
-
             {/* LAST LINKS */}
             {navLinks.slice(3).map((item) => (
                 <NavigationMenuItem key={item.label}>
@@ -525,7 +459,7 @@ export const Header = () => {
                         {item.label}
                     </span>
 
-                    <div className="absolute bottom-[7px] left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-primary transition-all duration-500 group-hover:w-7" />
+                    <div className="absolute bottom-[0px] left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-primary transition-all duration-500 group-hover:w-7" />
                     </Link>
                 </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -689,11 +623,11 @@ export const Header = () => {
                       onItemClick={() => setOpen(false)}
                     />
 
-                    {/* <MobileDropdown
-                      title="Missions"
-                      items={missions}
+                    <MobileDropdown
+                      title="Resources"
+                      items={resources}
                       onItemClick={() => setOpen(false)}
-                    /> */}
+                    />
 
                     {navLinks.slice(3).map((item) => (
                       <Link

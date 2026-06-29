@@ -58,7 +58,7 @@ export const OurStory = () => {
 
             <div className="relative h-[620px] overflow-hidden rounded-[3rem]">
               <Image
-                src="/images/church-worship.jpg"
+                src="/images/amin.jpg"
                 alt="Church Worship"
                 fill
                 className="object-cover"
