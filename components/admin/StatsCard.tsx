@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 import { LucideIcon } from "lucide-react";
 
@@ -19,13 +18,8 @@ const toneMap = {
   rose: "bg-rose-500/20 text-rose-400",
 };
 
-export const StatCard = ({
-  title,
-  value,
-  icon: Icon,
-  change,
-  tone = "blue",
-}: StatsCardProps) => {
+export const StatCard = ({title, value, icon: Icon, change, tone = "blue"}: StatsCardProps) => {
+  
   return (
     <motion.div
       whileHover={{ y: -4 }}

@@ -1,8 +1,9 @@
 import mongoose, { Schema, Document } from "mongoose";
 
-export type MeetingType = "recurring" | "special";
 
+export type MeetingType = "recurring" | "special";
 export type MeetingFrequency = "weekly" | "monthly";
+
 
 export type WeekOfMonth =
   | "first"
@@ -23,6 +24,7 @@ export interface IMeeting extends Document {
   startDate?: Date;
   endDate?: Date;
   image?: string;
+  imagePublicId: string;
   time?: string;
   isOnline: boolean;
   location?: string;
@@ -87,6 +89,11 @@ const meetingSchema = new Schema<IMeeting>(
     image: {
         type: String,
         trim: true,
+    },
+
+    imagePublicId: {
+      type: String,
+      trim: true,
     },
 
     time: String,

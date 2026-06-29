@@ -247,9 +247,9 @@ export const Header = () => {
                 </NavigationMenuItem>
             ))}
 
-            {/* PODCAST */}
+            {/* RESOURCES */}
 
-              <NavigationMenuItem vlaue="resources">
+              <NavigationMenuItem value="resources">
                 <NavigationMenuTrigger
                 className="
                 group h-10 rounded-2xl bg-transparent px-4

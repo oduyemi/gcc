@@ -84,6 +84,22 @@ export async function getGalleryImages(
   }
 }
 
+export async function getGalleryImageCount() {
+  try {
+    const response = await cloudinary.search
+      .expression("public_id:gcc/gallery/*")
+      .max_results(1)
+      .execute();
+
+    return response.total_count ?? 0;
+  } catch (error) {
+    console.error(error);
+    return 0;
+  }
+}
+
+
+
 export async function getGallerySubfolders(
   section: GallerySection
 ) {
@@ -443,4 +459,62 @@ export async function uploadHeroSlideImage(
         .pipe(stream);
     }
   );
+}
+
+
+export async function uploadMeetingImage(
+  fileBuffer: Buffer,
+  publicId?: string
+): Promise<{
+  url: string;
+  public_id: string;
+}> {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      {
+        folder: "gcc/events",
+
+        resource_type: "image",
+
+        overwrite: true,
+
+        invalidate: true,
+
+        public_id: publicId,
+
+        transformation: [
+          {
+            width: 1600,
+            crop: "limit",
+          },
+          {
+            quality: "auto",
+          },
+          {
+            fetch_format: "auto",
+          },
+        ],
+      },
+      (error, result) => {
+        if (error) {
+          return reject(error);
+        }
+
+        if (!result) {
+          return reject(
+            new Error("Upload failed")
+          );
+        }
+
+        resolve({
+          url: result.secure_url,
+          public_id: result.public_id,
+        });
+      }
+    );
+
+    streamifier
+      .createReadStream(fileBuffer)
+      .pipe(stream);
+  });
 }

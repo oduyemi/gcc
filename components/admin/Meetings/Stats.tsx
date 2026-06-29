@@ -1,6 +1,10 @@
 "use client";
-
-import { CalendarDays, Clock3, CalendarRange, Activity } from "lucide-react";
+import {
+  Activity,
+  CalendarDays,
+  CalendarRange,
+  Clock3,
+} from "lucide-react";
 import { AdminCard } from "@/components/admin/Cards";
 
 interface Props {
@@ -20,49 +24,74 @@ export const MeetingStats = ({
     {
       title: "Total Meetings",
       value: total,
+      description: "All scheduled meetings",
       icon: CalendarDays,
+      color: "text-blue-400",
+      bg: "bg-blue-500/15",
     },
     {
       title: "This Week",
       value: weekly,
+      description: "Meetings this week",
       icon: Clock3,
+      color: "text-emerald-400",
+      bg: "bg-emerald-500/15",
     },
     {
       title: "Upcoming",
       value: upcoming,
+      description: "Next 30 days",
       icon: Activity,
+      color: "text-amber-400",
+      bg: "bg-amber-500/15",
     },
     {
-      title: "Quarter Schedule",
+      title: "Quarterly",
       value: quarterly,
+      description: "Quarterly meetings",
       icon: CalendarRange,
+      color: "text-violet-400",
+      bg: "bg-violet-500/15",
     },
   ];
 
   return (
     <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-      {stats.map((stat) => (
-        <AdminCard key={stat.title}>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-slate-400">
-                {stat.title}
-              </p>
+      {stats.map((stat) => {
+        const Icon = stat.icon;
 
-              <h3 className="mt-2 text-3xl font-bold text-white">
-                {stat.value}
-              </h3>
-            </div>
+        return (
+          <AdminCard
+            key={stat.title}
+            className="group transition-all duration-300 hover:-translate-y-1 hover:border-primary/30"
+          >
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm font-medium text-slate-400">
+                  {stat.title}
+                </p>
 
-            <div className="rounded-2xl bg-primary/20 p-3">
-              <stat.icon
-                size={22}
-                className="text-primary"
-              />
+                <h3 className="mt-3 text-4xl font-bold text-white">
+                  {stat.value}
+                </h3>
+
+                <p className="mt-2 text-xs text-slate-500">
+                  {stat.description}
+                </p>
+              </div>
+
+              <div
+                className={`rounded-2xl p-3 transition-transform duration-300 group-hover:scale-110 ${stat.bg}`}
+              >
+                <Icon
+                  size={24}
+                  className={stat.color}
+                />
+              </div>
             </div>
-          </div>
-        </AdminCard>
-      ))}
+          </AdminCard>
+        );
+      })}
     </div>
   );
 };
