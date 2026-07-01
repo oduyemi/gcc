@@ -53,7 +53,7 @@ const slides = [
   },
 
   {
-    image: "/images/hero2.png",
+    image: "/images/hero2.jpg",
 
     eyebrow: "A HOME FOR EVERY GENERATION",
 
@@ -134,59 +134,31 @@ export const Hero = () => {
 
   return (
     <section className="relative overflow-hidden bg-white">
-      <div className="relative min-h-screen w-full overflow-hidden">
-        {/* =========================
-            BACKGROUND IMAGES
-        ========================== */}
-
+      <div className="relative h-[100svh] overflow-hidden rounded-b-[3rem] shadow-2xl">
         <AnimatePresence mode="wait">
-          <motion.div
-            key={slides[current].image}
-            initial={{
-              opacity: 0,
-              scale: 1.08,
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-            }}
-            exit={{
-              opacity: 0,
-              scale: 1.04,
-            }}
-            transition={{
-              duration: 1.4,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={slides[current].image}
-              alt={slides[current].title}
-              fill
-              priority
-              className="object-cover"
-            />
-
-            {/* LIGHT OVERLAYS */}
-
-            <div className="absolute inset-0 bg-white/10" />
-
-            <div className="absolute inset-0 bg-gradient-to-r from-[#22007C]/60 via-[#22007C]/25 to-transparent" />
-
-            <div className="absolute inset-0 bg-gradient-to-t from-[#22007C]/35 via-transparent to-transparent" />
-
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.25),transparent_30%)]" />
-
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:120px_120px]" />
-
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(34,0,124,0.18)_100%)]" />
+        <motion.div
+          initial={{ scale: 1.12 }}
+          animate={{ scale: 1 }}
+          exit={{ scale: 1.08 }}
+          transition={{
+            duration: 9,
+            ease: "easeOut",
+          }}
+          className="absolute inset-0"
+        >
+          <Image
+            src={slides[current].image}
+            alt={slides[current].title}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+            <div className="absolute inset-0 bg-black/20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#22007C]/80 via-[#22007C]/45 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
           </motion.div>
         </AnimatePresence>
-
-        {/* =========================
-            LUXURY GLOWS
-        ========================== */}
 
         <motion.div
           animate={{
@@ -498,69 +470,6 @@ export const Hero = () => {
                   </Button>
                 </Link>
               </motion.div>
-
-              {/* SERVICE CARDS */}
-
-              {/* <motion.div
-                initial={{ opacity: 0, y: 35 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 1,
-                  delay: 0.25,
-                }}
-                className="mt-10 grid gap-4 sm:grid-cols-2"
-              >
-                {[
-                  {
-                    title: "Sunday Service",
-                    time: "10:30AM – 12:30PM",
-                    desc: "Worship, Word & Encounters",
-                    icon: Flame,
-                  },
-                  {
-                    title: "Friday Prayer",
-                    time: "6PM – 7PM",
-                    desc: "Intercession & Revival",
-                    icon: ShieldCheck,
-                  },
-                ].map((item) => {
-                  const Icon = item.icon;
-
-                  return (
-                    <div
-                      key={item.title}
-                      className="
-                      rounded-[2rem]
-                      border border-white/40
-                      bg-white/65
-                      p-5
-                      shadow-[0_10px_40px_rgba(255,255,255,0.12)]
-                      backdrop-blur-3xl
-                    "
-                    >
-                      <div className="flex items-start gap-4">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#22007C]/10">
-                          <Icon className="h-5 w-5 text-[#22007C]" />
-                        </div>
-
-                        <div>
-                          <p className="text-xs font-black tracking-[0.25em] text-[#AF3800] uppercase">
-                            {item.title}
-                          </p>
-
-                          <h4 className="mt-2 text-lg font-black text-[#22007C]">
-                            {item.time}
-                          </h4>
-
-                          <p className="mt-1 text-sm leading-6 text-slate-600">
-                            {item.desc}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </motion.div> */}
             </div>
 
             {/* RIGHT PANEL */}
@@ -806,10 +715,6 @@ export const Hero = () => {
           ))}
         </div>
 
-        {/* =========================
-            NAVIGATION
-        ========================== */}
-
         <div className="absolute bottom-6 right-6 z-20 flex items-center gap-3">
           <button
             onClick={prevSlide}
@@ -847,9 +752,6 @@ export const Hero = () => {
             <ChevronRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5" />
           </button>
         </div>
-
-        {/* bottom fade */}
-
         <div className="absolute inset-x-0 bottom-0 z-[2] h-52 bg-gradient-to-t from-white to-transparent" />
       </div>
     </section>

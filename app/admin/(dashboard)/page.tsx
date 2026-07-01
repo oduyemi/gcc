@@ -15,6 +15,7 @@ import { StatCard } from "@/components/admin/StatsCard";
 import { Meeting } from "@/types/meeting";
 import { useEffect, useState } from "react";
 import { UpcomingMeetingsCard } from "@/components/admin/Meetings/Upcoming";
+import { AdminQuickActions } from "@/components/admin/administrators/QuickActions";
 
 interface NewMember {
   _id: string;
@@ -276,37 +277,7 @@ export default function DashboardPage() {
         </AdminCard>
 
         {/* Quick Actions */}
-
-        <AdminCard>
-          <h2 className="text-xl font-bold">Quick Actions</h2>
-
-          <div className="mt-6 space-y-3">
-            {quickActions.map((item) => (
-              <button
-                key={item.label}
-                className="
-                  flex
-                  w-full
-                  items-center
-                  gap-3
-                  rounded-2xl
-                  bg-white/30
-                  p-4
-                  text-left
-                  transition
-                  hover:bg-white/50
-                "
-              >
-                <item.icon
-                  size={18}
-                  className="text-primary"
-                />
-
-                <span>{item.label}</span>
-              </button>
-            ))}
-          </div>
-        </AdminCard>
+        <AdminQuickActions />
       </section>
 
       {/* Secondary Grid */}
@@ -395,35 +366,6 @@ export default function DashboardPage() {
           </div>
         </AdminCard>
       </section>
-
-      {/* Ministry Snapshot */}
-
-      {/* <AdminCard>
-        <div className="flex items-center justify-between">
-          <h2 className="text-xl font-bold">
-            Ministry Health Snapshot
-          </h2>
-
-          <HeartHandshake
-            className="text-primary"
-            aria-label="Ministry Health Snapshot"
-          />
-        </div>
-
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {ministryMetrics.map((metric) => (
-            <div key={metric.label}>
-              <p className="text-sm text-muted-foreground">
-                {metric.label}
-              </p>
-
-              <h3 className="mt-2 text-3xl font-bold">
-                {metric.value}
-              </h3>
-            </div>
-          ))}
-        </div>
-      </AdminCard> */}
     </div>
   );
 }

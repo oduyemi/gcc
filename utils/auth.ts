@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 import jwt from "jsonwebtoken";
 import User from "@/models/user.model";
 import bcrypt from "bcryptjs";
@@ -20,17 +20,26 @@ export const verifyToken = (token: string): JwtPayload | null => {
 };
 
 
+
 export const getCurrentUser = async () => {
   const headerList = await headers();
+
+  let token: string | undefined;
+
   const authHeader = headerList.get("authorization");
 
-  if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return null;
+  if (authHeader?.startsWith("Bearer ")) {
+    token = authHeader.split(" ")[1];
   }
 
-  const token = authHeader.split(" ")[1];
+  if (!token) {
+    token = (await cookies()).get("token")?.value;
+  }
+
+  if (!token) return null;
 
   const decoded = verifyToken(token);
+
   if (!decoded) return null;
 
   return await User.findById(decoded.userId).select("-password");

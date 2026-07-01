@@ -9,6 +9,8 @@ export interface IContact extends Document {
   subject: string;
   message: string;
   status: "pending" | "treated";
+  treatedAt?: Date;
+  treatedBy?: Types.ObjectId;
   createdAt: Date;
 }
 
@@ -34,7 +36,15 @@ const contactSchema = new Schema<IContact>(
       type: String, 
       enum: ["pending", "treated"],
       default:"pending"
-  },
+    },
+    treatedAt: {
+      type: Date,
+    },
+    
+    treatedBy: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );
