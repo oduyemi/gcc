@@ -17,7 +17,7 @@ const meetings = [
       time: "10:00 AM - 10:30 AM",
       isOnline: false,
       sortOrder: 1,
-      image:"",
+      image:"https://res.cloudinary.com/dymd1jkbl/image/upload/v1782916055/gcc/events/celibration_uwsdie.jpg",
     },
   
     {
@@ -30,6 +30,7 @@ const meetings = [
       time: "10:30 AM - 12:30 PM",
       isOnline: false,
       sortOrder: 2,
+      image:"https://res.cloudinary.com/dymd1jkbl/image/upload/v1782916055/gcc/events/celibration_uwsdie.jpg"
     },
   
     {
@@ -57,6 +58,7 @@ const meetings = [
       isOnline: true,
       location: "Zoom",
       sortOrder: 4,
+      image:"https://res.cloudinary.com/dymd1jkbl/image/upload/v1782916055/gcc/events/encounter_kmkojo.jpg"
     },
   
     {
@@ -158,6 +160,7 @@ const meetings = [
         endDate: new Date("2026-07-03"),
         isOnline: false,
         sortOrder: 12,
+        image:"https://res.cloudinary.com/dymd1jkbl/image/upload/v1782916317/gcc/events/fasting_wxk6o6.jpg"
       },
       
       {
