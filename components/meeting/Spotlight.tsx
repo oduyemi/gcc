@@ -11,10 +11,24 @@ import {
   Users,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useEffect, useMemo, useState } from "react";
+import { getCountdown, getNextSunday } from "@/utils/getNextSunday";
+import dayjs from "dayjs";
 
 
 
 export const NextEventSpotlight = () => {
+  const nextSunday = useMemo(() => getNextSunday(), []);
+  const [countdown, setCountdown] = useState(getCountdown());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown(getCountdown());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative overflow-hidden px-4 py-24 md:px-8 lg:px-12">
       {/* Background Effects */}
@@ -181,11 +195,23 @@ export const NextEventSpotlight = () => {
 
                 <div className="mt-8 grid grid-cols-4 gap-3">
                   {[
-                    { value: "03", label: "Days" },
-                    { value: "12", label: "Hours" },
-                    { value: "45", label: "Min" },
-                    { value: "18", label: "Sec" },
-                  ].map((item) => (
+                    {
+                      value: String(countdown.days).padStart(2, "0"),
+                      label: "Days",
+                    },
+                    {
+                      value: String(countdown.hours).padStart(2, "0"),
+                      label: "Hours",
+                    },
+                    {
+                      value: String(countdown.minutes).padStart(2, "0"),
+                      label: "Min",
+                    },
+                    {
+                      value: String(countdown.seconds).padStart(2, "0"),
+                      label: "Sec",
+                    },
+                    ].map((item) => (
                     <div
                       key={item.label}
                       className="
@@ -221,7 +247,7 @@ export const NextEventSpotlight = () => {
                   <div className="flex items-center gap-3">
                     <CalendarDays className="h-5 w-5 text-primary" />
                     <span className="font-semibold">
-                      Sunday, 31 May 2026
+                    {dayjs(nextSunday).format("dddd, D MMMM YYYY")}
                     </span>
                   </div>
 
