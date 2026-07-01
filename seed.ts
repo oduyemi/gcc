@@ -153,13 +153,27 @@ const meetings = [
       
       {
         title: "Fasting & Prayer Week",
-        description: "Church-wide Fasting and Prayer Week",
+        description: "Evening Session. Church-wide Fasting and Prayer Week",
         category: "special",
         type: "special",
         startDate: new Date("2026-06-29"),
         endDate: new Date("2026-07-03"),
+        time: "05:30 AM",
         isOnline: false,
         sortOrder: 12,
+        image:"https://res.cloudinary.com/dymd1jkbl/image/upload/v1782916317/gcc/events/fasting_wxk6o6.jpg"
+      },
+
+      {
+        title: "Fasting & Prayer Week",
+        description: "Morning Session. Church-wide Fasting and Prayer Week",
+        category: "special",
+        type: "special",
+        startDate: new Date("2026-06-29"),
+        endDate: new Date("2026-07-03"),
+        time: "06:0 PM",
+        isOnline: false,
+        sortOrder: 13,
         image:"https://res.cloudinary.com/dymd1jkbl/image/upload/v1782916317/gcc/events/fasting_wxk6o6.jpg"
       },
       
@@ -171,7 +185,7 @@ const meetings = [
         startDate: new Date("2026-07-05"),
         time: "10:30 AM",
         isOnline: false,
-        sortOrder: 13,
+        sortOrder: 14,
       }
   ];
 
