@@ -171,7 +171,7 @@ const meetings = [
         type: "special",
         startDate: new Date("2026-06-29"),
         endDate: new Date("2026-07-03"),
-        time: "06:0 PM",
+        time: "06:00 PM",
         isOnline: false,
         sortOrder: 13,
         image:"https://res.cloudinary.com/dymd1jkbl/image/upload/v1782916317/gcc/events/fasting_wxk6o6.jpg"
