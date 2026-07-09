@@ -151,7 +151,7 @@ export const Hero = () => {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover object-[62%] sm:object-center"
           />
             <div className="absolute inset-0 bg-black/20" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#22007C]/80 via-[#22007C]/45 to-transparent" />
@@ -304,7 +304,7 @@ export const Hero = () => {
           lg:pt-36
         "
         >
-          <div className="grid w-full items-center gap-16 gap-12 lg:grid-cols-[1.05fr_0.95fr] xl:grid-cols-[1.1fr_0.9fr]">
+          <div className="grid w-full items-center gap-16 gap-12 grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] xl:grid-cols-[1.1fr_0.9fr]">
             {/* LEFT */}
 
             <div className="max-w-3xl">
@@ -516,7 +516,8 @@ export const Hero = () => {
                   rounded-[2rem]
                   lg:rounded-[2.8rem]
                   border border-white/40
-                  bg-white/75
+                  bg-white/90
+                  lg:bg-white/75    
                   p-5
                   sm:p-6
                   lg:p-7
@@ -707,7 +708,7 @@ export const Hero = () => {
 
         <div
           className="
-          absolute bottom-7 left-1/2 z-20
+          absolute bottom-10 md:bottom-7 left-1/2 z-20
           flex -translate-x-1/2 items-center gap-3
         "
         >
@@ -732,7 +733,7 @@ export const Hero = () => {
           ))}
         </div>
 
-        <div className="absolute bottom-6 right-6 z-20 flex items-center gap-3">
+        <div className="absolute bottom-24 right-4 md:bottom-6 md:right-6 z-20 flex items-center gap-3">
           <button
             onClick={prevSlide}
             className="
