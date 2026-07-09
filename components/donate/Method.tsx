@@ -228,7 +228,7 @@ export const DonationMethod = () => {
               </div>
 
               <Link
-                href="https://www.paypal.com/donate?token=GnsYFRHwyBpGcb-6e3bRTC8lMPoIUcR7yWQZh7wsUPkuKuL6z0HoIxM4ZjvY9p0oVPSN6GSbBd4mNtFq"
+                href="https://www.paypal.com/donate?token=T2phWbeRXr5YAH90w6SqPmEk90OHjzYCdKfZt213hkCHqQ2fEZ9OsbZoy3E-G2aq0zcnBxPyB5ZNrDm-"
                 target="_blank"
                 className="
                   mt-10
