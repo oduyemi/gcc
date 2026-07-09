@@ -1,0 +1,26 @@
+{
+    "name": "Global Crossfire UK | Pentecostal Church in Margate, Kent",
+    "short_name": "GCC",
+    "description": "Global Crossfire Church UK is a welcoming Pentecostal church in Margate, Kent. Join us every Sunday for passionate worship, biblical teaching, prayer, discipleship, youth ministry, family fellowship, and life-transforming encounters with Jesus Christ.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f7f2ec",
+    "theme_color": "#1e293b",
+    "icons": [
+      {
+        "src": "/logo192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "/logo512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      },
+      {
+        "src": "/apple-touch-icon.png",
+        "sizes": "180x180",
+        "type": "image/png"
+      }
+    ]
+  }
