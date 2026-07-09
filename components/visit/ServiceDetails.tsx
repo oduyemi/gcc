@@ -223,7 +223,7 @@ export const VisitServiceDetails = () => {
             </div>
 
             <Link
-              href="/contact"
+              href="https://maps.app.goo.gl/r6rvUFyiA2rsqqA57"
               className="
               inline-flex items-center gap-2
               rounded-2xl

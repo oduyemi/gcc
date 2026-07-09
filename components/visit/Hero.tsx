@@ -192,7 +192,7 @@ export const VisitHero = () => {
               "
               >
                 <Link
-                  href="https://maps.google.com"
+                  href="https://maps.app.goo.gl/r6rvUFyiA2rsqqA57"
                   target="_blank"
                 >
                   Get Directions

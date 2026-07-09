@@ -56,6 +56,20 @@ const ministers = [
   },
 ];
 
+const deacons = [
+  {
+    name: "Edward McCann",
+    role: "Deacon",
+    phone: "01843265001",
+    image: "/images/staff/mccann.jpg",
+  },
+  {
+    name: "Joshua Johnson",
+    role: "Deacon",
+    image: "/images/staff/johnson.jpeg",
+  }
+]
+
 export const OurPastors = () => {
   return (
     <section className="relative overflow-hidden px-4 py-24 md:px-8 lg:px-12">
@@ -114,10 +128,42 @@ export const OurPastors = () => {
             </span>
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
+          {/* <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
             Passionate leaders dedicated to helping people know Christ,
             grow in faith and fulfil God's purpose for their lives.
-          </p>
+          </p> */}
+          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-4">
+            {[
+              {
+                value: "30+",
+                label: "Years of Ministry",
+              },
+              {
+                value: "4",
+                label: "Leadership Groups",
+              },
+              {
+                value: "Spirit",
+                label: "Led Ministry",
+              },
+              {
+                value: "1",
+                label: "Church Family",
+              },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="glass rounded-3xl p-6 text-center"
+              >
+                <h3 className="text-3xl font-black text-primary">
+                  {item.value}
+                </h3>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  {item.label}
+                </p>
+              </div>
+            ))}
+          </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {[
@@ -215,18 +261,14 @@ export const OurPastors = () => {
                   {overseer.bio}
                 </p>
 
-                <div className="mt-8">
-                  <div
-                    className="
-                      glass
-                      inline-flex items-center gap-3
-                      rounded-full
-                      px-5 py-3
-                    "
+                <div className="mt-8 gap-3">
+                  <a
+                    href={`mailto:${overseer.email}`}
+                    className="glass inline-flex items-center gap-2 rounded-full px-5 py-3"
                   >
                     <Mail className="h-4 w-4 text-primary" />
-                    {overseer.email}
-                  </div>
+                    Email
+                  </a>
                 </div>
               </div>
             </div>
@@ -301,22 +343,16 @@ export const OurPastors = () => {
                       px-4 py-3
                     "
                   >
-                    <Mail className="h-4 w-4 text-primary" />
-                    {pastor.email}
+                    
+                    <a
+                      href={`mailto:${pastor.email}`}
+                      className="glass inline-flex items-center gap-2 rounded-full px-5 py-3"
+                    >
+                      <Mail className="h-4 w-4 text-primary" />
+                      Email
+                    </a>
                   </div>
                 </div>
-
-                <Link
-                  href="/about"
-                  className="
-                    mt-8
-                    inline-flex items-center gap-2
-                    font-bold text-primary
-                  "
-                >
-                  Learn More
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
               </div>
 
               <div className="relative h-[550px]">
@@ -349,7 +385,7 @@ export const OurPastors = () => {
               <Users2 className="h-5 w-5 text-primary" />
 
               <h3 className="text-3xl font-black">
-                Ministry Team
+                Our Ministers
               </h3>
             </div>
 
@@ -428,6 +464,73 @@ export const OurPastors = () => {
             ))}
           </div>
         </motion.div>
+
+        {/* Deacons */}
+
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  className="mt-24"
+>
+  <div className="text-center">
+    <div className="inline-flex items-center gap-2">
+      <Heart className="h-5 w-5 text-primary" />
+
+      <h3 className="text-3xl font-black">
+        Our Deacons
+      </h3>
+    </div>
+
+    <p className="mt-3 text-muted-foreground">
+      Faithful servants supporting the ministry through leadership,
+      care and practical service.
+    </p>
+  </div>
+
+  <div className="mt-10 grid gap-6 md:grid-cols-2">
+    {deacons.map((deacon) => (
+      <motion.div
+        key={deacon.name}
+        whileHover={{ y: -6 }}
+        className="glass overflow-hidden rounded-[2rem]"
+      >
+        <div className="grid md:grid-cols-[180px_1fr]">
+          <div className="relative h-60 md:h-full">
+            <Image
+              src={deacon.image}
+              alt={deacon.name}
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          <div className="flex flex-col justify-center p-6">
+            <span className="inline-flex w-fit rounded-full bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-widest text-primary">
+              Deacon
+            </span>
+
+            <h4 className="mt-4 text-2xl font-black">
+              {deacon.name}
+            </h4>
+
+            <p className="mt-2 text-muted-foreground">
+              Supporting the vision of Global Crossfire Church through
+              faithful service, stewardship and ministry to people.
+            </p>
+
+            {deacon.phone && (
+              <div className="mt-5 inline-flex items-center gap-2 text-sm">
+                <Phone className="h-4 w-4 text-primary" />
+                {deacon.phone}
+              </div>
+            )}
+          </div>
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</motion.div>
 
         {/* CTA */}
 

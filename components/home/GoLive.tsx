@@ -129,7 +129,7 @@ export function HomeLiveStreamCTA() {
                   </p>
 
                   <p className="mt-2 text-xl font-bold">
-                    9:00 AM
+                    10:00 AM
                   </p>
                 </div>
 

@@ -7,10 +7,8 @@ import {
   ChevronLeft,
   ChevronRight,
   Clock3,
-  Flame,
   Globe2,
   MapPin,
-  // Play,
   ShieldCheck,
   Sparkles,
   Star,
@@ -23,7 +21,7 @@ import { cn } from "@/lib/utils";
 
 const slides = [
   {
-    image: "/images/hero1.jpg",
+    image: "/images/hero.jpg",
 
     eyebrow: "WELCOME TO GLOBAL CROSSFIRE",
 
@@ -134,7 +132,8 @@ export const Hero = () => {
 
   return (
     <section className="relative overflow-hidden bg-white">
-      <div className="relative h-[100svh] overflow-hidden rounded-b-[3rem] shadow-2xl">
+      <div className="relative min-h-[760px] md:min-h-[900px] lg:h-[100svh] overflow-hidden rounded-b-[2rem] md:rounded-b-[3rem] shadow-2xl"
+>
         <AnimatePresence mode="wait">
         <motion.div
           initial={{ scale: 1.12 }}
@@ -294,12 +293,18 @@ export const Hero = () => {
           flex min-h-screen
           max-w-7xl
           items-center
-          px-6 pb-20 pt-32
+          px-5
+          pt-28
+          pb-24
+          sm:px-8
+          sm:pt-32
           md:px-10
+          md:pb-28
           lg:px-16
+          lg:pt-36
         "
         >
-          <div className="grid w-full items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="grid w-full items-center gap-16 gap-12 lg:grid-cols-[1.05fr_0.95fr] xl:grid-cols-[1.1fr_0.9fr]">
             {/* LEFT */}
 
             <div className="max-w-3xl">
@@ -342,14 +347,15 @@ export const Hero = () => {
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   className="
-                  text-5xl
-                  font-black
-                  leading-[0.9]
-                  tracking-[-0.07em]
-                  text-white
+                  text-[2.8rem]
+                  leading-[0.95]
                   sm:text-6xl
+                  md:text-[4.4rem]
                   lg:text-7xl
                   xl:text-[5.6rem]
+                  font-black
+                  tracking-[-0.07em]
+                  text-white
                 "
                 >
                   {slides[current].title}
@@ -371,8 +377,10 @@ export const Hero = () => {
                   className="
                   mt-8
                   max-w-2xl
-                  text-lg
-                  leading-8
+                  text-base
+                  leading-7
+                  sm:text-lg
+                  sm:leading-8
                   text-slate-100
                 "
                 >
@@ -391,10 +399,13 @@ export const Hero = () => {
                 }}
                 className="mt-8 flex flex-wrap gap-3"
               >
-                {slides[current].floatingWords.map((word) => (
+                {
+                slides[current].floatingWords.map((word) => (
                   <div
                     key={word}
                     className="
+                    hidden sm:flex 
+                    flex-wrap gap-3
                     rounded-full
                     border border-white/40
                     bg-white/70
@@ -421,13 +432,13 @@ export const Hero = () => {
                   duration: 0.8,
                   delay: 0.2,
                 }}
-                className="mt-10 flex flex-col gap-4 sm:flex-row"
+                className="mt-10 flex flex-col gap-3 md:flex-row"
               >
                 <Button
                   asChild
                   className="
+                  w-full md:w-auto h-13
                   group
-                  h-14
                   rounded-2xl
                   border border-white/20
                   bg-[#AF3800]
@@ -499,12 +510,16 @@ export const Hero = () => {
                   className="
                   relative
                   w-full
-                  max-w-xl
+                  max-w-md
+                  lg:max-w-xl
                   overflow-hidden
-                  rounded-[2.8rem]
+                  rounded-[2rem]
+                  lg:rounded-[2.8rem]
                   border border-white/40
                   bg-white/75
-                  p-7
+                  p-5
+                  sm:p-6
+                  lg:p-7
                   shadow-[0_30px_100px_rgba(255,255,255,0.2)]
                   backdrop-blur-[35px]
                 "
@@ -573,7 +588,8 @@ export const Hero = () => {
                     <div className="mt-8">
                       <h3
                         className="
-                        text-4xl
+                        text-3xl
+                        sm:text-4xl
                         font-black
                         leading-[1]
                         tracking-[-0.05em]
@@ -596,11 +612,12 @@ export const Hero = () => {
                       rounded-[2rem]
                       border border-[#22007C]/10
                       bg-white/80
-                      p-5
+                      p-4
+                      sm:p-5
                     "
                     >
                       <div className="flex items-start gap-4">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#22007C]/10">
+                        <div className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl bg-[#22007C]/10">
                           <MapPin className="h-5 w-5 text-[#22007C]" />
                         </div>
 
