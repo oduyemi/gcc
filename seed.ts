@@ -7,18 +7,18 @@ import Meeting from "./models/meeting.model";
 
 
 const meetings = [
-    {
-      title: "Sunday School Meeting",
-      description: "Weekly Bible Study",
-      category: "fellowship",
-      type: "recurring",
-      frequency: "weekly",
-      dayOfWeek: 0, // Sunday
-      time: "10:00 AM - 10:30 AM",
-      isOnline: false,
-      sortOrder: 1,
-      image:"https://res.cloudinary.com/dymd1jkbl/image/upload/v1782916055/gcc/events/celibration_uwsdie.jpg",
-    },
+    // {
+    //   title: "Sunday School Meeting",
+    //   description: "Weekly Bible Study",
+    //   category: "fellowship",
+    //   type: "recurring",
+    //   frequency: "weekly",
+    //   dayOfWeek: 0, // Sunday
+    //   time: "10:00 AM - 10:30 AM",
+    //   isOnline: false,
+    //   sortOrder: 1,
+    //   image:"https://res.cloudinary.com/dymd1jkbl/image/upload/v1782916055/gcc/events/celibration_uwsdie.jpg",
+    // },
   
     {
       title: "Sunday Celebration Gathering",

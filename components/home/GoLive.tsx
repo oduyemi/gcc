@@ -129,11 +129,11 @@ export function HomeLiveStreamCTA() {
                   </p>
 
                   <p className="mt-2 text-xl font-bold">
-                    10:00 AM
+                    10:30 AM
                   </p>
                 </div>
 
-                <div className="glass rounded-3xl p-5">
+                {/* <div className="glass rounded-3xl p-5">
                   <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground">
                     Midweek Service
                   </p>
@@ -141,7 +141,7 @@ export function HomeLiveStreamCTA() {
                   <p className="mt-2 text-xl font-bold">
                     6:00 PM
                   </p>
-                </div>
+                </div> */}
               </div>
             </div>
 
@@ -204,7 +204,7 @@ export function HomeLiveStreamCTA() {
                   duration: 5,
                   repeat: Infinity,
                 }}
-                className="glass absolute -left-3 top-12 rounded-3xl p-5"
+                className="glass absolute -left-3 top-12 rounded-3xl p-5 sm:hidden"
               >
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">
                   Worship
@@ -224,7 +224,7 @@ export function HomeLiveStreamCTA() {
                   duration: 6,
                   repeat: Infinity,
                 }}
-                className="glass absolute -right-3 bottom-24 rounded-3xl p-5"
+                className="glass absolute -right-3 bottom-24 rounded-3xl p-5 sm:hidden "
               >
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">
                   Available

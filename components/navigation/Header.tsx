@@ -166,7 +166,7 @@ export const Header = () => {
             <h1
               className="
               font-heading
-              text-[1.05rem]
+              text-[1.092rem]
               font-black
               tracking-[-0.04em]
               text-slate-800
