@@ -93,7 +93,7 @@ const ministries = [
 // ];
 
 const navLinks = [
-  { label: "Home", href: "/" },
+  // { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   // { label: "Podcast", href: "/podcast", icon: Mic2 },
   { label: "Community Impact", href:"/community"},
@@ -166,7 +166,7 @@ export const Header = () => {
             <h1
               className="
               font-heading
-              text-[1.092rem]
+              text-[1.35rem]
               font-black
               tracking-[-0.04em]
               text-slate-800
