@@ -162,6 +162,12 @@ export const OurStory = () => {
               Global Crossfire Church UK was founded with a passion to see
               people encounter Jesus, grow in faith and become agents
               of transformation in their communities and beyond.
+              The mission of Crossfire is to equip the saints to do the 
+              work of their ministry as they become mature in the use of 
+              their God given abilities, to help them to know their place of 
+              ministry and support them to grow into the full stature of Jesus 
+              Christ through the power of the Holy Spirit to the glory of 
+              God the Father, (Ephesians 4:11-16).
             </p>
 
             {/* Stats */}
