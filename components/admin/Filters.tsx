@@ -40,7 +40,7 @@ export const Filters = ({
   filters,
 }: FiltersProps) => {
   return (
-    <div className="flex flex-col gap-4 md:flex-row">
+    <div className="flex flex-wrap items-center gap-3">
       {filters.map((filter, index) => {
         if (filter.type === "select") {
           return (
@@ -54,7 +54,8 @@ export const Filters = ({
               }
             >
               <SelectTrigger
-                className={filter.width ?? "w-full md:w-56"}
+                className={filter.width ?? "w-full sm:w-64 lg:w-56"}
+                aria-label={filter.placeholder}
               >
                 <SelectValue
                   placeholder={filter.placeholder}
@@ -84,10 +85,14 @@ export const Filters = ({
             key={index}
             value={filter.value}
             placeholder={filter.placeholder}
+            aria-label={filter.placeholder}
             onChange={(e) =>
               filter.onChange(e.target.value)
             }
-            className={filter.width ?? "md:w-72"}
+            className={
+              filter.width ??
+              "w-full sm:w-72 lg:w-80"
+            }
           />
         );
       })}

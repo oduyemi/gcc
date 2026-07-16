@@ -72,6 +72,18 @@ export default function Prayer() {
 
   return (
     <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold text-white">
+            Prayer Requests
+          </h1>
+
+          <p className="mt-1 text-slate-400">
+            Manage all prayer request forms entries and
+            follow-up records.
+          </p>
+        </div>
+      </div>
       <PrayerStats
         requests={filteredRequests}
         loading={loading}
