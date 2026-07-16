@@ -1,13 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
-import { ContactFilters } from "@/components/admin/contact/Filters";
 import { ContactTable } from "@/components/admin/contact/Table";
 import { ContactStats } from "@/components/admin/contact/Stats";
 import { ContactEntry } from "@/types/contact";
 import { ViewContactDialog } from "@/components/admin/dialog/ViewContact";
 import { DeleteContactDialog } from "@/components/admin/dialog/DeleteContact";
+import { Filters } from "@/components/admin/Filters";
 
-export default function ContactPage() {
+export default function AdminContact() {
   const [status, setStatus] = useState("");
   const [topic, setTopic] = useState("");
   const [contacts, setContacts] = useState<ContactEntry[]>([]);
@@ -88,11 +88,31 @@ export default function ContactPage() {
       <ContactStats />
 
       <div className="mt-6">
-        <ContactFilters
-          status={status}
-          topic={topic}
-          onStatusChange={setStatus}
-          onTopicChange={setTopic}
+        <Filters
+          filters={[
+            {
+              type: "select",
+              value: status,
+              placeholder: "Filter by status",
+              options: [
+                {
+                  label: "Pending",
+                  value: "pending",
+                },
+                {
+                  label: "Treated",
+                  value: "treated",
+                },
+              ],
+              onChange: setStatus,
+            },
+            {
+              type: "input",
+              value: topic,
+              placeholder: "Filter by topic...",
+              onChange: setTopic,
+            },
+          ]}
         />
       </div>
 

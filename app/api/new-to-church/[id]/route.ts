@@ -11,11 +11,8 @@ export async function GET(
 ) {
   try {
     await dbConnect();
-
     const { id } = await params;
-
     const entry = await NewToChurch.findById(id);
-
     if (!entry) {
       return NextResponse.json(
         {

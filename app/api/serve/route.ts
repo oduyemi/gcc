@@ -9,14 +9,10 @@ import { sendEmailWithRetry } from "@/helper/emailLogic";
 export async function GET(req: NextRequest) {
   try {
     await dbConnect();
-
     const { searchParams } = new URL(req.url);
-
     const status = searchParams.get("status");
     const interest = searchParams.get("interest");
-
     const filter: Record<string, string> = {};
-
     if (status) {
       filter.status = status;
     }
@@ -52,9 +48,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
    try {
      await dbConnect();
- 
      const body = await req.json();
- 
      const request = await Serve.create({
        ...body,
        status: "pending",

@@ -11,11 +11,8 @@ export async function GET(
 ) {
   try {
     await dbConnect();
-
     const { id } = await params;
-
     const request = await Serve.findById(id);
-
     if (!request) {
       return NextResponse.json(
         {
@@ -52,11 +49,8 @@ export async function PATCH(
 ) {
   try {
     await dbConnect();
-
     const { id } = await params;
-
     const body = await req.json();
-
     const request = await Serve.findByIdAndUpdate(
       id,
       body,
@@ -102,11 +96,8 @@ export async function DELETE(
 ) {
   try {
     await dbConnect();
-
     const { id } = await params;
-
     const request = await Serve.findByIdAndDelete(id);
-
     if (!request) {
       return NextResponse.json(
         {

@@ -6,7 +6,7 @@ import {
   CheckCircle2,
   Heart,
 } from "lucide-react";
-import { AdminCard } from "@/components/admin/Cards";
+import { StatsGrid, StatItem } from "@/components/admin/StatsGrid";
 
 interface Contact {
   _id: string;
@@ -18,88 +18,54 @@ export function ContactStats() {
   const [contacts, setContacts] = useState<Contact[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchContacts = async () => {
-    try {
-      setLoading(true);
-
-      const res = await fetch("/api/contact");
-
-      const json = await res.json();
-
-      if (json.success) {
-        setContacts(json.data ?? []);
-      }
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchContacts = async () => {
+      try {
+        const res = await fetch("/api/contact");
+        const json = await res.json();
+
+        if (json.success) {
+          setContacts(json.data ?? []);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     fetchContacts();
   }, []);
 
-  const total = contacts.length;
-
-  const pending = contacts.filter(
-    (contact) => contact.status === "pending"
-  ).length;
-
-  const treated = contacts.filter(
-    (contact) => contact.status === "treated"
-  ).length;
-
-  const prayer = contacts.filter(
-    (contact) =>
-      contact.topic.toLowerCase() === "prayer"
-  ).length;
-
-  const stats = [
+  const stats: StatItem[] = [
     {
       label: "Total Entries",
-      value: total,
+      value: contacts.length,
       icon: Mail,
     },
     {
       label: "Pending",
-      value: pending,
+      value: contacts.filter(c => c.status === "pending").length,
       icon: Clock3,
     },
     {
       label: "Treated",
-      value: treated,
+      value: contacts.filter(c => c.status === "treated").length,
       icon: CheckCircle2,
     },
     {
       label: "Prayer Related",
-      value: prayer,
+      value: contacts.filter(
+        c => c.topic.toLowerCase() === "prayer"
+      ).length,
       icon: Heart,
     },
   ];
 
   return (
-    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-      {stats.map((stat) => (
-        <AdminCard key={stat.label}>
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-slate-400">
-                {stat.label}
-              </p>
-
-              <h3 className="mt-2 text-3xl font-bold text-white">
-                {loading ? "..." : stat.value}
-              </h3>
-            </div>
-
-            <stat.icon
-              className="text-primary"
-              size={24}
-            />
-          </div>
-        </AdminCard>
-      ))}
-    </div>
+    <StatsGrid
+      stats={stats}
+      loading={loading}
+    />
   );
 }

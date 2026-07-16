@@ -58,14 +58,11 @@ export async function PATCH(
 
     const body = await req.json();
 
-    const request = await PrayerRequest.findByIdAndUpdate(
-      id,
-      body,
-      {
-        new: true,
-        runValidators: true,
-      }
-    );
+    const request = await PrayerRequest.findByIdAndUpdate(id, {
+      status: "treated",
+      treatedAt: new Date(),
+      // treatedBy: session.user.id, // or your authenticated admin ID
+    });
 
     if (!request) {
       return NextResponse.json(
