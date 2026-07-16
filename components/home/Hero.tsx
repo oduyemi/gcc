@@ -123,43 +123,68 @@ export const Hero = () => {
   };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      nextSlide();
+    const timer = setTimeout(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
     }, 8500);
+  
+    return () => clearTimeout(timer);
+  }, [current]);
 
-    return () => clearInterval(timer);
+  useEffect(() => {
+    slides.forEach(slide => {
+        const img = new window.Image();
+        img.src = slide.image;
+      });
   }, []);
 
   return (
     <section className="relative overflow-hidden bg-white">
-      <div className="relative min-h-[760px] md:min-h-[900px] lg:h-[100svh] overflow-hidden rounded-b-[2rem] md:rounded-b-[3rem] shadow-2xl"
->
-        <AnimatePresence mode="wait">
-        <motion.div
-          initial={{ scale: 1.12 }}
-          animate={{ scale: 1 }}
-          exit={{ scale: 1.08 }}
-          transition={{
-            duration: 9,
-            ease: "easeOut",
-          }}
-          className="absolute inset-0"
-        >
-          <Image
-            src={slides[current].image}
-            alt={slides[current].title}
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[62%] sm:object-center"
-          />
+      <div className="relative min-h-[760px] md:min-h-[900px] lg:h-[100svh] overflow-hidden rounded-b-[2rem] md:rounded-b-[3rem] shadow-2xl">
+        <div className="absolute inset-0">
+        {slides.map((slide, index) => (
+          <motion.div
+            key={slide.image}
+            className="absolute inset-0"
+            initial={false}
+            animate={{
+                opacity: current === index ? 1 : 0,
+                scale: current === index ? 1.12 : 1.15,
+            }}
+            transition={{
+              opacity:{
+                duration:.8,
+                ease:[0.4,0,0.2,1]
+              },
+              scale: {
+                duration: 9,
+                ease: "linear",
+              },
+            }}
+            style={{
+              willChange: "opacity, transform",
+              backfaceVisibility: "hidden",
+              transform: "translateZ(0)",
+            }}      
+          >
+            <Image
+              priority={index === 0}
+              loading={index === 0 ? "eager" : "lazy"}        
+              src={slide.image}
+              alt={slide.title}
+              fill
+              sizes="100vw"
+              className="object-cover object-[62%] sm:object-center"
+            />
+
             <div className="absolute inset-0 bg-black/20" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#22007C]/80 via-[#22007C]/45 to-transparent" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10" />
           </motion.div>
-        </AnimatePresence>
+        ))}
+      </div>
 
         <motion.div
+          initial={{ opacity:0, y:-30 }}
           animate={{
             y: [0, -35, 0],
             opacity: [0.18, 0.35, 0.18],
@@ -174,10 +199,14 @@ export const Hero = () => {
           rounded-full
           bg-[#22007C]/20
           blur-3xl
-        "
+          "
+          style={{
+            willChange: "transform"
+          }}
         />
 
         <motion.div
+          initial={{ opacity:0, y:-30 }}
           animate={{
             y: [0, 30, 0],
             opacity: [0.15, 0.28, 0.15],
@@ -192,7 +221,10 @@ export const Hero = () => {
           rounded-full
           bg-[#AF3800]/20
           blur-3xl
-        "
+          "
+          style={{
+            willChange: "transform"
+          }}
         />
 
         <div
@@ -203,19 +235,22 @@ export const Hero = () => {
           rounded-full
           bg-[#AF3800]/10
           blur-3xl
-        "
+          "
+          style={{
+            willChange: "transform"
+          }}
         />
 
         {/* moving beam */}
 
         <motion.div
           animate={{
-            x: ["-120%", "220%"],
+              x:["-120%","220%"]
           }}
           transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: "linear",
+              duration:9,
+              repeat:Infinity,
+              ease:"linear"
           }}
           className="
           absolute inset-y-0 z-[1]
@@ -225,7 +260,10 @@ export const Hero = () => {
           via-white/20
           to-transparent
           blur-2xl
-        "
+          "
+          style={{
+            willChange: "transform"
+          }}
         />
 
         {/* =========================
@@ -233,7 +271,7 @@ export const Hero = () => {
         ========================== */}
 
         <motion.div
-          initial={{ opacity: 0, y: -30 }}
+          initial={{ opacity:0, y:-30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           className="
@@ -311,9 +349,9 @@ export const Hero = () => {
               {/* eyebrow */}
 
               <motion.div
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity:0, y:-30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.5 }}
                 className="
                 mb-7 inline-flex items-center gap-3
                 rounded-full
@@ -334,103 +372,101 @@ export const Hero = () => {
                 </span>
               </motion.div>
 
-              {/* TITLE */}
-
               <AnimatePresence mode="wait">
-                <motion.h1
-                  key={slides[current].title}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -30 }}
+                <motion.div
+                  key={current}
+                  initial={{
+                    opacity: 0,
+                    y: 30,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: -20,
+                  }}
                   transition={{
-                    duration: 1,
+                    duration: 0.65,
+                    delay:0.1,
                     ease: [0.22, 1, 0.36, 1],
                   }}
-                  className="
-                  text-[2.8rem]
-                  leading-[0.95]
-                  sm:text-6xl
-                  md:text-[4.4rem]
-                  lg:text-7xl
-                  xl:text-[5.6rem]
-                  font-black
-                  tracking-[-0.07em]
-                  text-white
-                "
                 >
-                  {slides[current].title}
-                </motion.h1>
-              </AnimatePresence>
+                  <h1 className="text-[2.8rem] leading-[0.95] sm:text-6xl md:text-[4.4rem] lg:text-7xl xl:text-[5.6rem] font-black tracking-[-0.07em] text-white">
+                    {slides[current].title}
+                  </h1>
 
-              {/* DESCRIPTION */}
+                  <motion.div
+                  key={current}
+                  initial={{
+                    opacity: 0,
+                    y: 30,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    y: -20,
+                  }}
+                  transition={{
+                    duration: 0.65,
+                    delay:0.2,
+                    ease: [0.22, 1, 0.36, 1],
+                  }}
+                >
+                  <p className="mt-8 max-w-2xl text-base leading-7 sm:text-lg sm:leading-8 text-slate-100">
+                    {slides[current].description}
+                  </p>
+                </motion.div>
+                {/* TAGS */}
 
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={slides[current].description}
-                  initial={{ opacity: 0, y: 25 }}
+                <motion.div 
+                  key={current}
+                  initial={{ opacity:0, y:-30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
                   transition={{
                     duration: 0.8,
-                    delay: 0.1,
+                    delay: 0.15,
                   }}
-                  className="
-                  mt-8
-                  max-w-2xl
-                  text-base
-                  leading-7
-                  sm:text-lg
-                  sm:leading-8
-                  text-slate-100
-                "
+                  className="mt-8 flex flex-wrap gap-3"
                 >
-                  {slides[current].description}
-                </motion.p>
-              </AnimatePresence>
-
-              {/* TAGS */}
-
-              <motion.div
-                initial={{ opacity: 0, y: 25 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.8,
-                  delay: 0.15,
-                }}
-                className="mt-8 flex flex-wrap gap-3"
-              >
-                {
-                slides[current].floatingWords.map((word) => (
-                  <div
-                    key={word}
-                    className="
-                    hidden sm:flex 
-                    flex-wrap gap-3
-                    rounded-full
-                    border border-white/40
-                    bg-white/70
-                    px-4 py-2
-                    text-xs
-                    font-black
-                    tracking-[0.22em]
-                    text-[#22007C]
-                    uppercase
-                    backdrop-blur-xl
-                  "
-                  >
-                    {word}
-                  </div>
-                ))}
+                  {
+                  slides[current].floatingWords.map((word) => (
+                    <div
+                      key={word}
+                      className="
+                      hidden sm:flex 
+                      flex-wrap gap-3
+                      rounded-full
+                      border border-white/40
+                      bg-white/70
+                      px-4 py-2
+                      text-xs
+                      font-black
+                      tracking-[0.22em]
+                      text-[#22007C]
+                      uppercase
+                      backdrop-blur-xl
+                    "
+                    >
+                      {word}
+                    </div>
+                  ))}
+                </motion.div>
               </motion.div>
+            </AnimatePresence>
 
               {/* BUTTONS */}
 
               <motion.div
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity:0, y:-30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{
-                  duration: 0.8,
-                  delay: 0.2,
+                  duration: 0.65,
+                  delay: 0.3,
                 }}
                 className="mt-10 flex flex-col gap-3 md:flex-row"
               >
@@ -486,27 +522,25 @@ export const Hero = () => {
             {/* RIGHT PANEL */}
 
             <div className="flex justify-center lg:justify-end">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={slides[current].announcement.title}
-                  initial={{
-                    opacity: 0,
-                    x: 50,
-                    y: 40,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    x: 0,
-                    y: 0,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    x: 30,
-                  }}
-                  transition={{
-                    duration: 1,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{
+                  opacity: 0,
+                  x: 40,
+                }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                exit={{
+                  opacity: 0,
+                  x: 20,
+                }}
+                transition={{
+                  duration: 0.7,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                   className="
                   relative
                   w-full
@@ -529,29 +563,29 @@ export const Hero = () => {
 
                   <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[#22007C]/10 blur-3xl" />
 
-                  <div className="absolute bottom-0 left-0 h-56 w-56 rounded-full bg-[#AF3800]/10 blur-3xl" />
+                  <div className="absolute bottom-0 left-0 h-56 w-56 rounded-full bg-[#AF3800]/10 blur-3xl"style={{willChange: "transform"}} />
 
                   {/* shine */}
 
                   <motion.div
                     animate={{
-                      x: ["-120%", "220%"],
+                      x: ["-130%", "250%"],
                     }}
                     transition={{
-                      duration: 9,
+                      duration: 8,
                       repeat: Infinity,
                       ease: "linear",
                     }}
                     className="
-                    absolute inset-y-0 w-[30%]
-                    bg-gradient-to-r
-                    from-transparent
-                    via-white/30
-                    to-transparent
-                    blur-2xl
-                  "
+                      absolute inset-y-0
+                      w-[28%]
+                      bg-gradient-to-r
+                      from-transparent
+                      via-white/30
+                      to-transparent
+                      blur-2xl
+                    "
                   />
-
                   <div className="relative z-10">
                     {/* top */}
 
@@ -724,9 +758,14 @@ export const Hero = () => {
               )}
             >
               {current === index && (
-                <motion.div
-                  layoutId="hero-progress"
-                  className="absolute inset-0 rounded-full bg-[#AF3800]"
+              <motion.div
+                  key={current}
+                  initial={{ scaleX:0 }}
+                  animate={{ scaleX:1 }}
+                  style={{
+                      originX:0
+                  }}
+                  className="absolute left-0 top-0 h-full rounded-full bg-[#AF3800]"
                 />
               )}
             </button>
