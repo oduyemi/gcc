@@ -1,18 +1,14 @@
 "use client";
 import { useMemo } from "react";
 import dayjs from "dayjs";
-import {
-  CalendarPlus,
-  Pencil,
-  Trash2,
-  CalendarDays,
-} from "lucide-react";
+import { Clock3, CalendarPlus, Pencil, MapPin, Trash2, CalendarDays } from "lucide-react";
 import { AdminCard } from "@/components/admin/Cards";
 import { Button } from "@/components/ui/button";
 import { Meeting } from "@/types/meeting";
 
 interface Props {
   meetings: Meeting[];
+  loading?: boolean;
   onAdd: (month: string) => void;
   onEdit: (meeting: Meeting) => void;
   onDelete: (meeting: Meeting) => void;
@@ -20,14 +16,21 @@ interface Props {
 
 export const QuarterPlanner = ({
   meetings,
+  loading = false,
   onAdd,
   onEdit,
   onDelete,
 }: Props) => {
-  const months = useMemo(
-    () => ["July", "August", "September"],
-    []
-  );
+  const months = useMemo(() => {
+    const currentMonth = dayjs().month();
+    const quarterStart = Math.floor(currentMonth / 3) * 3;
+  
+    return Array.from({ length: 3 }, (_, i) =>
+      dayjs()
+        .month(quarterStart + i)
+        .format("MMMM")
+    );
+  }, []);
 
   return (
     <AdminCard>
@@ -69,7 +72,11 @@ export const QuarterPlanner = ({
                 border-white/10
                 bg-white/[0.04]
                 p-5
-              "
+                transition-all
+                duration-200
+                hover:border-primary/20
+                hover:bg-white/[0.06]
+                "
             >
               <div className="flex items-center justify-between">
                 <div>
@@ -84,7 +91,7 @@ export const QuarterPlanner = ({
 
                 <Button
                   size="icon"
-                  variant="outline"
+                  variant="secondary"
                   onClick={() => onAdd(month)}
                 >
                   <CalendarPlus size={16} />
@@ -92,21 +99,31 @@ export const QuarterPlanner = ({
               </div>
 
               <div className="mt-5 space-y-3">
-                {monthEvents.length === 0 ? (
-                  <div
-                    className="
-                      rounded-2xl
-                      border
-                      border-dashed
-                      border-white/10
-                      py-8
-                      text-center
-                    "
-                  >
-                    <p className="text-sm text-slate-500">
-                      No events scheduled.
-                    </p>
+              {loading ? (
+              Array.from({ length: 3 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-4"
+                >
+                  <div className="space-y-2">
+                    <div className="h-4 w-40 animate-pulse rounded bg-white/5" />
+                    <div className="h-3 w-28 animate-pulse rounded bg-white/5" />
+                    <div className="h-3 w-20 animate-pulse rounded bg-white/5" />
                   </div>
+                </div>
+              ))
+            ) : monthEvents.length === 0 ? (
+              <div className="rounded-2xl border border-dashed border-white/10 py-8 text-center">
+                <CalendarDays className="mx-auto mb-3 h-6 w-6 text-slate-500" />
+            
+                <p className="font-medium text-white">
+                    No events
+                </p>
+            
+                <p className="mt-1 text-xs text-slate-400">
+                    Add an event for {month}.
+                </p>
+            </div>
                 ) : (
                   monthEvents.map((meeting) => (
                     <div
@@ -120,26 +137,25 @@ export const QuarterPlanner = ({
                       "
                     >
                       <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <h4 className="font-medium text-white">
-                            {meeting.title}
-                          </h4>
-
-                          <p className="mt-1 text-xs text-slate-400">
-                            {dayjs(meeting.startDate).format(
-                              "ddd, DD MMM YYYY"
-                            )}
+                        <div className="mt-3 space-y-2">
+                          <p className="flex items-center gap-2 text-xs text-slate-400">
+                            <CalendarDays className="h-3.5 w-3.5" />
+                            {dayjs(meeting.startDate).format("ddd, DD MMM YYYY")}
                           </p>
 
                           {meeting.time && (
-                            <p className="mt-1 text-xs text-slate-500">
+                            <p className="flex items-center gap-2 text-xs text-slate-500">
+                              <Clock3 className="h-3.5 w-3.5" />
                               {meeting.time}
                             </p>
                           )}
 
                           {meeting.location && (
-                            <p className="mt-1 text-xs text-slate-500">
-                              {meeting.location}
+                            <p className="flex items-center gap-2 text-xs text-slate-500">
+                              <MapPin className="h-3.5 w-3.5" />
+                              <span className="truncate">
+                                {meeting.location}
+                              </span>
                             </p>
                           )}
                         </div>

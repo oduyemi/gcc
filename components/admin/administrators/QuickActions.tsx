@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -72,11 +71,12 @@ export const AdminQuickActions = () => {
           />
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-3">
+        <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
           {/* Create Administrator */}
 
           <motion.button
             type="button"
+            aria-label="Add Administrator"
             initial={{
               opacity: 0,
               y: 10,
@@ -87,6 +87,7 @@ export const AdminQuickActions = () => {
             }}
             whileHover={{
               scale: 1.03,
+              y: -4
             }}
             whileTap={{
               scale: 0.98,
@@ -135,6 +136,7 @@ export const AdminQuickActions = () => {
               <Link
                 key={action.title}
                 href={action.href}
+                aria-label={action.title}
               >
                 <motion.div
                   initial={{
@@ -150,12 +152,16 @@ export const AdminQuickActions = () => {
                   }}
                   whileHover={{
                     scale: 1.03,
+                    y: -4
                   }}
                   whileTap={{
                     scale: 0.98,
                   }}
                   className="
                     group
+                    flex
+                    h-full
+                    flex-col
                     rounded-2xl
                     border
                     border-white/10
@@ -163,8 +169,7 @@ export const AdminQuickActions = () => {
                     p-4
                     transition-all
                     hover:border-primary/30
-                    hover:bg-white/[0.06]
-                  "
+                    hover:bg-white/[0.06]"
                 >
                   <div
                     className="
@@ -177,12 +182,16 @@ export const AdminQuickActions = () => {
                       rounded-xl
                       bg-primary/15
                       text-primary
-                    "
+                      transition-all
+                      duration-300
+                      group-hover:scale-110
+                      group-hover:bg-primary
+                      group-hover:text-white"
                   >
                     <Icon size={18} />
                   </div>
 
-                  <p className="text-sm font-medium text-white">
+                  <p className="mt-auto text-sm font-medium text-white">
                     {action.title}
                   </p>
                 </motion.div>

@@ -1,21 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
-import {
-  Users,
-  CalendarDays,
-  UserPlus,
-  Bell,
-  FileText,
-  Images,
-  MessageSquare,
-  Menu,
-} from "lucide-react";
+import { Users, CalendarDays, Bell, FileText, Images } from "lucide-react";
 import { AdminCard } from "@/components/admin/Cards";
 import { StatCard } from "@/components/admin/StatsCard";
 import { Meeting } from "@/types/meeting";
 import { useEffect, useState } from "react";
 import { UpcomingMeetingsCard } from "@/components/admin/Meetings/Upcoming";
 import { AdminQuickActions } from "@/components/admin/administrators/QuickActions";
+import Link from"next/link";
 
 interface NewMember {
   _id: string;
@@ -27,29 +19,6 @@ interface NewMember {
   createdAt: string;
 }
 
-const quickActions = [
-  {
-    label: "Add Admin",
-    icon: UserPlus,
-    link: "/admin/administrators"
-  },
-  {
-    label: "Create Event",
-    icon: CalendarDays,
-    link: "/admin/events"
-  },
-  {
-    label: "Post an Article",
-    icon: Menu,
-    link:"/admin/blog"
-  },
-  {
-    label: "Upload Gallery",
-    icon: MessageSquare,
-    link: "/admin/gallery"
-  },
-];
-
 const notifications = [
   "5 prayer requests awaiting review",
   "3 new guest registrations",
@@ -57,58 +26,19 @@ const notifications = [
   "Youth event registration opened",
 ];
 
-const ministryMetrics = [
-  {
-    label: "Attendance Rate",
-    value: "92%",
-  },
-  {
-    label: "Volunteer Engagement",
-    value: "78%",
-  },
-  {
-    label: "New Member Retention",
-    value: "88%",
-  },
-];
-
-
-
 export default function DashboardPage() {
-  const [loading, setLoading] = useState(true);
+  const [dashboardLoading, setDashboardLoading] = useState(true);
+  const [membersLoading, setMembersLoading] = useState(true);
   const [weeklyMeetings, setWeeklyMeetings] = useState<Meeting[]>([]);
   const [upcomingMeetings, setUpcomingMeetings] = useState<Meeting[]>([]);
   const [blogCount, setBlogCount] = useState(0);
   const[galleryCount, setGalleryCount] = useState(0);
   const [recentMembers, setRecentMembers] = useState<NewMember[]>([]);
-
-  const fetchDashboardMeetings = async () => {
-    try {
-      setLoading(true);
-
-      const [weeklyRes, upcomingRes] = await Promise.all([
-        fetch("/api/meetings/weekly"),
-        fetch("/api/meetings/upcoming"),
-      ]);
-
-      const [weeklyJson, upcomingJson] = await Promise.all([
-        weeklyRes.json(),
-        upcomingRes.json(),
-      ]);
-
-      setWeeklyMeetings(weeklyJson.data || []);
-      setUpcomingMeetings(upcomingJson.data || []);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [notificationsLoading] = useState(false);
 
   const fetchDashboardData = async () => {
     try {
-      setLoading(true);
-  
+      setDashboardLoading(true);
       const [
         weeklyRes,
         upcomingRes,
@@ -135,65 +65,71 @@ export default function DashboardPage() {
   
       setWeeklyMeetings(weeklyJson.data || []);
       setUpcomingMeetings(upcomingJson.data || []);
-      setBlogCount(Array.isArray(blogsJson) ? blogsJson.length : 0);
-      setGalleryCount(galleryJson.count);
+      // setBlogCount(Array.isArray(blogsJson) ? blogsJson.length : 0);
+      setBlogCount(blogsJson.count ?? 0);
+      setGalleryCount(galleryJson.count ?? 0);
     } catch (error) {
       console.error(error);
     } finally {
-      setLoading(false);
+      setDashboardLoading(false);
     }
   };
 
 
   const fetchRecentMembers = async () => {
     try {
+      setMembersLoading(true);
       const res = await fetch("/api/new-to-church");
-  
       const json = await res.json();
-  
       if (json.success) {
-        // Keep only the latest 5
-        setRecentMembers(json.data.slice(0, 5));
+        const latestMembers = [...json.data]
+          .sort(
+            (a: NewMember, b: NewMember) =>
+              new Date(b.createdAt).getTime() -
+              new Date(a.createdAt).getTime()
+          )
+          .slice(0, 5);
+    
+        setRecentMembers(latestMembers);
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setMembersLoading(false);
     }
-  };
 
   useEffect(() => {
     fetchDashboardData();
-    fetchDashboardMeetings();
     fetchRecentMembers();
   }, []);
+}
 
   const dashboardStats = [
     {
       title: "Meetings This Week",
-      value: loading ? "..." : weeklyMeetings.length,
+      value: dashboardLoading ? "..." : weeklyMeetings.length,
       icon: CalendarDays,
       tone: "purple",
     },
     {
       title: "Blog Posts",
-      value: loading ? "..." : blogCount,
+      value: dashboardLoading ? "..." : blogCount,
       icon: FileText,
       tone: "blue",
     },
     {
       title: "Upcoming Meetings",
-      value: loading ? "..." : upcomingMeetings.length,
+      value: dashboardLoading ? "..." : upcomingMeetings.length,
       icon: Bell,
       tone: "green",
     },
     {
       title: "Gallery Images",
-      value: loading ? "..." : galleryCount,
+      value: dashboardLoading ? "..." : galleryCount,
       icon: Images,
       tone: "amber",
     }
   ];
-
-  
 
   return (
     <div className="space-y-8">
@@ -226,13 +162,19 @@ export default function DashboardPage() {
               </div>
 
               <div className="flex gap-3">
-                <button className="rounded-2xl bg-primary px-5 py-3 font-medium text-white shadow-lg transition hover:opacity-90">
-                  Create Event
-                </button>
+              <Link
+                href="/admin/events"
+                className="rounded-2xl bg-primary px-5 py-3 font-medium text-white shadow-lg transition hover:opacity-90"
+              >
+                Create Event
+              </Link>
 
-                <button className="glass rounded-2xl px-5 py-3 font-medium transition hover:bg-white/10">
-                  View Reports
-                </button>
+                <Link 
+                  href="/admin/profile"
+                  className="glass rounded-2xl px-5 py-3 font-medium transition hover:bg-white/10"
+                >
+                    Admin Profile
+                </Link>
               </div>
             </div>
           </div>
@@ -273,7 +215,18 @@ export default function DashboardPage() {
             />
           </div>
 
+          {dashboardLoading ? (
+          <div className="space-y-3 mt-6">
+            {Array.from({ length: 4 }).map((_, i) => (
+              <div
+                key={i}
+                className="h-20 animate-pulse rounded-2xl bg-white/5"
+              />
+            ))}
+          </div>
+        ) : (
           <UpcomingMeetingsCard meetings={upcomingMeetings} />
+        )}
         </AdminCard>
 
         {/* Quick Actions */}
@@ -296,7 +249,16 @@ export default function DashboardPage() {
           </div>
 
           <div className="mt-6 space-y-4">
-            {recentMembers.length === 0 ? (
+            {membersLoading ? (
+              <>
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="h-14 animate-pulse rounded-xl bg-white/5"
+                  />
+                ))}
+              </>
+            ) : recentMembers.length === 0 ? (
               <p className="text-sm text-muted-foreground">
                 No recent members.
               </p>
@@ -355,14 +317,25 @@ export default function DashboardPage() {
           </div>
 
           <div className="mt-6 space-y-4">
-            {notifications.map((item) => (
-              <div
-                key={item}
-                className="rounded-2xl bg-white/30 p-4"
-              >
-                <p>{item}</p>
-              </div>
-            ))}
+            {notificationsLoading ? (
+              <>
+                {Array.from({ length: 4 }).map((_, i) => (
+                  <div
+                    key={i}
+                    className="h-16 animate-pulse rounded-2xl bg-white/5"
+                  />
+                ))}
+              </>
+            ) : (
+                notifications.map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-2xl bg-white/30 p-4"
+                  >
+                    <p>{item}</p>
+                  </div>
+                ))
+            )}
           </div>
         </AdminCard>
       </section>
