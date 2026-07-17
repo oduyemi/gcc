@@ -11,11 +11,8 @@ export async function GET(
 ) {
   try {
     await dbConnect();
-
     const { id } = await params;
-
     const baptism = await Baptism.findById(id);
-
     if (!baptism) {
       return NextResponse.json(
         {
@@ -25,7 +22,6 @@ export async function GET(
         { status: 404 }
       );
     }
-
     return NextResponse.json({
       success: true,
       data: baptism,
@@ -53,11 +49,8 @@ export async function PATCH(
 ) {
   try {
     await dbConnect();
-
     const { id } = await params;
-
     const body = await req.json();
-
     const baptism = await Baptism.findByIdAndUpdate(
       id,
       body,

@@ -14,20 +14,14 @@ import { sendEmailWithRetry } from "@/helper/emailLogic";
 export async function GET(req: NextRequest) {
   try {
     await dbConnect();
-
     const { searchParams } = new URL(req.url);
-
     const status = searchParams.get("status");
-
     const filter: Record<string, string> = {};
-
     if (status) {
       filter.status = status;
     }
-
     const requests = await Counselling.find(filter)
       .sort({ createdAt: -1 });
-
     return NextResponse.json({
       success: true,
       count: requests.length,
@@ -35,7 +29,6 @@ export async function GET(req: NextRequest) {
     });
   } catch (error) {
     console.error(error);
-
     return NextResponse.json(
       {
         success: false,
@@ -57,7 +50,6 @@ export async function POST(req: NextRequest) {
        ...body,
        status: "pending",
      });
- 
      await sendEmailWithRetry(
        "info@globalcrossfirechurch.co.uk",
        `New Counselling Request: ${body.fullname}`,
@@ -74,7 +66,6 @@ export async function POST(req: NextRequest) {
          <p>${body.support}</p>
        `
      );
- 
      return NextResponse.json(
        {
          success: true,
@@ -85,7 +76,6 @@ export async function POST(req: NextRequest) {
      );
    } catch (error) {
      console.error(error);
- 
      return NextResponse.json(
        {
          success: false,

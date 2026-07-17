@@ -13,13 +13,9 @@ import Commit from "@/models/commit.model";
 export async function GET(req: NextRequest) {
   try {
     await dbConnect();
-
     const { searchParams } = new URL(req.url);
-
     const status = searchParams.get("status");
-
     const filter: Record<string, string> = {};
-
     if (status) {
       filter.status = status;
     }
@@ -34,7 +30,6 @@ export async function GET(req: NextRequest) {
     });
   } catch (error) {
     console.error(error);
-
     return NextResponse.json(
       {
         success: false,
@@ -51,9 +46,7 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     await dbConnect();
-
     const body = await req.json();
-
     const commitment = await Commit.create({
       ...body,
       status: "pending",

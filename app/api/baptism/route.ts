@@ -14,20 +14,15 @@ import { sendEmailWithRetry } from "@/helper/emailLogic";
 export async function GET(req: NextRequest) {
   try {
     await dbConnect();
-
     const { searchParams } = new URL(req.url);
-
     const status = searchParams.get("status");
-
     const filter: Record<string, string> = {};
-
     if (status) {
       filter.status = status;
     }
 
     const baptisms = await Baptism.find(filter)
       .sort({ createdAt: -1 });
-
     return NextResponse.json({
       success: true,
       count: baptisms.length,
@@ -52,14 +47,11 @@ export async function GET(req: NextRequest) {
  export async function POST(req: NextRequest) {
    try {
      await dbConnect();
- 
      const body = await req.json();
- 
      const baptism = await Baptism.create({
        ...body,
        status: "pending",
      });
- 
      await sendEmailWithRetry(
        "info@globalcrossfirechurch.co.uk",
        `New Baptism Registration: ${body.fullname}`,

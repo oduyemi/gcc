@@ -11,11 +11,8 @@ export async function GET(
 ) {
   try {
     await dbConnect();
-
     const { id } = await params;
-
     const request = await Recommit.findById(id);
-
     if (!request) {
       return NextResponse.json(
         {
@@ -52,11 +49,8 @@ export async function PATCH(
 ) {
   try {
     await dbConnect();
-
     const { id } = await params;
-
     const body = await req.json();
-
     const request = await Recommit.findByIdAndUpdate(
       id,
       body,
@@ -65,7 +59,6 @@ export async function PATCH(
         runValidators: true,
       }
     );
-
     if (!request) {
       return NextResponse.json(
         {
@@ -82,7 +75,6 @@ export async function PATCH(
     });
   } catch (error) {
     console.error(error);
-
     return NextResponse.json(
       {
         success: false,
@@ -102,11 +94,8 @@ export async function DELETE(
 ) {
   try {
     await dbConnect();
-
     const { id } = await params;
-
     const request = await Recommit.findByIdAndDelete(id);
-
     if (!request) {
       return NextResponse.json(
         {
@@ -116,14 +105,12 @@ export async function DELETE(
         { status: 404 }
       );
     }
-
     return NextResponse.json({
       success: true,
       message: "Recommitment request deleted successfully",
     });
   } catch (error) {
     console.error(error);
-
     return NextResponse.json(
       {
         success: false,

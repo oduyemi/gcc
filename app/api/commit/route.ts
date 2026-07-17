@@ -14,17 +14,12 @@ import { sendEmailWithRetry } from "@/helper/emailLogic";
 export async function GET(req: NextRequest) {
   try {
     await dbConnect();
-
     const { searchParams } = new URL(req.url);
-
     const status = searchParams.get("status");
-
     const filter: Record<string, string> = {};
-
     if (status) {
       filter.status = status;
     }
-
     const commitments = await Commit.find(filter)
       .sort({ createdAt: -1 });
 
@@ -35,7 +30,6 @@ export async function GET(req: NextRequest) {
     });
   } catch (error) {
     console.error(error);
-
     return NextResponse.json(
       {
         success: false,
