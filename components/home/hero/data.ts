@@ -77,7 +77,7 @@ export const heroSlides: HeroSlide[] = [
     },
 
     secondaryButton: {
-      label: "Get Involved",
+      label: "Community Impact",
       href: "/community",
     },
 
