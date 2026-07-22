@@ -1,7 +1,7 @@
 import { CommunityPrograms } from "@/components/home/CommunityPrograms";
 import { FeaturedMeetings } from "@/components/home/FeaturedEvents";
 import { HomeLiveStreamCTA } from "@/components/home/GoLive";
-import { Hero } from "@/components/home/Hero";
+import { Hero } from "@/components/home/hero/Hero";
 import { Intro } from "@/components/home/Intro";
 import { LatestSermon } from "@/components/home/LatestSermon";
 import { Steps } from "@/components/home/Steps";
