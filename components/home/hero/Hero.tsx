@@ -35,7 +35,7 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-white">
+    <section className="relative overflow-hidden bg-transparent">
       <HeroBackground />
       <div className="relative z-10 mx-auto max-w-[1500px] px-4 sm:px-6 lg:px-8">
         <div
@@ -46,7 +46,7 @@ export const Hero = () => {
             lg:rounded-b-[4rem]
             border
             border-white/60
-            bg-white/30
+            bg-transparent
             shadow-[0_40px_120px_rgba(34,0,124,.08)]
             backdrop-blur-sm
           "
@@ -101,7 +101,7 @@ export const Hero = () => {
                 rounded-2xl
                 border
                 border-slate-200
-                bg-white/90
+                bg-transparent
                 shadow-lg
                 transition-all
                 duration-300
@@ -123,7 +123,7 @@ export const Hero = () => {
                 rounded-2xl
                 border
                 border-slate-200
-                bg-white/90
+                bg-tansparent
                 shadow-lg
                 transition-all
                 duration-300

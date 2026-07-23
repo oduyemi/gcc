@@ -1,14 +1,7 @@
 "use client";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  ArrowRight,
-  Clock3,
-  MapPin,
-  Sparkles,
-  HeartHandshake,
-} from "lucide-react";
-
+import { ArrowRight, Clock3, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroSlide } from "./types";
 
@@ -106,7 +99,7 @@ export const HeroContent = ({slide, current}: HeroContentProps) => {
                 transition={{ delay: 0.12 }}
                 className="mt-8"
               >
-                <div className="inline-flex items-center gap-2 rounded-full bg-[#AF3800] px-5 py-2 shadow-xl">
+                <div className="inline-flex items-center gap-2 rounded-full bg-red-700 px-5 py-2 shadow-xl">
                   <Clock3 className="h-4 w-4 text-white" />
 
                   <span className="text-[11px] font-black uppercase tracking-[.35em] text-white">

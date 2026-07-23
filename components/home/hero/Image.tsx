@@ -57,7 +57,7 @@ export const HeroImage = ({
           w-[420px]
           rounded-full
           border
-          border-[#AF3800]/15
+          border-transparent
         "
       />
   
@@ -114,7 +114,7 @@ export const HeroImage = ({
                 translate-y-5
                 rounded-[3rem]
                 border
-                border-[#22007C]/8
+                border-transparent
               "
             />
   
@@ -130,11 +130,10 @@ export const HeroImage = ({
                 relative
                 overflow-hidden
                 rounded-[3rem]
-                bg-white/80
+                bg-transparent
                 backdrop-blur-sm
-                border border-white/50
+                border border-transparent
                 p-4
-                shadow-[0_70px_140px_rgba(34,0,124,.18),0_20px_40px_rgba(0,0,0,.08)]
               "
             >
               <div className="relative aspect-[4/5] overflow-hidden rounded-[2.4rem]">
