@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
      });
  
      await sendEmailWithRetry(
-       "info@globalcrossfirechurch.co.uk",
+       "info@globalcrossfirechurch.org",
        `New Commitment To Christ: ${body.fullname}`,
        `
          <h2>New Commitment To Christ</h2>

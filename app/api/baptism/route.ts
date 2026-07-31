@@ -53,7 +53,7 @@ export async function GET(req: NextRequest) {
        status: "pending",
      });
      await sendEmailWithRetry(
-       "info@globalcrossfirechurch.co.uk",
+       "info@globalcrossfirechurch.org",
        `New Baptism Registration: ${body.fullname}`,
        `
          <h2>New Baptism Registration</h2>

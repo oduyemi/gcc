@@ -49,7 +49,7 @@ export async function GET(req: NextRequest) {
      });
  
      await sendEmailWithRetry(
-       "info@globalcrossfirechurch.co.uk",
+       "info@globalcrossfirechurch.org",
        `Recommitment Request - ${body.fullname}`,
        `
          <h2>New Recommitment Request</h2>

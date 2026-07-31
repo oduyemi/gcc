@@ -59,7 +59,7 @@ export async function GET(req: NextRequest) {
      });
  
      await sendEmailWithRetry(
-       "info@globalcrossfirechurch.co.uk",
+       "info@globalcrossfirechurch.org",
        `New Prayer Request From ${body.fullname}`,
        `
          <h2>New Prayer Request</h2>

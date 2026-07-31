@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
      });
  
      await sendEmailWithRetry(
-       "info@globalcrossfirechurch.co.uk",
+       "info@globalcrossfirechurch.org",
        `New Serve Request: ${body.fullname}`,
        `
          <h2>New Serve Request</h2>

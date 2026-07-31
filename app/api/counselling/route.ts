@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
        status: "pending",
      });
      await sendEmailWithRetry(
-       "info@globalcrossfirechurch.co.uk",
+       "info@globalcrossfirechurch.org",
        `New Counselling Request: ${body.fullname}`,
        `
          <h2>New Counselling Request</h2>
