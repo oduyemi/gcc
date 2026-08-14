@@ -5,6 +5,7 @@ import { Hero } from "@/components/home/hero/Hero";
 import { Intro } from "@/components/home/Intro";
 import { LatestSermon } from "@/components/home/LatestSermon";
 import { Steps } from "@/components/home/Steps";
+import { YouthFeature } from "@/components/home/Youth";
 import { JoinUsCTA } from "@/components/JoinUsCTA";
 import { useLiveStream } from "@/hook/useLivestream";
 
@@ -17,6 +18,7 @@ export default function Home() {
       <Hero />
       <Intro />
       <HomeLiveStreamCTA />
+      <YouthFeature/>
       <Steps />
       <CommunityPrograms />
       <LatestSermon />

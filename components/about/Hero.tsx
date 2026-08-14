@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
@@ -205,7 +204,7 @@ export const AboutHero = () => {
               "
             >
               <Image
-                src="/images/abthero.jpg"
+                src="/images/abther0.jpg"
                 alt="Global Crossfire Church UK"
                 fill
                 className="object-cover"

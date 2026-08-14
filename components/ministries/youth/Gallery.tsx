@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -61,11 +60,11 @@ const gallery = [
     title: "Youth Hangout",
     category: "Hangouts",
   },
-  // {
-  //   image: "/images/youth/gallery-8.jpg",
-  //   title: "Basketball Day",
-  //   category: "Sports",
-  // },
+  {
+    image: "/images/youth/hangout/four.jpeg",
+    title: "Youth Hangout",
+    category: "Hangouts",
+  },
 
   {
     image: "/images/youth/worship/two.jpg",
@@ -84,6 +83,16 @@ const gallery = [
   },
   {
     image: "/images/youth/hangout/three.jpeg",
+    title: "Youth Hangout",
+    category: "Hangouts",
+  },
+  {
+    image: "/images/youth/hangout/five.jpeg",
+    title: "Youth Hangout",
+    category: "Hangouts",
+  },
+  {
+    image: "/images/youth/hangout/six.jpeg",
     title: "Youth Hangout",
     category: "Hangouts",
   }

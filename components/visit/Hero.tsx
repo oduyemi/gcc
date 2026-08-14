@@ -212,7 +212,7 @@ export const VisitHero = () => {
           >
             <div className="relative overflow-hidden rounded-[2.8rem]">
               <Image
-                src="/images/crossfire.jpg"
+                src="/images/knowpeople.jpg"
                 alt="Visit Global Crossfire Church"
                 width={900}
                 height={1100}

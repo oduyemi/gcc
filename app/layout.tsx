@@ -170,7 +170,10 @@ export default function RootLayout({
       className={`${lato.variable} antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-screen font-sans bg-white text-black">
+      <body 
+        className="min-h-screen font-sans bg-white text-black" 
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>
