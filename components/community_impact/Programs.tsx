@@ -147,7 +147,7 @@ const programs = [
     description:
       // "Working alongside local food banks and community organisations to provide food, toiletries and seasonal essentials to individuals experiencing hardship or food insecurity.",
       "Our charity partners with local food banks and community organisations to support people experiencing food insecurity, homelessness, or financial hardship. Through food donations and seasonal essentials such as toiletries and warm clothing, we help ensure vital support reaches those most in need.",
-    image: "/images/eat.jpeg",
+    image: "/images/foodbank.jpg",
 
     stats: [
       { label: "Partners", value: "Local" },
