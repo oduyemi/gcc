@@ -1,12 +1,7 @@
 "use client";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  HeartHandshake,
-  Sparkles,
-  HandHelping,
-} from "lucide-react";
+import { ArrowRight, HeartHandshake, Sparkles, HandHelping } from "lucide-react";
 
 
 export const SupportCommunityCTA = () => {
