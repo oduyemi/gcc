@@ -2,7 +2,7 @@ import { HeroSlide } from "./types";
 
 export const heroSlides: HeroSlide[] = [
   {
-    image: "/images/hero.jpg",
+    image: "/images/youthprayer.jpg",
     eyebrow: "WELCOME TO GLOBAL CROSSFIRE CHURCH UK",
     title: "Meet Our Senior Pastors",
     subtitle: "Leading People Into The Presence Of God",

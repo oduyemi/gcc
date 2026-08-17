@@ -151,7 +151,7 @@ export function HomeLiveStreamCTA() {
                 <div className="glass relative h-full overflow-hidden rounded-[2.5rem]">
                   {/* Image */}
                   <Image
-                    src="/images/spirikomix.jpg"
+                    src="/images/streamin.jpg"
                     alt="Live Worship Experience"
                     fill
                     priority
