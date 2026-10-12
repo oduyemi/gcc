@@ -2,15 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import {
-  ChevronDown,
-  HeartHandshake,
-  Menu,
-  Mic2,
-  Sparkles,
-  X,
-} from "lucide-react";
-
+import { ChevronDown, HeartHandshake, Menu, Mic2, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -21,13 +13,29 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+
+
+const about =[
+  {
+    title: "Our Story",
+    href: "/about",
+  },
+  {
+    title: "What We Believe",
+    href: "/about/#whatwebelive",
+  },
+  {
+    title: "Our Pastors",
+    href: "/about/#ourpastors",
+  },
+  {
+    title: "Safeguarding Policy",
+    href: "/about/#safeguarding-policy",
+  },
+]
 
 const resources =[
   {
@@ -40,6 +48,7 @@ const resources =[
     icon: Mic2
   },
 ]
+
 
 const ministries = [
   {
@@ -94,7 +103,7 @@ const ministries = [
 
 const navLinks = [
   // { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
+  // { label: "About", href: "/about" },
   // { label: "Podcast", href: "/podcast", icon: Mic2 },
   { label: "Community Impact", href:"/community"},
   { label: "Overseas Missions", href: "/missions" },
@@ -194,8 +203,81 @@ export const Header = () => {
         {/* DESKTOP NAV */}
         <div className="relative z-10 hidden items-center gap-3 xl:flex">
         <NavigationMenu value={openMenu} onValueChange={setOpenMenu}>
-            <NavigationMenuList className="gap-1">
+            {/* ABOUT */}
+            <NavigationMenuItem value="about">
+                <NavigationMenuTrigger
+                className="
+                group h-10 rounded-2xl bg-transparent px-4
+                text-[14px] font-semibold tracking-[-0.01em]
+                text-slate-700/85
+                transition-all duration-500
+                hover:bg-white/55
+                hover:text-primary
+                hover:shadow-[0_10px_40px_rgba(216,164,91,0.10)]
+                data-[state=open]:bg-white/55
+                "
+                >
+                  About
+                </NavigationMenuTrigger>
 
+                <NavigationMenuContent>
+                <div
+                    className="
+                    relative w-[470px]
+                    overflow-hidden
+                    rounded-[2rem]
+                    border border-white/30
+                    bg-white/[0.55]
+                    p-6
+                    shadow-[0_20px_80px_rgba(216,164,91,0.12)]
+                    backdrop-blur-[30px]
+                "
+                >
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.72),transparent_30%)]" />
+
+                    <div className="relative z-10 space-y-4">
+                    {about.map((item) => (
+                        <Link
+                          key={item.title}
+                          href={item.href}
+                          onClick={() => setOpenMenu("")}
+                          className="
+                          group relative block overflow-hidden
+                          rounded-[1.6rem]
+                          border border-white/20
+                          bg-white/[0.58]
+                          p-5
+                          transition-all duration-700
+                          ease-[cubic-bezier(0.22,1,0.36,1)]
+                          hover:-translate-y-1
+                          hover:bg-white/[0.72]
+                          hover:shadow-[0_20px_60px_rgba(216,164,91,0.12)]"
+                        >
+                        <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-transparent to-primary/[0.06] opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
+
+                        <div className="relative z-10">
+                        <span className="relative z-10 flex items-center gap-2">
+                        {/* {item.icon && (
+                        <item.icon className="h-4 w-4 transition-transform duration-500 group-hover:scale-110" />
+                        )} */}
+
+                        {/* {item.title} */}
+                            <h4 className="mb-2 text-[15px] font-bold tracking-[-0.02em] text-slate-800 transition-colors duration-500 group-hover:text-primary">
+                            {item.title}
+                            </h4>
+                        </span>
+
+                            {/* <p className="text-sm leading-relaxed text-slate-500">
+                            {item.description}
+                            </p> */}
+                        </div>
+                        </Link>
+                    ))}
+                    </div>
+                </div>
+                </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuList className="gap-1">
             {/* FIRST LINKS */}
             {navLinks.slice(0, 3).map((item) => (
                 <NavigationMenuItem key={item.label}>
@@ -589,6 +671,11 @@ export const Header = () => {
                 {/* MOBILE LINKS */}
                 <div className="flex-1 overflow-y-auto px-6 py-6">
                   <nav className="space-y-3">
+                  <MobileDropdown
+                      title="About"
+                      items={about}
+                      onItemClick={() => setOpen(false)}
+                    />
                     {navLinks.slice(0, 3).map((item) => (
                       <Link
                         key={item.label}

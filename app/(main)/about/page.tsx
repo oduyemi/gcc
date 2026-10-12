@@ -14,9 +14,15 @@ export default function About() {
       <AboutHero />
       <OurStory />
       <ScriptureCenterpiece />
-      <WhatWeBelieve/>
-      <OurPastors />
-      <SafeguardingPolicy />
+      <div id="whatwebelieve">
+        <WhatWeBelieve />
+      </div>
+      <div id="ourpastors">
+        <OurPastors />
+      </div>
+      <div id="safeguarding-policy">
+        <SafeguardingPolicy />
+      </div>
       <JoinUsCTA />
     </>
   );
