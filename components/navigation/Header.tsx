@@ -189,19 +189,6 @@ export const Header = () => {
             >
               Global Crossfire Church UK
             </h1>
-
-            {/* <p
-              className="
-              mt-1.5
-              text-[10px]
-              font-semibold
-              tracking-[0.38em]
-              text-slate-500/90
-              uppercase
-            "
-            >
-              Love • Faith • Purpose
-            </p> */}
           </div>
         </Link>
 
