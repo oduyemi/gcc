@@ -72,6 +72,11 @@ const ministries = [
     description: "Fun, faith-filled experiences for children and teenagers.",
   },
   {
+    title: "Follow-up",
+    href: "/ministries/followup",
+    description: "Our Follow-Up Team will seek to make you feel welcomed, valued and at home.",
+  },
+  {
     title: "Prayer & Caring Ministry",
     href: "/ministries/prayer-caring",
     description: "Standing in prayer and caring for the church family.",
@@ -500,9 +505,9 @@ export const Header = () => {
                         />
 
                         <div className="relative z-10">
-                            <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10">
+                            {/* <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary/10">
                             <Sparkles className="h-4 w-4 text-primary" />
-                            </div>
+                            </div> */}
 
                             <h4 className="mb-2 text-[15px] font-bold tracking-[-0.02em] text-slate-800 transition-colors duration-500 group-hover:text-primary">
                             {item.title}
