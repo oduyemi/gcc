@@ -25,7 +25,7 @@ const about =[
   },
   {
     title: "What We Believe",
-    href: "/about/#whatwebelive",
+    href: "/about/#whatwebelieve",
   },
   {
     title: "Our Pastors",
