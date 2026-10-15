@@ -22,6 +22,9 @@ const lato = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://globalcrossfirechurch.org"),
+  other: {
+    "facebook-domain-verification": "nf7grizq914prlbd1hdcsonjlzz6mw",
+  },
 
   title: {
     default: "Global Crossfire Church UK | Pentecostal Church in Margate, Kent",
