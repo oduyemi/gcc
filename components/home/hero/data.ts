@@ -60,7 +60,7 @@ export const heroSlides: HeroSlide[] = [
   },
 
   {
-    image: "/images/newhero4.jpg",
+    image: "/images/newhero4replaced.jpg",
     eyebrow: "REACHING OUR WORLD",
     title: "Taking The Gospel Beyond The Walls",
     subtitle: "Revival That Reaches Nations",
